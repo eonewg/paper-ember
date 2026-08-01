@@ -201,6 +201,7 @@ body.eone-sidebar-comfortable {
   --eone-table-stripe: rgba(79, 68, 57, 0.032);
   --eone-table-border: rgba(0, 0, 0, 0.11);
   --eone-table-surface: rgba(0, 0, 0, 0.018);
+  --eone-table-selection: rgba(var(--eone-accent-rgb), 0.09);
   --eone-nav-item-hover: rgba(31, 30, 29, 0.03);
   --eone-nav-item-active: rgba(var(--eone-accent-rgb), 0.075);
 
@@ -280,6 +281,7 @@ body.eone-sidebar-comfortable {
   --eone-table-stripe: rgba(255, 244, 232, 0.026);
   --eone-table-border: rgba(255, 255, 255, 0.13);
   --eone-table-surface: rgba(255, 255, 255, 0.025);
+  --eone-table-selection: rgba(var(--eone-accent-rgb), 0.13);
   --eone-nav-item-hover: rgba(240, 237, 230, 0.055);
   --eone-nav-item-active: rgba(var(--eone-accent-rgb), 0.1);
 
@@ -884,6 +886,9 @@ pre,
 }
 
 .markdown-source-view.mod-cm6 .cm-table-widget {
+  --table-selection: var(--eone-table-selection);
+  --table-selection-blend-mode: normal;
+  --table-selection-border-width: 0px;
   width: calc(100% + var(--table-drag-handle-size) + var(--table-drag-handle-size));
   max-width: none;
   overflow: visible;
