@@ -1,5 +1,5 @@
 /* 1. Theme metadata and Style Settings
-   Claudy 1.3.0 — a warm, restrained theme for Obsidian. */
+   Claudy 1.3.1 — a warm, restrained theme for Obsidian. */
 
 /* @settings
 name: Claudy
@@ -1058,7 +1058,8 @@ textarea,
 select,
 .dropdown {
   color: var(--text-normal);
-  background: var(--background-modifier-form-field);
+  /* Preserve Obsidian's native dropdown arrow image, position, and repeat rules. */
+  background-color: var(--background-modifier-form-field);
   border-color: var(--background-modifier-border);
   box-shadow: none;
 }
