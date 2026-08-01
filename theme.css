@@ -695,8 +695,8 @@ mark,
 
 .is-unresolved,
 .markdown-rendered .internal-link.is-unresolved {
-  color: var(--text-accent);
-  opacity: 1;
+  color: var(--text-muted);
+  opacity: 0.82;
   text-decoration: none;
 }
 
