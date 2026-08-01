@@ -784,7 +784,7 @@ a.tag:hover {
 .footnotes {
   color: var(--text-muted);
   font-size: 0.9em;
-  border-top: 1px solid var(--background-modifier-border);
+  border-top: 0;
   margin-top: 2em;
 }
 
@@ -940,6 +940,13 @@ pre,
   min-width: 0;
   text-align: center;
   vertical-align: top;
+}
+
+/* Override Obsidian's first/last-column alignment only in Reading view. */
+.markdown-rendered table :is(th, td),
+.markdown-rendered table :is(th, td):first-child,
+.markdown-rendered table :is(th, td):last-child {
+  text-align: center;
 }
 
 .markdown-rendered :is(th, td) {
