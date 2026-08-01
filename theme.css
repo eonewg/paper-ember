@@ -1,5 +1,5 @@
 /* 1. Theme metadata and Style Settings
-   Claudy Obsidian 1.2.1 — a warm, restrained theme for Obsidian. */
+   Claudy Obsidian 1.2.2 — a warm, restrained theme for Obsidian. */
 
 /* @settings
 name: Claudy Obsidian
@@ -534,6 +534,7 @@ mark,
 
 .workspace-tab-header {
   color: var(--text-muted);
+  border-radius: calc(var(--eone-radius) + 2px);
   transition: color var(--eone-transition-fast), background-color var(--eone-transition-fast);
 }
 
@@ -1117,6 +1118,7 @@ button.clickable-icon:not(.mod-cta) {
   color: var(--icon-color);
   background: transparent;
   border-color: transparent;
+  border-radius: calc(var(--eone-radius) + 2px);
   box-shadow: none;
 }
 
