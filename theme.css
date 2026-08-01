@@ -946,6 +946,7 @@ pre,
 .markdown-source-view.mod-cm6 .cm-table-widget th {
   color: var(--text-normal);
   background: transparent;
+  border: 1px solid transparent;
   font-weight: 650;
 }
 
