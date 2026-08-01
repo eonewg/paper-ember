@@ -191,7 +191,8 @@ body.eone-sidebar-comfortable {
   --eone-accent-strong: #b85f43;
   --eone-accent-rgb: 217, 119, 87;
   --eone-code-bg: rgba(61, 61, 58, 0.055);
-  --eone-code-block-bg: rgba(255, 255, 255, 0.56);
+  --eone-code-block-bg: rgba(79, 68, 57, 0.052);
+  --eone-code-block-border: rgba(79, 68, 57, 0.19);
   --eone-inline-code: #8a3f27;
   --eone-quote-border: rgba(var(--eone-accent-rgb), 0.72);
   --eone-selection: rgba(217, 119, 87, 0.19);
@@ -267,7 +268,8 @@ body.eone-sidebar-comfortable {
   --eone-accent-strong: #f09b7c;
   --eone-accent-rgb: 227, 138, 108;
   --eone-code-bg: rgba(194, 192, 182, 0.07);
-  --eone-code-block-bg: rgba(48, 48, 46, 0.72);
+  --eone-code-block-bg: rgba(0, 0, 0, 0.2);
+  --eone-code-block-border: rgba(255, 244, 232, 0.17);
   --eone-inline-code: #f0a486;
   --eone-quote-border: rgba(var(--eone-accent-rgb), 0.68);
   --eone-selection: rgba(227, 138, 108, 0.22);
@@ -805,7 +807,7 @@ pre,
 
 .markdown-rendered pre {
   background: var(--eone-code-block-bg);
-  border: 1px solid var(--background-modifier-border);
+  border: 1px solid var(--eone-code-block-border);
   border-radius: var(--eone-code-radius);
   padding: 1em 1.1em;
   line-height: 1.58;
@@ -823,16 +825,19 @@ pre,
 /* cm-line.HyperMD-codeblock covers fenced code in Live Preview without changing tokens. */
 .markdown-source-view.mod-cm6 .cm-line.HyperMD-codeblock {
   background: var(--eone-code-block-bg);
+  border-inline: 1px solid var(--eone-code-block-border);
   line-height: 1.58;
 }
 
 .markdown-source-view.mod-cm6 .cm-line.HyperMD-codeblock-begin {
+  border-top: 1px solid var(--eone-code-block-border);
   border-start-start-radius: var(--eone-code-radius);
   border-start-end-radius: var(--eone-code-radius);
   padding-top: 0.55em;
 }
 
 .markdown-source-view.mod-cm6 .cm-line.HyperMD-codeblock-end {
+  border-bottom: 1px solid var(--eone-code-block-border);
   border-end-start-radius: var(--eone-code-radius);
   border-end-end-radius: var(--eone-code-radius);
   padding-bottom: 0.55em;
@@ -868,6 +873,7 @@ pre,
 
 .markdown-rendered .el-table,
 .markdown-source-view.mod-cm6 .cm-table-widget {
+  box-sizing: border-box;
   display: block;
   width: 100%;
   max-width: 100%;
@@ -894,6 +900,7 @@ pre,
 .markdown-source-view.mod-cm6 .cm-table-widget td {
   border: 1px solid var(--background-modifier-border);
   padding: 0.52em 0.72em;
+  text-align: center;
   vertical-align: top;
 }
 
@@ -910,8 +917,8 @@ body.eone-enable-table-stripes .markdown-source-view.mod-cm6 .cm-table-widget tb
   background: var(--eone-table-stripe);
 }
 
-.markdown-rendered tbody tr:hover,
-.markdown-source-view.mod-cm6 .cm-table-widget tbody tr:hover {
+.markdown-rendered :is(th, td):hover,
+.markdown-source-view.mod-cm6 .cm-table-widget :is(th, td):hover {
   background: rgba(var(--eone-accent-rgb), 0.055);
 }
 
@@ -961,10 +968,9 @@ blockquote,
 .callout-title {
   color: rgb(var(--callout-color));
   background: rgba(var(--callout-color), 0.025);
-  border-bottom: 1px solid rgba(var(--callout-color), 0.16);
   padding: 0.62em 0.85em;
   font-weight: 700;
-  font-size: 1em;
+  font-size: 1.06em;
   letter-spacing: 0.01em;
 }
 
