@@ -129,8 +129,8 @@ body {
   --eone-paragraph-spacing: 0.72em;
   --eone-stacked-heading-gap: 0.45em;
   --eone-quote-line-cap: 0.28em;
-  --eone-callout-bg-alpha: 0.055;
-  --eone-callout-border-alpha: 0.22;
+  --eone-callout-bg-alpha: 0.09;
+  --eone-callout-border-alpha: 0.32;
 
   --font-interface-theme: var(--eone-font-interface);
   --font-text-theme: var(--eone-font-text);
@@ -252,8 +252,8 @@ body.eone-sidebar-comfortable {
 
 .theme-dark {
   color-scheme: dark;
-  --eone-callout-bg-alpha: 0.09;
-  --eone-callout-border-alpha: 0.3;
+  --eone-callout-bg-alpha: 0.14;
+  --eone-callout-border-alpha: 0.4;
   --eone-bg-primary: var(--eone-dark-bg-brightness);
   --eone-bg-secondary: #20201e;
   --eone-bg-elevated: #30302e;
@@ -866,6 +866,13 @@ pre,
 
 /* 9. Tables, quotes and callouts */
 
+.markdown-rendered .el-table,
+.markdown-source-view.mod-cm6 .cm-table-widget {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+}
+
 .markdown-rendered table,
 .markdown-source-view.mod-cm6 .cm-table-widget table {
   width: 100%;
@@ -948,9 +955,9 @@ blockquote,
 
 .callout-title {
   color: rgb(var(--callout-color));
-  background: transparent;
+  background: rgba(var(--callout-color), 0.035);
   padding: 0.62em 0.85em;
-  font-weight: 650;
+  font-weight: 700;
   font-size: 1em;
   letter-spacing: 0.01em;
 }
