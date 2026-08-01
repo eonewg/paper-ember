@@ -199,8 +199,8 @@ body.eone-sidebar-comfortable {
   --eone-highlight: rgba(255, 208, 0, 0.4);
   --eone-shadow: rgba(68, 57, 47, 0.1);
   --eone-table-stripe: rgba(79, 68, 57, 0.032);
-  --eone-table-border: rgba(0, 0, 0, 0.2);
-  --eone-table-border-strong: rgba(0, 0, 0, 0.34);
+  --eone-table-border: rgba(0, 0, 0, 0.11);
+  --eone-table-surface: rgba(0, 0, 0, 0.018);
   --eone-nav-item-hover: rgba(31, 30, 29, 0.03);
   --eone-nav-item-active: rgba(var(--eone-accent-rgb), 0.075);
 
@@ -278,8 +278,8 @@ body.eone-sidebar-comfortable {
   --eone-highlight: rgba(255, 208, 0, 0.4);
   --eone-shadow: rgba(0, 0, 0, 0.24);
   --eone-table-stripe: rgba(255, 244, 232, 0.026);
-  --eone-table-border: rgba(0, 0, 0, 0.38);
-  --eone-table-border-strong: rgba(0, 0, 0, 0.54);
+  --eone-table-border: rgba(255, 255, 255, 0.13);
+  --eone-table-surface: rgba(255, 255, 255, 0.025);
   --eone-nav-item-hover: rgba(240, 237, 230, 0.055);
   --eone-nav-item-active: rgba(var(--eone-accent-rgb), 0.1);
 
@@ -903,7 +903,7 @@ pre,
 .markdown-source-view.mod-cm6 .cm-table-widget table {
   width: 100%;
   max-width: 100%;
-  border-collapse: collapse;
+  border-collapse: separate;
   border-spacing: 0;
   font-size: 0.94em;
   table-layout: fixed;
@@ -913,7 +913,7 @@ pre,
 .markdown-rendered td,
 .markdown-source-view.mod-cm6 .cm-table-widget th,
 .markdown-source-view.mod-cm6 .cm-table-widget td {
-  border: 1px solid var(--eone-table-border);
+  border: 0;
   min-width: 0;
   padding: 0.52em 0.72em;
   text-align: center;
@@ -924,12 +924,49 @@ pre,
 .markdown-source-view.mod-cm6 .cm-table-widget th {
   color: var(--text-normal);
   background: transparent;
-  border-bottom-color: var(--eone-table-border-strong);
+  padding-block-end: 0.68em;
   font-weight: 650;
 }
 
-body.eone-enable-table-stripes .markdown-rendered tbody tr:nth-child(even),
-body.eone-enable-table-stripes .markdown-source-view.mod-cm6 .cm-table-widget tbody tr:nth-child(even) {
+.markdown-rendered tbody td,
+.markdown-source-view.mod-cm6 .cm-table-widget tbody td {
+  background: var(--eone-table-surface);
+  border-inline-end: 1px solid var(--eone-table-border);
+  border-block-end: 1px solid var(--eone-table-border);
+}
+
+.markdown-rendered tbody tr:first-child td,
+.markdown-source-view.mod-cm6 .cm-table-widget tbody tr:first-child td {
+  border-block-start: 1px solid var(--eone-table-border);
+}
+
+.markdown-rendered tbody td:first-child,
+.markdown-source-view.mod-cm6 .cm-table-widget tbody td:first-child {
+  border-inline-start: 1px solid var(--eone-table-border);
+}
+
+.markdown-rendered tbody tr:first-child td:first-child,
+.markdown-source-view.mod-cm6 .cm-table-widget tbody tr:first-child td:first-child {
+  border-start-start-radius: var(--radius-s);
+}
+
+.markdown-rendered tbody tr:first-child td:last-child,
+.markdown-source-view.mod-cm6 .cm-table-widget tbody tr:first-child td:last-child {
+  border-start-end-radius: var(--radius-s);
+}
+
+.markdown-rendered tbody tr:last-child td:first-child,
+.markdown-source-view.mod-cm6 .cm-table-widget tbody tr:last-child td:first-child {
+  border-end-start-radius: var(--radius-s);
+}
+
+.markdown-rendered tbody tr:last-child td:last-child,
+.markdown-source-view.mod-cm6 .cm-table-widget tbody tr:last-child td:last-child {
+  border-end-end-radius: var(--radius-s);
+}
+
+body.eone-enable-table-stripes .markdown-rendered tbody tr:nth-child(even) td,
+body.eone-enable-table-stripes .markdown-source-view.mod-cm6 .cm-table-widget tbody tr:nth-child(even) td {
   background: var(--eone-table-stripe);
 }
 
