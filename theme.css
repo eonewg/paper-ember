@@ -469,7 +469,7 @@ strong,
 
 em,
 .cm-em {
-  color: var(--text-normal);
+  color: inherit;
 }
 
 mark,
@@ -1063,7 +1063,10 @@ blockquote,
 }
 
 .markdown-rendered blockquote {
-  padding-inline-start: 1.35em;
+  box-sizing: border-box;
+  width: 100%;
+  padding-inline-start: 1.55em;
+  padding-inline-end: 0;
 }
 
 .markdown-source-view.mod-cm6 .HyperMD-quote {
