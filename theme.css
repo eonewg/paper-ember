@@ -124,7 +124,10 @@ body {
   --eone-reading-width: 850px;
   --eone-radius: 6px;
   --eone-code-radius: 7px;
-  --eone-transition-fast: 140ms ease;
+  --eone-ease-standard: cubic-bezier(0.2, 0.72, 0.24, 1);
+  --eone-ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+  --eone-transition-fast: 170ms var(--eone-ease-standard);
+  --eone-transition-medium: 230ms var(--eone-ease-out);
   --eone-sidebar-item-height: 30px;
   --eone-paragraph-spacing: 0.72em;
   --eone-stacked-heading-gap: 0.45em;
@@ -519,7 +522,7 @@ mark,
 
 .workspace-tab-header {
   color: var(--text-muted);
-  transition: color var(--eone-transition-fast), background-color var(--eone-transition-fast);
+  transition: color var(--eone-transition-fast), background-color var(--eone-transition-medium), box-shadow var(--eone-transition-medium);
 }
 
 .workspace-tab-header:hover {
@@ -582,7 +585,7 @@ mark,
   min-height: var(--eone-sidebar-item-height);
   color: var(--text-muted);
   align-items: center;
-  transition: color var(--eone-transition-fast), background-color var(--eone-transition-fast);
+  transition: color var(--eone-transition-fast), background-color var(--eone-transition-medium), box-shadow var(--eone-transition-medium);
 }
 
 .nav-folder-title {
@@ -598,7 +601,7 @@ mark,
 
 .nav-file-title-content,
 .nav-folder-title-content {
-  transition: transform var(--eone-transition-fast);
+  transition: transform var(--eone-transition-medium);
 }
 
 .nav-file-title:hover .nav-file-title-content,
@@ -757,6 +760,7 @@ a.tag {
   font-size: 0.86em;
   font-weight: 520;
   text-decoration: none;
+  transition: color var(--eone-transition-fast), background-color var(--eone-transition-medium), border-color var(--eone-transition-medium);
 }
 
 .tag:hover,
@@ -960,6 +964,7 @@ pre,
   background: var(--eone-table-surface);
   border-inline-end: 1px solid var(--eone-table-border);
   border-block-end: 1px solid var(--eone-table-border);
+  transition: background-color var(--eone-transition-medium), border-color var(--eone-transition-medium);
 }
 
 .markdown-rendered tbody tr:first-child td,
@@ -1153,6 +1158,7 @@ blockquote,
 .menu-item {
   color: var(--text-muted);
   border-radius: var(--radius-s);
+  transition: color var(--eone-transition-fast), background-color var(--eone-transition-medium);
 }
 
 .suggestion-item.is-selected,
@@ -1176,6 +1182,7 @@ select,
   background-color: var(--background-modifier-form-field);
   border-color: var(--background-modifier-border);
   box-shadow: none;
+  transition: background-color var(--eone-transition-medium), border-color var(--eone-transition-fast), box-shadow var(--eone-transition-medium);
 }
 
 input:focus,
@@ -1188,7 +1195,15 @@ select:focus,
 
 button,
 .clickable-icon {
-  transition: color var(--eone-transition-fast), background-color var(--eone-transition-fast), border-color var(--eone-transition-fast);
+  transition: color var(--eone-transition-fast), background-color var(--eone-transition-medium), border-color var(--eone-transition-fast), box-shadow var(--eone-transition-medium), opacity var(--eone-transition-fast);
+}
+
+.checkbox-container,
+.checkbox-container::after,
+.collapse-icon svg,
+.tree-item-icon svg {
+  transition-duration: 210ms;
+  transition-timing-function: var(--eone-ease-out);
 }
 
 button:not(.mod-cta):not(.mod-warning) {
