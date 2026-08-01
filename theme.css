@@ -1,9 +1,9 @@
 /* 1. Theme metadata and Style Settings
-   Claudy Obsidian 1.2.4 — a warm, restrained theme for Obsidian. */
+   Claudy 1.3.0 — a warm, restrained theme for Obsidian. */
 
 /* @settings
-name: Claudy Obsidian
-id: claudy-obsidian
+name: Claudy
+id: claudy
 settings:
   - id: eone-colors-heading
     title: 颜色
@@ -59,11 +59,11 @@ settings:
   - id: eone-font-interface
     title: 界面字体
     type: variable-text
-    default: '"Claudy Inter Variable", "Inter Variable", "Inter", "Claudy Noto Sans SC Variable", "Microsoft YaHei UI", "Microsoft YaHei", sans-serif'
+    default: '"Inter Variable", "Inter", "Noto Sans SC", "Microsoft YaHei UI", "Microsoft YaHei", sans-serif'
   - id: eone-font-text
     title: 正文字体
     type: variable-text
-    default: '"Claudy Inter Variable", "Inter Variable", "Inter", "Claudy Noto Sans SC Variable", "Microsoft YaHei", "PingFang SC", "Noto Sans CJK SC", sans-serif'
+    default: '"Inter Variable", "Inter", "Noto Sans SC", "Microsoft YaHei", "PingFang SC", "Noto Sans CJK SC", sans-serif'
   - id: eone-font-monospace
     title: 代码字体
     type: variable-text
@@ -111,38 +111,13 @@ settings:
     default: false
 */
 
-/* Inter and Noto Sans SC are bundled locally under the SIL Open Font License 1.1. */
-@font-face {
-  font-family: "Claudy Inter Variable";
-  src: url("./fonts/InterVariable.woff2") format("woff2");
-  font-style: normal;
-  font-weight: 100 900;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: "Claudy Inter Variable";
-  src: url("./fonts/InterVariable-Italic.woff2") format("woff2");
-  font-style: italic;
-  font-weight: 100 900;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: "Claudy Noto Sans SC Variable";
-  src: url("./fonts/NotoSansSC-Variable.ttf") format("truetype");
-  font-style: normal;
-  font-weight: 100 900;
-  font-display: swap;
-}
-
 /* 2. Shared design tokens */
 
 body {
   --eone-light-bg-warmth: #f9f9f7;
   --eone-dark-bg-brightness: #262624;
-  --eone-font-interface: "Claudy Inter Variable", "Inter Variable", "Inter", "Claudy Noto Sans SC Variable", "Microsoft YaHei UI", "Microsoft YaHei", sans-serif;
-  --eone-font-text: "Claudy Inter Variable", "Inter Variable", "Inter", "Claudy Noto Sans SC Variable", "Microsoft YaHei", "PingFang SC", "Noto Sans CJK SC", sans-serif;
+  --eone-font-interface: "Inter Variable", "Inter", "Noto Sans SC", "Microsoft YaHei UI", "Microsoft YaHei", sans-serif;
+  --eone-font-text: "Inter Variable", "Inter", "Noto Sans SC", "Microsoft YaHei", "PingFang SC", "Noto Sans CJK SC", sans-serif;
   --eone-font-monospace: "Cascadia Code", "Cascadia Mono", "JetBrains Mono", Consolas, monospace;
   --eone-font-text-size: 16px;
   --eone-line-height: 1.7;
