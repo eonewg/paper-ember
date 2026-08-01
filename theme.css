@@ -1238,6 +1238,17 @@ select:focus,
   box-shadow: 0 0 0 2px rgba(var(--eone-accent-rgb), 0.12);
 }
 
+/* Property names are inline labels, not standalone form fields. */
+input.metadata-property-key-input,
+input.metadata-property-key-input:hover,
+input.metadata-property-key-input:active,
+input.metadata-property-key-input:focus,
+input.metadata-property-key-input:focus-visible {
+  background: transparent;
+  border-color: transparent;
+  box-shadow: none;
+}
+
 button,
 .clickable-icon {
   transition: color var(--eone-transition-fast), background-color var(--eone-transition-medium), border-color var(--eone-transition-fast), box-shadow var(--eone-transition-medium), opacity var(--eone-transition-fast);
