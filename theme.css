@@ -199,8 +199,8 @@ body.eone-sidebar-comfortable {
   --eone-highlight: rgba(255, 208, 0, 0.4);
   --eone-shadow: rgba(68, 57, 47, 0.1);
   --eone-table-stripe: rgba(79, 68, 57, 0.032);
-  --eone-table-border: rgba(var(--eone-accent-rgb), 0.24);
-  --eone-table-border-strong: rgba(var(--eone-accent-rgb), 0.38);
+  --eone-table-border: rgba(0, 0, 0, 0.2);
+  --eone-table-border-strong: rgba(0, 0, 0, 0.34);
   --eone-nav-item-hover: rgba(31, 30, 29, 0.03);
   --eone-nav-item-active: rgba(var(--eone-accent-rgb), 0.075);
 
@@ -278,8 +278,8 @@ body.eone-sidebar-comfortable {
   --eone-highlight: rgba(255, 208, 0, 0.4);
   --eone-shadow: rgba(0, 0, 0, 0.24);
   --eone-table-stripe: rgba(255, 244, 232, 0.026);
-  --eone-table-border: rgba(var(--eone-accent-rgb), 0.32);
-  --eone-table-border-strong: rgba(var(--eone-accent-rgb), 0.46);
+  --eone-table-border: rgba(0, 0, 0, 0.38);
+  --eone-table-border-strong: rgba(0, 0, 0, 0.54);
   --eone-nav-item-hover: rgba(240, 237, 230, 0.055);
   --eone-nav-item-active: rgba(var(--eone-accent-rgb), 0.1);
 
