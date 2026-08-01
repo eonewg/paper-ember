@@ -1,0 +1,1423 @@
+/* 1. Theme metadata and Style Settings
+   Eone Claude 1.2.0 — a warm, restrained study theme for Obsidian. */
+
+/* @settings
+name: Eone Claude
+id: eone-claude
+settings:
+  - id: eone-colors-heading
+    title: 颜色
+    type: heading
+    level: 2
+    collapsed: false
+  - id: eone-accent
+    title: 强调色
+    description: 用于链接、光标、选中项和复选框。
+    type: variable-color
+    format: hex
+    default: '#d97757'
+  - id: eone-light-bg-warmth
+    title: 浅色背景暖度
+    description: 调整浅色模式主背景的暖色程度。
+    type: variable-color
+    format: hex
+    default: '#f9f9f7'
+  - id: eone-dark-bg-brightness
+    title: 深色背景亮度
+    description: 调整深色模式主背景的亮度。
+    type: variable-color
+    format: hex
+    default: '#262624'
+  - id: eone-typography-heading
+    title: 排版
+    type: heading
+    level: 2
+    collapsed: false
+  - id: eone-font-text-size
+    title: 正文字号
+    type: variable-number-slider
+    default: 16
+    min: 13
+    max: 22
+    step: 1
+    format: px
+  - id: eone-line-height
+    title: 正文行高
+    type: variable-number-slider
+    default: 1.7
+    min: 1.4
+    max: 2
+    step: 0.05
+  - id: eone-reading-width
+    title: 阅读宽度
+    type: variable-number-slider
+    default: 850
+    min: 600
+    max: 1200
+    step: 10
+    format: px
+  - id: eone-font-interface
+    title: 界面字体
+    type: variable-text
+    default: '"Eone Inter Variable", "Inter Variable", "Inter", "Eone Noto Sans SC Variable", "Microsoft YaHei UI", "Microsoft YaHei", sans-serif'
+  - id: eone-font-text
+    title: 正文字体
+    type: variable-text
+    default: '"Eone Inter Variable", "Inter Variable", "Inter", "Eone Noto Sans SC Variable", "Microsoft YaHei", "PingFang SC", "Noto Sans CJK SC", sans-serif'
+  - id: eone-font-monospace
+    title: 代码字体
+    type: variable-text
+    default: '"Cascadia Code", "Cascadia Mono", "JetBrains Mono", Consolas, monospace'
+  - id: eone-shape-heading
+    title: 外观与密度
+    type: heading
+    level: 2
+    collapsed: false
+  - id: eone-radius
+    title: 全局圆角
+    type: variable-number-slider
+    default: 6
+    min: 0
+    max: 16
+    step: 1
+    format: px
+  - id: eone-code-radius
+    title: 代码块圆角
+    type: variable-number-slider
+    default: 7
+    min: 0
+    max: 16
+    step: 1
+    format: px
+  - id: eone-enable-h2-decoration
+    title: 显示 H2 装饰
+    description: 可选显示章节标题左侧的陶土橙细线。
+    type: class-toggle
+    default: false
+  - id: eone-sidebar-density
+    title: 侧边栏密度
+    type: class-select
+    allowEmpty: false
+    default: eone-sidebar-comfortable
+    options:
+      - label: 舒适
+        value: eone-sidebar-comfortable
+      - label: 紧凑
+        value: eone-sidebar-compact
+  - id: eone-enable-table-stripes
+    title: 显示表格隔行背景
+    description: 在阅读视图和编辑视图中开启轻微斑马纹。
+    type: class-toggle
+    default: false
+*/
+
+/* Inter and Noto Sans SC are bundled locally under the SIL Open Font License 1.1. */
+@font-face {
+  font-family: "Eone Inter Variable";
+  src: url("./fonts/InterVariable.woff2") format("woff2");
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Eone Inter Variable";
+  src: url("./fonts/InterVariable-Italic.woff2") format("woff2");
+  font-style: italic;
+  font-weight: 100 900;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Eone Noto Sans SC Variable";
+  src: url("./fonts/NotoSansSC-Variable.ttf") format("truetype");
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+}
+
+/* 2. Shared design tokens */
+
+body {
+  --eone-light-bg-warmth: #f9f9f7;
+  --eone-dark-bg-brightness: #262624;
+  --eone-font-interface: "Eone Inter Variable", "Inter Variable", "Inter", "Eone Noto Sans SC Variable", "Microsoft YaHei UI", "Microsoft YaHei", sans-serif;
+  --eone-font-text: "Eone Inter Variable", "Inter Variable", "Inter", "Eone Noto Sans SC Variable", "Microsoft YaHei", "PingFang SC", "Noto Sans CJK SC", sans-serif;
+  --eone-font-monospace: "Cascadia Code", "Cascadia Mono", "JetBrains Mono", Consolas, monospace;
+  --eone-font-text-size: 16px;
+  --eone-line-height: 1.7;
+  --eone-reading-width: 850px;
+  --eone-radius: 6px;
+  --eone-code-radius: 7px;
+  --eone-transition-fast: 140ms ease;
+  --eone-sidebar-item-height: 30px;
+  --eone-paragraph-spacing: 0.72em;
+  --eone-stacked-heading-gap: 0.45em;
+  --eone-quote-line-cap: 0.28em;
+  --eone-callout-bg-alpha: 0.055;
+  --eone-callout-border-alpha: 0.22;
+
+  --font-interface-theme: var(--eone-font-interface);
+  --font-text-theme: var(--eone-font-text);
+  --font-monospace-theme: var(--eone-font-monospace);
+  --font-text-size: var(--eone-font-text-size);
+  --line-height-normal: var(--eone-line-height);
+  --file-line-width: var(--eone-reading-width);
+  --radius-s: max(2px, calc(var(--eone-radius) - 3px));
+  --radius-m: var(--eone-radius);
+  --radius-l: calc(var(--eone-radius) + 4px);
+  --input-radius: var(--eone-radius);
+  --button-radius: var(--eone-radius);
+  --tab-radius-active: var(--eone-radius) var(--eone-radius) 0 0;
+  --nav-item-radius: max(2px, calc(var(--eone-radius) - 2px));
+  --checkbox-radius: 3px;
+  --modal-radius: calc(var(--eone-radius) + 4px);
+  --blockquote-border-color: var(--eone-quote-border);
+  --blockquote-border-thickness: 3px;
+  --blockquote-color: var(--text-muted);
+  --blockquote-background-color: transparent;
+  --link-color: var(--text-accent);
+  --link-color-hover: var(--text-accent);
+  --link-external-color: var(--text-accent);
+  --link-external-color-hover: var(--text-accent);
+  --link-decoration: none;
+  --link-decoration-hover: underline;
+  --link-decoration-thickness: 1px;
+  --link-external-decoration: none;
+  --link-external-decoration-hover: underline;
+  --titlebar-background: var(--background-primary);
+  --titlebar-background-focused: var(--background-primary);
+  --titlebar-text-color: var(--icon-color);
+  --titlebar-text-color-focused: var(--icon-color);
+}
+
+body.eone-sidebar-compact {
+  --eone-sidebar-item-height: 25px;
+}
+
+body.eone-sidebar-comfortable {
+  --eone-sidebar-item-height: 30px;
+}
+
+/* 3. Light and dark color variables */
+
+.theme-light {
+  color-scheme: light;
+  --eone-bg-primary: var(--eone-light-bg-warmth);
+  --eone-bg-secondary: #f6f6f3;
+  --eone-bg-elevated: #fffdf9;
+  --eone-bg-hover: #f0eee6;
+  --eone-border: #dedbd2;
+  --eone-border-strong: #c8c3b8;
+  --eone-text-normal: #25231f;
+  --eone-text-muted: #66625b;
+  --eone-text-faint: #918b82;
+  --eone-accent: #d97757;
+  --eone-accent-strong: #b85f43;
+  --eone-accent-rgb: 217, 119, 87;
+  --eone-code-bg: rgba(61, 61, 58, 0.055);
+  --eone-code-block-bg: rgba(255, 255, 255, 0.56);
+  --eone-inline-code: #8a3f27;
+  --eone-quote-border: rgba(var(--eone-accent-rgb), 0.72);
+  --eone-selection: rgba(217, 119, 87, 0.19);
+  --eone-highlight: rgba(255, 208, 0, 0.4);
+  --eone-shadow: rgba(68, 57, 47, 0.1);
+  --eone-table-stripe: rgba(79, 68, 57, 0.032);
+  --eone-nav-item-hover: rgba(31, 30, 29, 0.03);
+  --eone-nav-item-active: rgba(var(--eone-accent-rgb), 0.075);
+
+  --background-primary: var(--eone-bg-primary);
+  --background-primary-alt: var(--eone-bg-elevated);
+  --background-secondary: var(--eone-bg-secondary);
+  --background-secondary-alt: #eeece5;
+  --background-modifier-hover: var(--eone-bg-hover);
+  --background-modifier-active-hover: #e8e5dd;
+  --background-modifier-border: var(--eone-border);
+  --background-modifier-border-hover: var(--eone-border-strong);
+  --background-modifier-border-focus: rgba(var(--eone-accent-rgb), 0.62);
+  --background-modifier-form-field: var(--eone-bg-elevated);
+  --background-modifier-form-field-highlighted: var(--eone-bg-primary);
+  --background-modifier-box-shadow: var(--eone-shadow);
+  --background-modifier-cover: rgba(45, 42, 38, 0.3);
+  --text-normal: var(--eone-text-normal);
+  --text-muted: var(--eone-text-muted);
+  --text-faint: var(--eone-text-faint);
+  --text-accent: var(--eone-accent-strong);
+  --text-accent-hover: #984c35;
+  --text-on-accent: #fffaf6;
+  --text-on-accent-inverted: #2d2a26;
+  --interactive-normal: var(--eone-bg-elevated);
+  --interactive-hover: var(--eone-bg-hover);
+  --interactive-accent: var(--eone-accent);
+  --interactive-accent-hover: var(--eone-accent-strong);
+  --interactive-accent-rgb: var(--eone-accent-rgb);
+  --text-selection: var(--eone-selection);
+  --text-highlight-bg: var(--eone-highlight);
+  --code-background: var(--eone-code-bg);
+  --code-normal: #4c4741;
+  --code-comment: #80786f;
+  --code-function: #945f47;
+  --code-important: #9b4f43;
+  --code-keyword: #8c5d74;
+  --code-operator: #665f58;
+  --code-property: #47717a;
+  --code-punctuation: #716a62;
+  --code-string: #657446;
+  --code-tag: #a05343;
+  --code-value: #8a642f;
+  --icon-color: var(--eone-text-muted);
+  --icon-color-hover: var(--eone-text-normal);
+  --icon-color-active: var(--eone-accent-strong);
+  --divider-color: var(--eone-border);
+  --divider-color-hover: var(--eone-border-strong);
+  --scrollbar-bg: transparent;
+  --scrollbar-thumb-bg: rgba(113, 107, 99, 0.28);
+  --scrollbar-active-thumb-bg: rgba(113, 107, 99, 0.45);
+}
+
+.theme-dark {
+  color-scheme: dark;
+  --eone-callout-bg-alpha: 0.09;
+  --eone-callout-border-alpha: 0.3;
+  --eone-bg-primary: var(--eone-dark-bg-brightness);
+  --eone-bg-secondary: #20201e;
+  --eone-bg-elevated: #30302e;
+  --eone-bg-hover: #353532;
+  --eone-border: #41413d;
+  --eone-border-strong: #595851;
+  --eone-text-normal: #f0ede6;
+  --eone-text-muted: #c2c0b6;
+  --eone-text-faint: #89877f;
+  --eone-accent: #e38a6c;
+  --eone-accent-strong: #f09b7c;
+  --eone-accent-rgb: 227, 138, 108;
+  --eone-code-bg: rgba(194, 192, 182, 0.07);
+  --eone-code-block-bg: rgba(48, 48, 46, 0.72);
+  --eone-inline-code: #f0a486;
+  --eone-quote-border: rgba(var(--eone-accent-rgb), 0.68);
+  --eone-selection: rgba(227, 138, 108, 0.22);
+  --eone-highlight: rgba(255, 208, 0, 0.4);
+  --eone-shadow: rgba(0, 0, 0, 0.24);
+  --eone-table-stripe: rgba(255, 244, 232, 0.026);
+  --eone-nav-item-hover: rgba(240, 237, 230, 0.055);
+  --eone-nav-item-active: rgba(var(--eone-accent-rgb), 0.1);
+
+  --background-primary: var(--eone-bg-primary);
+  --background-primary-alt: var(--eone-bg-elevated);
+  --background-secondary: var(--eone-bg-secondary);
+  --background-secondary-alt: #2c2c2a;
+  --background-modifier-hover: var(--eone-bg-hover);
+  --background-modifier-active-hover: #3b3b37;
+  --background-modifier-border: var(--eone-border);
+  --background-modifier-border-hover: var(--eone-border-strong);
+  --background-modifier-border-focus: rgba(var(--eone-accent-rgb), 0.66);
+  --background-modifier-form-field: var(--eone-bg-elevated);
+  --background-modifier-form-field-highlighted: var(--eone-bg-primary);
+  --background-modifier-box-shadow: var(--eone-shadow);
+  --background-modifier-cover: rgba(14, 13, 12, 0.55);
+  --text-normal: var(--eone-text-normal);
+  --text-muted: var(--eone-text-muted);
+  --text-faint: var(--eone-text-faint);
+  --text-accent: var(--eone-accent);
+  --text-accent-hover: var(--eone-accent-strong);
+  --text-on-accent: #211f1c;
+  --text-on-accent-inverted: #f8f3ed;
+  --interactive-normal: var(--eone-bg-elevated);
+  --interactive-hover: var(--eone-bg-hover);
+  --interactive-accent: var(--eone-accent);
+  --interactive-accent-hover: var(--eone-accent-strong);
+  --interactive-accent-rgb: var(--eone-accent-rgb);
+  --text-selection: var(--eone-selection);
+  --text-highlight-bg: var(--eone-highlight);
+  --code-background: var(--eone-code-bg);
+  --code-normal: #ddd5cc;
+  --code-comment: #968e84;
+  --code-function: #e0a080;
+  --code-important: #ed9184;
+  --code-keyword: #c9a0b4;
+  --code-operator: #c4bbb1;
+  --code-property: #8eb5ba;
+  --code-punctuation: #aaa198;
+  --code-string: #aabc86;
+  --code-tag: #e29480;
+  --code-value: #d1ad70;
+  --icon-color: var(--eone-text-muted);
+  --icon-color-hover: var(--eone-text-normal);
+  --icon-color-active: var(--eone-accent-strong);
+  --divider-color: var(--eone-border);
+  --divider-color-hover: var(--eone-border-strong);
+  --scrollbar-bg: transparent;
+  --scrollbar-thumb-bg: rgba(183, 175, 165, 0.2);
+  --scrollbar-active-thumb-bg: rgba(183, 175, 165, 0.34);
+}
+
+/* 4. Typography */
+
+body,
+button,
+input,
+select,
+textarea {
+  font-family: var(--font-interface);
+}
+
+.markdown-source-view,
+.markdown-preview-view {
+  font-family: var(--font-text);
+  font-size: var(--font-text-size);
+  line-height: var(--line-height-normal);
+  color: var(--text-normal);
+  font-variant-numeric: proportional-nums;
+  font-optical-sizing: auto;
+  text-rendering: optimizeLegibility;
+}
+
+.markdown-preview-view p {
+  margin-block: var(--eone-paragraph-spacing);
+}
+
+.markdown-rendered :is(h1, h2, h3, h4, h5, h6),
+.markdown-source-view .cm-header {
+  color: var(--text-normal);
+  font-family: var(--font-text);
+  font-weight: 650;
+  letter-spacing: -0.012em;
+  line-height: 1.35;
+}
+
+.markdown-rendered h1,
+.markdown-source-view .HyperMD-header-1 {
+  font-size: 1.72em;
+  margin-block: 1.45em 1em;
+}
+
+/* HyperMD-header-* are stable Live Preview line classes supplied by Obsidian. */
+.markdown-rendered h2,
+.markdown-source-view .HyperMD-header-2 {
+  font-size: 1.4em;
+  font-weight: 700;
+  margin-block: 1.35em 0.9em;
+}
+
+body.eone-enable-h2-decoration .markdown-rendered h2,
+body.eone-enable-h2-decoration .markdown-source-view .HyperMD-header-2 {
+  border-inline-start: 3px solid var(--eone-accent);
+  padding-inline-start: 0.68em;
+}
+
+.markdown-rendered h3,
+.markdown-source-view .HyperMD-header-3 {
+  font-size: 1.2em;
+  margin-block: 1.15em 0.8em;
+}
+
+.markdown-rendered h4,
+.markdown-source-view .HyperMD-header-4 {
+  font-size: 1.12em;
+  margin-block: 1.1em 0.75em;
+}
+
+.markdown-rendered h5,
+.markdown-source-view .HyperMD-header-5 {
+  color: var(--text-muted);
+  font-size: 1em;
+  margin-block: 1em 0.7em;
+}
+
+.markdown-rendered h6,
+.markdown-source-view .HyperMD-header-6 {
+  color: var(--text-muted);
+  font-size: 0.9em;
+  letter-spacing: 0.035em;
+  margin-block: 0.9em 0.65em;
+  text-transform: none;
+}
+
+/* CodeMirror counts heading margins as part of the editable line box. */
+.markdown-source-view .HyperMD-header {
+  line-height: 1.22;
+}
+
+.markdown-source-view .HyperMD-header-1 {
+  margin-block: 0.75em 0.55em;
+}
+
+.markdown-source-view .HyperMD-header-2 {
+  margin-block: 0.65em 0.5em;
+}
+
+.markdown-source-view .HyperMD-header-3 {
+  margin-block: 0.55em 0.45em;
+}
+
+.markdown-source-view .HyperMD-header-4 {
+  margin-block: 0.5em 0.4em;
+}
+
+.markdown-source-view .HyperMD-header-5 {
+  margin-block: 0.45em 0.35em;
+}
+
+.markdown-source-view .HyperMD-header-6 {
+  margin-block: 0.4em 0.3em;
+}
+
+/* Keep consecutive hierarchy headings compact without tightening heading-to-body spacing. */
+.markdown-rendered :is(h1, h2, h3, h4, h5, h6):has(+ :is(h1, h2, h3, h4, h5, h6)),
+.markdown-source-view .HyperMD-header:has(+ .HyperMD-header) {
+  margin-block-end: var(--eone-stacked-heading-gap);
+}
+
+.markdown-rendered :is(h1, h2, h3, h4, h5, h6) + :is(h1, h2, h3, h4, h5, h6),
+.markdown-source-view .HyperMD-header + .HyperMD-header {
+  margin-block-start: var(--eone-stacked-heading-gap);
+}
+
+strong,
+.cm-strong {
+  color: var(--text-normal);
+  font-weight: 700;
+}
+
+em,
+.cm-em {
+  color: var(--text-normal);
+}
+
+mark,
+.cm-highlight {
+  color: var(--text-normal);
+  background-color: var(--text-highlight-bg);
+  border-radius: 2px;
+  box-decoration-break: clone;
+  -webkit-box-decoration-break: clone;
+  padding-inline: 0.05em;
+  text-decoration: none;
+}
+
+::selection {
+  background: var(--text-selection);
+}
+
+.markdown-source-view.mod-cm6 .cm-cursor,
+.markdown-source-view.mod-cm6 .cm-dropCursor {
+  border-left-color: var(--eone-accent);
+  border-left-width: 2px;
+}
+
+/* 5. Workspace and navigation */
+
+.workspace,
+.workspace-split,
+.workspace-tabs,
+.workspace-leaf,
+.workspace-leaf-content {
+  background-color: var(--background-primary);
+}
+
+.workspace-ribbon,
+.side-dock-ribbon,
+.mod-left-split,
+.mod-right-split,
+.workspace-tabs.mod-sidedock {
+  background-color: var(--background-secondary);
+}
+
+.workspace-ribbon {
+  border-color: var(--background-modifier-border);
+}
+
+.workspace-tab-header-container {
+  background: var(--background-secondary);
+  border-color: var(--background-modifier-border);
+}
+
+.workspace-tab-header {
+  color: var(--text-muted);
+  transition: color var(--eone-transition-fast), background-color var(--eone-transition-fast);
+}
+
+.workspace-tab-header:hover {
+  color: var(--text-normal);
+  background: var(--background-modifier-hover);
+}
+
+.workspace-tab-header.is-active {
+  color: var(--text-normal);
+  background: var(--background-primary);
+  box-shadow: inset 0 -2px 0 var(--eone-accent);
+}
+
+.workspace-tab-header.is-active::before,
+.workspace-tab-header.is-active::after {
+  box-shadow: none;
+}
+
+.workspace-tab-header-inner-title {
+  font-size: 0.88em;
+  font-weight: 550;
+}
+
+.mod-windows .titlebar-button-container.mod-right .titlebar-button,
+.mod-linux .titlebar-button-container.mod-right .titlebar-button {
+  color: var(--icon-color);
+}
+
+@media (hover: hover) {
+  .mod-windows .titlebar-button-container.mod-right .titlebar-button:not(.mod-close):hover,
+  .mod-linux .titlebar-button-container.mod-right .titlebar-button:not(.mod-close):hover {
+    color: var(--icon-color-hover);
+  }
+}
+
+.view-header {
+  background: var(--background-primary);
+  border-color: var(--background-modifier-border);
+}
+
+.view-header-title {
+  color: var(--text-normal);
+  font-weight: 600;
+}
+
+.nav-header {
+  padding-block: 7px 4px;
+}
+
+.nav-files-container {
+  padding: 4px 6px 12px;
+  --nav-item-background-hover: var(--eone-nav-item-hover);
+  --nav-item-background-active: var(--eone-nav-item-active);
+  --nav-item-background-selected: var(--eone-nav-item-active);
+  --nav-item-weight-active: 620;
+}
+
+.nav-file-title,
+.nav-folder-title {
+  min-height: var(--eone-sidebar-item-height);
+  color: var(--text-muted);
+  align-items: center;
+  transition: color var(--eone-transition-fast), background-color var(--eone-transition-fast);
+}
+
+.nav-folder-title {
+  color: var(--text-normal);
+  font-weight: 580;
+}
+
+.nav-file-title:hover,
+.nav-folder-title:hover {
+  color: var(--text-normal);
+  background: var(--eone-nav-item-hover);
+}
+
+.nav-file-title-content,
+.nav-folder-title-content {
+  transition: transform var(--eone-transition-fast);
+}
+
+.nav-file-title:hover .nav-file-title-content,
+.nav-folder-title:hover .nav-folder-title-content {
+  transform: translateX(2px);
+}
+
+.nav-file-title.is-active,
+.nav-folder-title.is-active {
+  color: var(--text-normal);
+  background: var(--eone-nav-item-active);
+  font-weight: 620;
+}
+
+.nav-file-title.is-active .nav-file-title-content {
+  font-size: 1.04em;
+}
+
+.nav-file-tag {
+  color: var(--text-faint);
+}
+
+.tree-item-self.is-selected,
+.tree-item-self.is-active {
+  background: rgba(var(--eone-accent-rgb), 0.12);
+  color: var(--text-normal);
+}
+
+.tree-item-self.nav-file-title:is(.is-active, .is-selected),
+.tree-item-self.nav-folder-title:is(.is-active, .is-selected) {
+  background: var(--eone-nav-item-active);
+}
+
+.tree-item-icon,
+.collapse-icon {
+  color: var(--text-faint);
+}
+
+.tree-item-self:hover .tree-item-icon,
+.tree-item-self:hover .collapse-icon {
+  color: var(--text-muted);
+}
+
+/* 6. Editor and reading view */
+
+.markdown-source-view.mod-cm6 .cm-scroller,
+.markdown-reading-view {
+  background: var(--background-primary);
+}
+
+.markdown-source-view.mod-cm6 .cm-contentContainer,
+.markdown-preview-sizer {
+  padding-bottom: 12vh;
+}
+
+.markdown-source-view.mod-cm6.is-readable-line-width .cm-content,
+.markdown-preview-view.is-readable-line-width .markdown-preview-sizer {
+  max-width: var(--file-line-width);
+}
+
+.markdown-source-view.mod-cm6 .cm-line {
+  caret-color: var(--eone-accent);
+}
+
+.markdown-source-view.mod-cm6 .cm-active.cm-line {
+  position: relative;
+  background: transparent;
+}
+
+.markdown-source-view.mod-cm6 .cm-line.cm-active:not(.HyperMD-quote)::before {
+  content: "";
+  position: absolute;
+  inset-block: 0.2em;
+  inset-inline-start: -0.8em;
+  width: 3px;
+  background: var(--eone-quote-border);
+  border-radius: 999px;
+  pointer-events: none;
+}
+
+.markdown-rendered hr,
+.markdown-source-view .HyperMD-hr {
+  border: 0;
+  border-top: 1px solid var(--background-modifier-border);
+  margin-block: 2em;
+}
+
+.markdown-rendered a,
+.markdown-source-view.mod-cm6 .cm-link,
+.markdown-source-view.mod-cm6 .cm-url,
+.markdown-source-view.mod-cm6 .cm-hmd-internal-link {
+  color: var(--text-accent);
+  text-decoration: none;
+  text-underline-offset: 0.16em;
+}
+
+.markdown-rendered a:hover,
+.markdown-source-view.mod-cm6 .cm-link:hover,
+.markdown-source-view.mod-cm6 .cm-url:hover,
+.markdown-source-view.mod-cm6 .cm-hmd-internal-link:hover {
+  color: var(--text-accent);
+  text-decoration: underline;
+}
+
+.is-unresolved,
+.markdown-rendered .internal-link.is-unresolved {
+  color: var(--text-muted);
+  opacity: 0.82;
+  text-decoration: none;
+}
+
+/* 7. Markdown components */
+
+.markdown-rendered ul,
+.markdown-rendered ol {
+  padding-inline-start: 1.75em;
+}
+
+.markdown-rendered li {
+  margin-block: 0.16em;
+}
+
+.markdown-source-view.mod-cm6 .HyperMD-list-line {
+  padding-block: 0.04em;
+}
+
+.list-bullet::after {
+  background-color: var(--text-muted);
+}
+
+input[type="checkbox"],
+.task-list-item-checkbox {
+  border-color: var(--eone-border-strong);
+  accent-color: var(--eone-accent);
+}
+
+input[type="checkbox"]:checked,
+.task-list-item-checkbox:checked {
+  background-color: var(--eone-accent);
+  border-color: var(--eone-accent);
+}
+
+.task-list-item.is-checked,
+.task-list-item[data-task="x"] {
+  color: var(--text-muted);
+  text-decoration-color: var(--text-faint);
+}
+
+.tag,
+a.tag {
+  color: var(--text-accent);
+  background: rgba(var(--eone-accent-rgb), 0.1);
+  border: 1px solid rgba(var(--eone-accent-rgb), 0.18);
+  border-radius: 999px;
+  padding: 0.08em 0.5em;
+  font-size: 0.86em;
+  font-weight: 520;
+  text-decoration: none;
+}
+
+.tag:hover,
+a.tag:hover {
+  color: var(--text-accent-hover);
+  background: rgba(var(--eone-accent-rgb), 0.16);
+}
+
+.footnote-ref,
+.footnote-backref {
+  color: var(--text-accent);
+}
+
+.footnotes {
+  color: var(--text-muted);
+  font-size: 0.9em;
+  border-top: 1px solid var(--background-modifier-border);
+  margin-top: 2em;
+}
+
+.markdown-embed,
+.file-embed {
+  background: transparent;
+  border: 1px solid var(--background-modifier-border);
+  border-radius: var(--radius-m);
+  padding: 0.8em 1em;
+}
+
+.markdown-embed-title {
+  color: var(--text-muted);
+  font-size: 0.85em;
+  font-weight: 600;
+}
+
+/* 8. Code and math */
+
+code,
+kbd,
+samp,
+pre,
+.cm-inline-code,
+.HyperMD-codeblock {
+  font-family: var(--font-monospace);
+  font-variant-ligatures: none;
+}
+
+.markdown-rendered code,
+.markdown-source-view.mod-cm6 .cm-inline-code:not(.cm-formatting) {
+  color: var(--eone-inline-code);
+  background: var(--code-background);
+  border: 1px solid var(--background-modifier-border);
+  border-radius: 4px;
+  padding: 0.08em 0.32em;
+  font-size: 0.9em;
+}
+
+.markdown-rendered pre {
+  background: var(--eone-code-block-bg);
+  border: 1px solid var(--background-modifier-border);
+  border-radius: var(--eone-code-radius);
+  padding: 1em 1.1em;
+  line-height: 1.58;
+  box-shadow: none;
+}
+
+.markdown-rendered pre code {
+  color: var(--code-normal);
+  background: transparent;
+  border: 0;
+  border-radius: 0;
+  padding: 0;
+}
+
+/* cm-line.HyperMD-codeblock covers fenced code in Live Preview without changing tokens. */
+.markdown-source-view.mod-cm6 .cm-line.HyperMD-codeblock {
+  background: var(--eone-code-block-bg);
+  line-height: 1.58;
+}
+
+.markdown-source-view.mod-cm6 .cm-line.HyperMD-codeblock-begin {
+  border-start-start-radius: var(--eone-code-radius);
+  border-start-end-radius: var(--eone-code-radius);
+  padding-top: 0.55em;
+}
+
+.markdown-source-view.mod-cm6 .cm-line.HyperMD-codeblock-end {
+  border-end-start-radius: var(--eone-code-radius);
+  border-end-end-radius: var(--eone-code-radius);
+  padding-bottom: 0.55em;
+}
+
+.copy-code-button {
+  color: var(--text-faint);
+  background: var(--background-primary-alt);
+  border: 1px solid var(--background-modifier-border);
+}
+
+.copy-code-button:hover {
+  color: var(--text-normal);
+  background: var(--background-modifier-hover);
+}
+
+/* MathJax keeps its own math font; only surrounding color and spacing are normalized. */
+.math,
+.math-block,
+.math-inline,
+.MathJax {
+  color: var(--text-normal);
+}
+
+.math-block,
+.markdown-rendered mjx-container[display="true"] {
+  overflow-x: auto;
+  margin-block: 1.15em;
+  padding-block: 0.15em;
+}
+
+/* 9. Tables, quotes and callouts */
+
+.markdown-rendered table,
+.markdown-source-view.mod-cm6 .cm-table-widget table {
+  width: max-content;
+  max-width: 100%;
+  border-collapse: collapse;
+  border-spacing: 0;
+  font-size: 0.94em;
+}
+
+.markdown-rendered th,
+.markdown-rendered td,
+.markdown-source-view.mod-cm6 .cm-table-widget th,
+.markdown-source-view.mod-cm6 .cm-table-widget td {
+  border: 0;
+  border-bottom: 1px solid var(--background-modifier-border);
+  padding: 0.52em 0.82em 0.52em 0.12em;
+  vertical-align: top;
+}
+
+.markdown-rendered th,
+.markdown-source-view.mod-cm6 .cm-table-widget th {
+  color: var(--text-normal);
+  background: transparent;
+  border-bottom-color: var(--eone-border-strong);
+  font-weight: 650;
+}
+
+body.eone-enable-table-stripes .markdown-rendered tbody tr:nth-child(even),
+body.eone-enable-table-stripes .markdown-source-view.mod-cm6 .cm-table-widget tbody tr:nth-child(even) {
+  background: var(--eone-table-stripe);
+}
+
+.markdown-rendered tbody tr:hover,
+.markdown-source-view.mod-cm6 .cm-table-widget tbody tr:hover {
+  background: rgba(var(--eone-accent-rgb), 0.055);
+}
+
+.table-wrapper {
+  overflow-x: auto;
+}
+
+blockquote,
+.markdown-rendered blockquote {
+  color: var(--blockquote-color);
+  background: var(--blockquote-background-color);
+  border-inline-start: var(--blockquote-border-thickness) solid var(--blockquote-border-color);
+  margin-inline: 0;
+  padding: 0.1em 1em;
+}
+
+.markdown-source-view.mod-cm6 .HyperMD-quote {
+  color: var(--blockquote-color);
+}
+
+.markdown-source-view.mod-cm6.is-live-preview .cm-line.HyperMD-quote:first-child::before,
+.markdown-source-view.mod-cm6.is-live-preview .cm-line:not(.HyperMD-quote) + .cm-line.HyperMD-quote::before {
+  top: var(--eone-quote-line-cap);
+}
+
+.markdown-source-view.mod-cm6.is-live-preview .cm-line.HyperMD-quote:not(:has(+ .cm-line.HyperMD-quote))::before {
+  bottom: var(--eone-quote-line-cap);
+}
+
+.markdown-source-view.mod-cm6 span.cm-formatting-quote {
+  margin-inline-start: 0.75em;
+}
+
+.callout {
+  --callout-color: 102, 118, 126;
+  background: rgba(var(--callout-color), var(--eone-callout-bg-alpha));
+  border: 1px solid rgba(var(--callout-color), var(--eone-callout-border-alpha));
+  border-radius: var(--radius-m);
+  padding: 0;
+  box-shadow: none;
+}
+
+.callout-title {
+  color: rgb(var(--callout-color));
+  background: transparent;
+  padding: 0.62em 0.85em;
+  font-weight: 650;
+  font-size: 1em;
+  letter-spacing: 0.01em;
+}
+
+.callout-content {
+  color: var(--text-normal);
+  padding: 0.08em 0.9em 0.72em;
+}
+
+.callout[data-callout="note"],
+.callout[data-callout="info"],
+.callout[data-callout="todo"],
+.callout[data-callout="abstract"] {
+  --callout-color: 92, 123, 140;
+}
+
+.callout[data-callout="tip"],
+.callout[data-callout="success"] {
+  --callout-color: 94, 132, 103;
+}
+
+.callout[data-callout="warning"],
+.callout[data-callout="question"] {
+  --callout-color: 164, 125, 72;
+}
+
+.callout[data-callout="danger"],
+.callout[data-callout="bug"] {
+  --callout-color: 160, 83, 75;
+}
+
+.callout[data-callout="example"] {
+  --callout-color: 126, 105, 137;
+}
+
+.callout[data-callout="quote"] {
+  --callout-color: 113, 107, 99;
+}
+
+/* 10. Properties, modals and controls */
+
+/* metadata-* selectors style Obsidian's native Properties editor. */
+.metadata-container {
+  --metadata-divider-color: var(--background-modifier-border);
+  --metadata-label-text-color: var(--text-muted);
+  --metadata-input-text-color: var(--text-normal);
+  background: transparent;
+  border-bottom: 1px solid var(--background-modifier-border);
+  margin-bottom: 1.2em;
+  padding-bottom: 0.8em;
+}
+
+.metadata-properties-heading {
+  color: var(--text-muted);
+  font-weight: 620;
+}
+
+.metadata-property {
+  border-radius: var(--radius-s);
+}
+
+.metadata-property:hover,
+.metadata-property:focus-within {
+  background: var(--background-modifier-hover);
+}
+
+.modal,
+.prompt,
+.menu,
+.suggestion-container,
+.popover,
+.hover-popover {
+  color: var(--text-normal);
+  background: var(--background-primary-alt);
+  border: 1px solid var(--background-modifier-border);
+  border-radius: var(--modal-radius);
+  box-shadow: 0 8px 24px var(--eone-shadow);
+}
+
+.modal-bg {
+  background: var(--background-modifier-cover);
+}
+
+.prompt-input-container,
+.modal-header {
+  border-color: var(--background-modifier-border);
+}
+
+.suggestion-item,
+.menu-item {
+  color: var(--text-muted);
+  border-radius: var(--radius-s);
+}
+
+.suggestion-item.is-selected,
+.suggestion-item:hover,
+.menu-item.selected,
+.menu-item:hover {
+  color: var(--text-normal);
+  background: var(--background-modifier-hover);
+}
+
+input[type="text"],
+input[type="search"],
+input[type="email"],
+input[type="password"],
+input[type="number"],
+textarea,
+select,
+.dropdown {
+  color: var(--text-normal);
+  background: var(--background-modifier-form-field);
+  border-color: var(--background-modifier-border);
+  box-shadow: none;
+}
+
+input:focus,
+textarea:focus,
+select:focus,
+.dropdown:focus {
+  border-color: var(--background-modifier-border-focus);
+  box-shadow: 0 0 0 2px rgba(var(--eone-accent-rgb), 0.12);
+}
+
+button,
+.clickable-icon {
+  transition: color var(--eone-transition-fast), background-color var(--eone-transition-fast), border-color var(--eone-transition-fast);
+}
+
+button:not(.mod-cta) {
+  color: var(--text-normal);
+  background: var(--interactive-normal);
+  border-color: var(--background-modifier-border);
+  box-shadow: none;
+}
+
+button:not(.mod-cta):hover {
+  background: var(--interactive-hover);
+}
+
+.clickable-icon,
+button.clickable-icon:not(.mod-cta) {
+  color: var(--icon-color);
+  background: transparent;
+  border-color: transparent;
+  box-shadow: none;
+}
+
+.clickable-icon:hover,
+button.clickable-icon:not(.mod-cta):hover {
+  color: var(--icon-color-hover);
+  background: var(--background-modifier-hover);
+  border-color: transparent;
+}
+
+.clickable-icon:is(.is-active, .mod-active, [aria-pressed="true"]),
+button.clickable-icon:not(.mod-cta):is(.is-active, .mod-active, [aria-pressed="true"]) {
+  color: var(--icon-color-active);
+  background: rgba(var(--eone-accent-rgb), 0.12);
+}
+
+.clickable-icon svg,
+button:not(.mod-cta) > svg {
+  color: inherit;
+}
+
+button.mod-cta {
+  color: var(--text-on-accent);
+  background: var(--interactive-accent);
+  box-shadow: none;
+}
+
+button.mod-cta:hover {
+  background: var(--interactive-accent-hover);
+}
+
+/* Give the desktop settings view a slightly more comfortable reading size. */
+.modal.mod-settings {
+  --font-ui-smaller: 13px;
+  --font-ui-small: 14px;
+  --font-ui-medium: 16px;
+  --font-ui-large: 21px;
+}
+
+.modal.mod-settings .vertical-tab-nav-item,
+.modal.mod-settings .setting-item-name {
+  line-height: 1.45;
+}
+
+.modal.mod-settings .setting-item-description {
+  line-height: 1.55;
+}
+
+.setting-item {
+  border-color: var(--background-modifier-border);
+}
+
+.setting-item-description {
+  color: var(--text-muted);
+}
+
+.status-bar {
+  color: var(--text-faint);
+  background: var(--background-secondary);
+  border-color: var(--background-modifier-border);
+  box-shadow: none;
+}
+
+/* Keep the global status bar aligned with the central workspace, not the app window. */
+@supports (anchor-name: --x) {
+  .workspace-split.mod-root {
+    anchor-name: --eone-editor-workspace;
+  }
+
+  .status-bar {
+    position-anchor: --eone-editor-workspace;
+    right: anchor(right);
+  }
+}
+
+.status-bar-item:hover {
+  color: var(--text-normal);
+}
+
+.tooltip {
+  color: var(--text-on-accent);
+  background: var(--eone-text-normal);
+  border-radius: var(--radius-s);
+  box-shadow: none;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--scrollbar-bg);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--scrollbar-thumb-bg);
+  border: 3px solid transparent;
+  border-radius: 999px;
+  background-clip: padding-box;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--scrollbar-active-thumb-bg);
+  border: 3px solid transparent;
+  background-clip: padding-box;
+}
+
+/* 11. Plugin compatibility */
+
+/* Dataview uses standard tables plus these public result-view classes. */
+.dataview.table-view-table,
+.dataview.table-view-table :is(th, td) {
+  border-color: var(--background-modifier-border);
+}
+
+.dataview.inline-field-key {
+  color: var(--text-muted);
+  background: var(--background-secondary);
+  border-radius: var(--radius-s) 0 0 var(--radius-s);
+}
+
+.dataview.inline-field-value {
+  color: var(--text-normal);
+  background: var(--background-primary-alt);
+  border-radius: 0 var(--radius-s) var(--radius-s) 0;
+}
+
+/* Tasks preserves native task controls; only text hierarchy is normalized. */
+.tasks-list-text,
+.task-description,
+.task-extras {
+  color: inherit;
+}
+
+.task-due,
+.task-priority,
+.task-recurring {
+  color: var(--text-muted);
+}
+
+/* Calendar: restrained active and today states without replacing its layout. */
+.workspace-leaf-content[data-type="calendar"] .day:hover,
+.workspace-leaf-content[data-type="calendar"] .today {
+  background: var(--background-modifier-hover);
+}
+
+.workspace-leaf-content[data-type="calendar"] .today {
+  color: var(--text-accent);
+  box-shadow: inset 0 -2px 0 var(--eone-accent);
+}
+
+/* Kanban: lanes are structural surfaces; individual cards stay quiet. */
+.kanban-plugin__board {
+  background: var(--background-primary);
+}
+
+.kanban-plugin__lane {
+  background: var(--background-secondary);
+  border-color: var(--background-modifier-border);
+}
+
+.kanban-plugin__item {
+  color: var(--text-normal);
+  background: var(--background-primary-alt);
+  border-color: var(--background-modifier-border);
+  box-shadow: none;
+}
+
+/* Excalidraw consumes these semantic colors while retaining canvas behavior. */
+.excalidraw,
+.excalidraw-wrapper {
+  --color-primary: var(--eone-accent);
+  --color-primary-darker: var(--eone-accent-strong);
+  --color-surface-low: var(--background-secondary);
+}
+
+/* Notebook Navigator varies icon opacity and active colors by button state. */
+.notebook-navigator {
+  --nn-theme-header-button-icon-color: var(--icon-color);
+  --nn-theme-header-button-active-bg: transparent;
+  --nn-theme-header-button-active-icon-color: var(--icon-color);
+  --nn-theme-header-button-disabled-icon-color: var(--icon-color);
+  --nn-theme-file-tag-color: var(--text-accent);
+  --nn-theme-file-tag-border-color: rgba(var(--eone-accent-rgb), 0.24);
+  --nn-theme-file-tag-bg: rgba(var(--eone-accent-rgb), 0.075);
+  --nn-theme-file-selected-tag-color: var(--text-accent);
+  --nn-theme-file-selected-tag-border-color: rgba(var(--eone-accent-rgb), 0.32);
+  --nn-theme-file-selected-tag-bg: rgba(var(--eone-accent-rgb), 0.12);
+  --nn-theme-file-selected-inactive-tag-color: var(--text-accent);
+  --nn-theme-file-selected-inactive-tag-bg: rgba(var(--eone-accent-rgb), 0.085);
+}
+
+.theme-light .notebook-navigator {
+  --nn-theme-file-selected-bg: rgba(var(--eone-accent-rgb), 0.08);
+  --nn-theme-file-selected-inactive-bg: rgba(var(--eone-accent-rgb), 0.045);
+}
+
+.notebook-navigator .nn-file.nn-selected:not(.nn-compact) .nn-file-name {
+  font-size: calc(var(--nn-file-name-size-mobile, var(--nn-file-name-size)) + 0.5px);
+  font-weight: 650;
+}
+
+.notebook-navigator .nn-file.nn-compact.nn-selected .nn-file-name {
+  font-size: calc(var(--nn-compact-font-size-mobile, var(--nn-compact-font-size, var(--nn-file-small-size-mobile, var(--nn-file-small-size)))) + 0.5px);
+  font-weight: 650;
+}
+
+.notebook-navigator .nn-navitem.nn-selected .nn-navitem-name {
+  font-size: calc(var(--nn-setting-nav-font-size) + 1px);
+  font-weight: 650;
+}
+
+.notebook-navigator .nn-navitem.nn-selected::after {
+  background-color: transparent;
+  box-shadow: none;
+}
+
+.notebook-navigator button.nn-icon-button:not(:disabled) {
+  color: var(--nn-theme-header-button-icon-color);
+  background-color: transparent;
+  opacity: 1;
+}
+
+.notebook-navigator button.nn-icon-button:not(:disabled):hover {
+  color: var(--icon-color-active);
+  background-color: rgba(var(--eone-accent-rgb), 0.14);
+  box-shadow: inset 0 0 0 1px rgba(var(--eone-accent-rgb), 0.22);
+}
+
+/* Obsidian adds a large bottom padding to generic view-content panels. Claudian
+   uses that same element as its flex root, so remove only the host padding. */
+.workspace-leaf-content .view-content.claudian-container {
+  padding: 0;
+  overflow: hidden;
+  font-size: var(--font-text-size);
+}
+
+.claudian-container .claudian-message-content,
+.claudian-container .claudian-input-wrapper textarea.claudian-input {
+  font-size: 1em;
+}
+
+.claudian-container .claudian-welcome-text {
+  font-size: 1.75em;
+}
+
+/* Obsidian Git, Editing Toolbar, and common plugin panels inherit theme surfaces. */
+.obsidian-git,
+.git-view,
+.editingToolbarModal,
+.editing-toolbar {
+  color: var(--text-normal);
+  background: var(--background-primary-alt);
+  border-color: var(--background-modifier-border);
+}
+
+/* Outliner and Advanced Tables primarily use core editor/table semantics. */
+.outliner-plugin-list-lines .cm-indent::before {
+  border-color: var(--background-modifier-border);
+}
+
+.advanced-tables-buttons {
+  color: var(--text-muted);
+  background: var(--background-secondary);
+  border-color: var(--background-modifier-border);
+}
+
+/* 12. Accessibility and motion */
+
+:focus-visible {
+  outline: 2px solid rgba(var(--eone-accent-rgb), 0.72);
+  outline-offset: 2px;
+}
+
+.clickable-icon:focus-visible,
+button:focus-visible,
+.nav-file-title:focus-visible,
+.nav-folder-title:focus-visible {
+  box-shadow: 0 0 0 2px rgba(var(--eone-accent-rgb), 0.18);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto;
+    transition-duration: 0.01ms;
+    animation-duration: 0.01ms;
+    animation-iteration-count: 1;
+  }
+}
+
+@media print {
+  body,
+  .markdown-preview-view {
+    color: #25231f;
+    background: #faf9f5;
+  }
+
+  .markdown-rendered a {
+    color: #7f4937;
+  }
+}

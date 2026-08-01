@@ -1,0 +1,20 @@
+# Installer backups are local deployment artifacts.
+.backups/
+
+# Local development and diagnostic artifacts.
+.playwright-mcp/
+.spec-workflow/
+pictures/
+dist/
+AGENTS.md
+task_plan.md
+findings.md
+progress.md
+README-PACKAGE.md
+scripts/
+test/
+
+# Common editor and operating-system noise.
+.DS_Store
+Thumbs.db
+*.tmp
