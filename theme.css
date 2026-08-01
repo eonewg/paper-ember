@@ -724,7 +724,7 @@ mark,
 
 .markdown-rendered ul,
 .markdown-rendered ol {
-  padding-inline-start: 1.75em;
+  padding-inline-start: 0;
 }
 
 .markdown-rendered li {
@@ -946,7 +946,7 @@ pre,
 .markdown-rendered table :is(th, td),
 .markdown-rendered table :is(th, td):first-child,
 .markdown-rendered table :is(th, td):last-child {
-  text-align: center;
+  text-align: center !important;
 }
 
 .markdown-rendered :is(th, td) {
