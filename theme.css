@@ -129,8 +129,8 @@ body {
   --eone-paragraph-spacing: 0.72em;
   --eone-stacked-heading-gap: 0.45em;
   --eone-quote-line-cap: 0.28em;
-  --eone-callout-bg-alpha: 0.09;
-  --eone-callout-border-alpha: 0.32;
+  --eone-callout-bg-alpha: 0.045;
+  --eone-callout-border-alpha: 0.42;
 
   --font-interface-theme: var(--eone-font-interface);
   --font-text-theme: var(--eone-font-text);
@@ -252,8 +252,8 @@ body.eone-sidebar-comfortable {
 
 .theme-dark {
   color-scheme: dark;
-  --eone-callout-bg-alpha: 0.14;
-  --eone-callout-border-alpha: 0.4;
+  --eone-callout-bg-alpha: 0.08;
+  --eone-callout-border-alpha: 0.52;
   --eone-bg-primary: var(--eone-dark-bg-brightness);
   --eone-bg-secondary: #20201e;
   --eone-bg-elevated: #30302e;
@@ -873,6 +873,12 @@ pre,
   max-width: 100%;
 }
 
+/* Obsidian sets the Live Preview table wrapper to fit-content by default. */
+.markdown-source-view.mod-cm6 .cm-table-widget .table-wrapper {
+  width: 100%;
+  max-width: 100%;
+}
+
 .markdown-rendered table,
 .markdown-source-view.mod-cm6 .cm-table-widget table {
   width: 100%;
@@ -886,9 +892,8 @@ pre,
 .markdown-rendered td,
 .markdown-source-view.mod-cm6 .cm-table-widget th,
 .markdown-source-view.mod-cm6 .cm-table-widget td {
-  border: 0;
-  border-bottom: 1px solid var(--background-modifier-border);
-  padding: 0.52em 0.82em 0.52em 0.12em;
+  border: 1px solid var(--background-modifier-border);
+  padding: 0.52em 0.72em;
   vertical-align: top;
 }
 
@@ -955,7 +960,8 @@ blockquote,
 
 .callout-title {
   color: rgb(var(--callout-color));
-  background: rgba(var(--callout-color), 0.035);
+  background: rgba(var(--callout-color), 0.025);
+  border-bottom: 1px solid rgba(var(--callout-color), 0.16);
   padding: 0.62em 0.85em;
   font-weight: 700;
   font-size: 1em;
@@ -979,9 +985,12 @@ blockquote,
   --callout-color: 94, 132, 103;
 }
 
-.callout[data-callout="warning"],
+.callout[data-callout="warning"] {
+  --callout-color: 184, 82, 69;
+}
+
 .callout[data-callout="question"] {
-  --callout-color: 164, 125, 72;
+  --callout-color: 154, 112, 62;
 }
 
 .callout[data-callout="danger"],
