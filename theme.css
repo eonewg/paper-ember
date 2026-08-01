@@ -917,17 +917,32 @@ pre,
 .markdown-source-view.mod-cm6 .cm-table-widget td {
   border: 0;
   min-width: 0;
-  padding: 0.52em 0.72em;
   text-align: center;
   vertical-align: top;
+}
+
+.markdown-rendered :is(th, td) {
+  padding: 0.52em 0.72em;
+}
+
+.markdown-source-view.mod-cm6 .cm-table-widget :is(th, td) {
+  padding: 0;
+}
+
+.markdown-source-view.mod-cm6 .cm-table-widget .table-cell-wrapper {
+  padding: 0.52em 0.72em;
 }
 
 .markdown-rendered th,
 .markdown-source-view.mod-cm6 .cm-table-widget th {
   color: var(--text-normal);
   background: transparent;
-  padding-block-end: 0.68em;
   font-weight: 650;
+}
+
+.markdown-rendered th,
+.markdown-source-view.mod-cm6 .cm-table-widget th .table-cell-wrapper {
+  padding-block-end: 0.68em;
 }
 
 .markdown-rendered tbody td,
