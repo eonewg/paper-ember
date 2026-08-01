@@ -1,4 +1,4 @@
-# Eone Claude
+# Claudy Obsidian
 
 一套采用柔和纸面背景、陶土橙强调色和克制界面层级的 Obsidian 主题，支持浅色与深色模式。
 
@@ -14,14 +14,14 @@
 ## 安装
 
 1. 从 Releases 下载主题压缩包并解压。
-2. 将其中的 `Eone Claude` 文件夹复制到仓库的 `.obsidian/themes/` 目录。
-3. 打开 Obsidian → 设置 → 外观，在主题列表中选择 `Eone Claude`。
+2. 将其中的 `Claudy Obsidian` 文件夹复制到仓库的 `.obsidian/themes/` 目录。
+3. 打开 Obsidian → 设置 → 外观，在主题列表中选择 `Claudy Obsidian`。
 4. 如果主题没有立即出现，请重新打开“外观”页面或重启 Obsidian。
 
 最终目录应类似：
 
 ```text
-你的仓库/.obsidian/themes/Eone Claude/
+你的仓库/.obsidian/themes/Claudy Obsidian/
 ├─ manifest.json
 ├─ theme.css
 └─ fonts/
