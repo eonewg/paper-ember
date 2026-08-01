@@ -129,7 +129,7 @@ body {
   --eone-transition-fast: 170ms var(--eone-ease-standard);
   --eone-transition-medium: 230ms var(--eone-ease-out);
   --eone-sidebar-item-height: 30px;
-  --eone-paragraph-spacing: 0.72em;
+  --eone-paragraph-spacing: 1.15em;
   --eone-stacked-heading-gap: 0.45em;
   --eone-quote-line-cap: 0.28em;
   --eone-callout-bg-alpha: 0.045;
