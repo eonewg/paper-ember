@@ -696,7 +696,7 @@ mark,
 .is-unresolved,
 .markdown-rendered .internal-link.is-unresolved {
   color: var(--text-muted);
-  opacity: 0.82;
+  opacity: 0.74;
   text-decoration: none;
 }
 
@@ -1081,15 +1081,26 @@ button,
   transition: color var(--eone-transition-fast), background-color var(--eone-transition-fast), border-color var(--eone-transition-fast);
 }
 
-button:not(.mod-cta) {
+button:not(.mod-cta):not(.mod-warning) {
   color: var(--text-normal);
   background: var(--interactive-normal);
   border-color: var(--background-modifier-border);
   box-shadow: none;
 }
 
-button:not(.mod-cta):hover {
+button:not(.mod-cta):not(.mod-warning):hover {
   background: var(--interactive-hover);
+}
+
+button.mod-warning {
+  color: var(--text-on-accent);
+  background: var(--background-modifier-error);
+  border-color: transparent;
+  box-shadow: none;
+}
+
+button.mod-warning:hover {
+  background: var(--background-modifier-error-hover);
 }
 
 .clickable-icon,
