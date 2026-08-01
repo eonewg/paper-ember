@@ -695,8 +695,8 @@ mark,
 
 .is-unresolved,
 .markdown-rendered .internal-link.is-unresolved {
-  color: var(--text-muted);
-  opacity: 0.82;
+  color: var(--text-accent);
+  opacity: 1;
   text-decoration: none;
 }
 
@@ -868,7 +868,7 @@ pre,
 
 .markdown-rendered table,
 .markdown-source-view.mod-cm6 .cm-table-widget table {
-  width: max-content;
+  width: 100%;
   max-width: 100%;
   border-collapse: collapse;
   border-spacing: 0;
@@ -904,7 +904,11 @@ body.eone-enable-table-stripes .markdown-source-view.mod-cm6 .cm-table-widget tb
 }
 
 .table-wrapper {
+  width: 100%;
+  max-width: 100%;
+  max-height: none;
   overflow-x: auto;
+  overflow-y: hidden;
 }
 
 blockquote,
