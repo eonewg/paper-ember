@@ -1,9 +1,9 @@
 /* 1. Theme metadata and Style Settings
-   Claudy 1.3.0 — a warm, restrained theme for Obsidian. */
+   Paper Ember 1.4.0 — a warm, restrained theme for Obsidian. */
 
 /* @settings
-name: Claudy
-id: claudy
+name: Paper Ember
+id: paper-ember
 settings:
   - id: eone-colors-heading
     title: 颜色
@@ -124,13 +124,16 @@ body {
   --eone-reading-width: 850px;
   --eone-radius: 6px;
   --eone-code-radius: 7px;
-  --eone-transition-fast: 140ms ease;
+  --eone-ease-standard: cubic-bezier(0.2, 0.72, 0.24, 1);
+  --eone-ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+  --eone-transition-fast: 170ms var(--eone-ease-standard);
+  --eone-transition-medium: 230ms var(--eone-ease-out);
   --eone-sidebar-item-height: 30px;
-  --eone-paragraph-spacing: 0.72em;
+  --eone-paragraph-spacing: 1.15em;
   --eone-stacked-heading-gap: 0.45em;
   --eone-quote-line-cap: 0.28em;
-  --eone-callout-bg-alpha: 0.055;
-  --eone-callout-border-alpha: 0.22;
+  --eone-callout-bg-alpha: 0.045;
+  --eone-callout-border-alpha: 0.42;
 
   --font-interface-theme: var(--eone-font-interface);
   --font-text-theme: var(--eone-font-text);
@@ -191,13 +194,18 @@ body.eone-sidebar-comfortable {
   --eone-accent-strong: #b85f43;
   --eone-accent-rgb: 217, 119, 87;
   --eone-code-bg: rgba(61, 61, 58, 0.055);
-  --eone-code-block-bg: rgba(255, 255, 255, 0.56);
+  --eone-code-block-bg: rgba(79, 68, 57, 0.052);
+  --eone-code-block-border: rgba(79, 68, 57, 0.19);
   --eone-inline-code: #8a3f27;
   --eone-quote-border: rgba(var(--eone-accent-rgb), 0.72);
   --eone-selection: rgba(217, 119, 87, 0.19);
   --eone-highlight: rgba(255, 208, 0, 0.4);
   --eone-shadow: rgba(68, 57, 47, 0.1);
   --eone-table-stripe: rgba(79, 68, 57, 0.032);
+  --eone-table-border: rgba(0, 0, 0, 0.11);
+  --eone-table-surface: rgba(0, 0, 0, 0.018);
+  --eone-table-selection: rgba(var(--eone-accent-rgb), 0.09);
+  --eone-table-selection-border: rgba(var(--eone-accent-rgb), 0.78);
   --eone-nav-item-hover: rgba(31, 30, 29, 0.03);
   --eone-nav-item-active: rgba(var(--eone-accent-rgb), 0.075);
 
@@ -252,8 +260,8 @@ body.eone-sidebar-comfortable {
 
 .theme-dark {
   color-scheme: dark;
-  --eone-callout-bg-alpha: 0.09;
-  --eone-callout-border-alpha: 0.3;
+  --eone-callout-bg-alpha: 0.08;
+  --eone-callout-border-alpha: 0.52;
   --eone-bg-primary: var(--eone-dark-bg-brightness);
   --eone-bg-secondary: #20201e;
   --eone-bg-elevated: #30302e;
@@ -267,13 +275,18 @@ body.eone-sidebar-comfortable {
   --eone-accent-strong: #f09b7c;
   --eone-accent-rgb: 227, 138, 108;
   --eone-code-bg: rgba(194, 192, 182, 0.07);
-  --eone-code-block-bg: rgba(48, 48, 46, 0.72);
+  --eone-code-block-bg: rgba(0, 0, 0, 0.2);
+  --eone-code-block-border: rgba(255, 244, 232, 0.17);
   --eone-inline-code: #f0a486;
   --eone-quote-border: rgba(var(--eone-accent-rgb), 0.68);
   --eone-selection: rgba(227, 138, 108, 0.22);
   --eone-highlight: rgba(255, 208, 0, 0.4);
   --eone-shadow: rgba(0, 0, 0, 0.24);
   --eone-table-stripe: rgba(255, 244, 232, 0.026);
+  --eone-table-border: rgba(255, 255, 255, 0.13);
+  --eone-table-surface: rgba(255, 255, 255, 0.025);
+  --eone-table-selection: rgba(var(--eone-accent-rgb), 0.13);
+  --eone-table-selection-border: rgba(var(--eone-accent-rgb), 0.86);
   --eone-nav-item-hover: rgba(240, 237, 230, 0.055);
   --eone-nav-item-active: rgba(var(--eone-accent-rgb), 0.1);
 
@@ -456,7 +469,7 @@ strong,
 
 em,
 .cm-em {
-  color: var(--text-normal);
+  color: inherit;
 }
 
 mark,
@@ -509,7 +522,7 @@ mark,
 
 .workspace-tab-header {
   color: var(--text-muted);
-  transition: color var(--eone-transition-fast), background-color var(--eone-transition-fast);
+  transition: color var(--eone-transition-fast), background-color var(--eone-transition-medium), box-shadow var(--eone-transition-medium);
 }
 
 .workspace-tab-header:hover {
@@ -572,7 +585,7 @@ mark,
   min-height: var(--eone-sidebar-item-height);
   color: var(--text-muted);
   align-items: center;
-  transition: color var(--eone-transition-fast), background-color var(--eone-transition-fast);
+  transition: color var(--eone-transition-fast), background-color var(--eone-transition-medium), box-shadow var(--eone-transition-medium);
 }
 
 .nav-folder-title {
@@ -588,7 +601,7 @@ mark,
 
 .nav-file-title-content,
 .nav-folder-title-content {
-  transition: transform var(--eone-transition-fast);
+  transition: transform var(--eone-transition-medium);
 }
 
 .nav-file-title:hover .nav-file-title-content,
@@ -695,16 +708,23 @@ mark,
 
 .is-unresolved,
 .markdown-rendered .internal-link.is-unresolved {
-  color: var(--text-muted);
-  opacity: 0.82;
+  color: var(--text-accent);
+  opacity: 0.52;
   text-decoration: none;
+}
+
+.is-unresolved:hover,
+.markdown-rendered .internal-link.is-unresolved:hover {
+  color: var(--text-accent);
+  opacity: 0.82;
+  text-decoration: underline;
 }
 
 /* 7. Markdown components */
 
 .markdown-rendered ul,
 .markdown-rendered ol {
-  padding-inline-start: 1.75em;
+  padding-inline-start: 0;
 }
 
 .markdown-rendered li {
@@ -747,6 +767,7 @@ a.tag {
   font-size: 0.86em;
   font-weight: 520;
   text-decoration: none;
+  transition: color var(--eone-transition-fast), background-color var(--eone-transition-medium), border-color var(--eone-transition-medium);
 }
 
 .tag:hover,
@@ -763,7 +784,7 @@ a.tag:hover {
 .footnotes {
   color: var(--text-muted);
   font-size: 0.9em;
-  border-top: 1px solid var(--background-modifier-border);
+  border-top: 0;
   margin-top: 2em;
 }
 
@@ -805,7 +826,7 @@ pre,
 
 .markdown-rendered pre {
   background: var(--eone-code-block-bg);
-  border: 1px solid var(--background-modifier-border);
+  border: 1px solid var(--eone-code-block-border);
   border-radius: var(--eone-code-radius);
   padding: 1em 1.1em;
   line-height: 1.58;
@@ -823,16 +844,19 @@ pre,
 /* cm-line.HyperMD-codeblock covers fenced code in Live Preview without changing tokens. */
 .markdown-source-view.mod-cm6 .cm-line.HyperMD-codeblock {
   background: var(--eone-code-block-bg);
+  border-inline: 1px solid var(--eone-code-block-border);
   line-height: 1.58;
 }
 
 .markdown-source-view.mod-cm6 .cm-line.HyperMD-codeblock-begin {
+  border-top: 1px solid var(--eone-code-block-border);
   border-start-start-radius: var(--eone-code-radius);
   border-start-end-radius: var(--eone-code-radius);
   padding-top: 0.55em;
 }
 
 .markdown-source-view.mod-cm6 .cm-line.HyperMD-codeblock-end {
+  border-bottom: 1px solid var(--eone-code-block-border);
   border-end-start-radius: var(--eone-code-radius);
   border-end-end-radius: var(--eone-code-radius);
   padding-bottom: 0.55em;
@@ -866,13 +890,46 @@ pre,
 
 /* 9. Tables, quotes and callouts */
 
+.markdown-rendered .el-table,
+.markdown-source-view.mod-cm6 .cm-table-widget {
+  box-sizing: border-box;
+  display: block;
+  width: 100%;
+  max-width: 100%;
+}
+
+.markdown-source-view.mod-cm6 .cm-table-widget {
+  --table-selection: var(--eone-table-selection);
+  --table-selection-blend-mode: normal;
+  --table-selection-border-color: var(--eone-table-selection-border);
+  --table-selection-border-width: 2px;
+  --table-selection-border-radius: calc(var(--radius-s) + 1px);
+  width: calc(100% + var(--table-drag-handle-size) + var(--table-drag-handle-size));
+  max-width: none;
+  overflow: visible;
+}
+
+/* Obsidian sets the Live Preview table wrapper to fit-content by default. */
+.markdown-source-view.mod-cm6 .cm-table-widget .table-wrapper {
+  width: 100%;
+  max-width: 100%;
+  overflow: visible;
+}
+
+.markdown-source-view.mod-cm6 .cm-table-widget .table-cell-wrapper,
+.markdown-source-view.mod-cm6 .cm-table-widget .table-cell-wrapper :is(.cm-editor, .cm-scroller, .cm-content, .cm-gutters) {
+  background: transparent;
+}
+
 .markdown-rendered table,
 .markdown-source-view.mod-cm6 .cm-table-widget table {
-  width: max-content;
+  width: 100%;
   max-width: 100%;
-  border-collapse: collapse;
+  border: 0;
+  border-collapse: separate;
   border-spacing: 0;
   font-size: 0.94em;
+  table-layout: fixed;
 }
 
 .markdown-rendered th,
@@ -880,31 +937,120 @@ pre,
 .markdown-source-view.mod-cm6 .cm-table-widget th,
 .markdown-source-view.mod-cm6 .cm-table-widget td {
   border: 0;
-  border-bottom: 1px solid var(--background-modifier-border);
-  padding: 0.52em 0.82em 0.52em 0.12em;
+  min-width: 0;
+  text-align: center;
   vertical-align: top;
 }
 
-.markdown-rendered th,
+/* Override Obsidian's first/last-column alignment only in Reading view. */
+.markdown-rendered table :is(th, td),
+.markdown-rendered table :is(th, td):first-child,
+.markdown-rendered table :is(th, td):last-child {
+  text-align: center !important;
+}
+
+.markdown-rendered :is(th, td) {
+  padding: 0.52em 0.72em;
+}
+
+.markdown-source-view.mod-cm6 .cm-table-widget :is(th, td) {
+  padding: 0;
+}
+
+.markdown-source-view.mod-cm6 .cm-table-widget .table-cell-wrapper {
+  padding: 0.52em 0.72em;
+}
+
 .markdown-source-view.mod-cm6 .cm-table-widget th {
   color: var(--text-normal);
   background: transparent;
-  border-bottom-color: var(--eone-border-strong);
+  border: 1px solid transparent;
   font-weight: 650;
 }
 
-body.eone-enable-table-stripes .markdown-rendered tbody tr:nth-child(even),
-body.eone-enable-table-stripes .markdown-source-view.mod-cm6 .cm-table-widget tbody tr:nth-child(even) {
+/* Reading view keeps the header open and lets only the table body form a card. */
+.markdown-rendered thead,
+.markdown-rendered thead tr,
+.markdown-rendered thead th {
+  background: transparent;
+  border: 0;
+}
+
+.markdown-rendered thead th {
+  color: var(--text-normal);
+  font-weight: 650;
+}
+
+.markdown-rendered th,
+.markdown-source-view.mod-cm6 .cm-table-widget th .table-cell-wrapper {
+  padding-block-end: 0.68em;
+}
+
+.markdown-rendered tbody td,
+.markdown-source-view.mod-cm6 .cm-table-widget tbody td {
+  background: var(--eone-table-surface);
+  border-inline-end: 1px solid var(--eone-table-border);
+  border-block-end: 1px solid var(--eone-table-border);
+  transition: background-color var(--eone-transition-medium), border-color var(--eone-transition-medium);
+}
+
+/* Obsidian gives even columns a separate background in Reading view. */
+.markdown-rendered tbody tr > td:nth-child(2n+2) {
+  background: var(--eone-table-surface);
+}
+
+.markdown-rendered tbody tr:first-child td,
+.markdown-source-view.mod-cm6 .cm-table-widget tbody tr:first-child td {
+  border-block-start: 1px solid var(--eone-table-border);
+}
+
+.markdown-rendered tbody td:first-child,
+.markdown-source-view.mod-cm6 .cm-table-widget tbody td:first-child {
+  border-inline-start: 1px solid var(--eone-table-border);
+}
+
+.markdown-rendered tbody tr:first-child td:first-child,
+.markdown-source-view.mod-cm6 .cm-table-widget tbody tr:first-child td:first-child {
+  border-start-start-radius: var(--radius-s);
+}
+
+.markdown-rendered tbody tr:first-child td:last-child,
+.markdown-source-view.mod-cm6 .cm-table-widget tbody tr:first-child td:last-child {
+  border-start-end-radius: var(--radius-s);
+}
+
+.markdown-rendered tbody tr:last-child td:first-child,
+.markdown-source-view.mod-cm6 .cm-table-widget tbody tr:last-child td:first-child {
+  border-end-start-radius: var(--radius-s);
+}
+
+.markdown-rendered tbody tr:last-child td:last-child,
+.markdown-source-view.mod-cm6 .cm-table-widget tbody tr:last-child td:last-child {
+  border-end-end-radius: var(--radius-s);
+}
+
+body.eone-enable-table-stripes .markdown-rendered tbody tr:nth-child(even) td,
+body.eone-enable-table-stripes .markdown-source-view.mod-cm6 .cm-table-widget tbody tr:nth-child(even) td {
   background: var(--eone-table-stripe);
 }
 
-.markdown-rendered tbody tr:hover,
-.markdown-source-view.mod-cm6 .cm-table-widget tbody tr:hover {
+.markdown-rendered :is(th, td):hover,
+.markdown-source-view.mod-cm6 .cm-table-widget :is(th, td):hover:not(:has(:is(.table-row-drag-handle, .table-col-drag-handle):hover)) {
+  background: rgba(var(--eone-accent-rgb), 0.055);
+}
+
+/* Keep Reading-view hover above Obsidian's alternating-column rules. */
+.markdown-rendered thead tr > th:hover,
+.markdown-rendered tbody tr > td:hover {
   background: rgba(var(--eone-accent-rgb), 0.055);
 }
 
 .table-wrapper {
+  width: 100%;
+  max-width: 100%;
+  max-height: none;
   overflow-x: auto;
+  overflow-y: hidden;
 }
 
 blockquote,
@@ -914,6 +1060,13 @@ blockquote,
   border-inline-start: var(--blockquote-border-thickness) solid var(--blockquote-border-color);
   margin-inline: 0;
   padding: 0.1em 1em;
+}
+
+.markdown-rendered blockquote {
+  box-sizing: border-box;
+  width: 100%;
+  padding-inline-start: 1.55em;
+  padding-inline-end: 0;
 }
 
 .markdown-source-view.mod-cm6 .HyperMD-quote {
@@ -945,15 +1098,23 @@ blockquote,
 .callout-title {
   color: rgb(var(--callout-color));
   background: transparent;
-  padding: 0.62em 0.85em;
-  font-weight: 650;
-  font-size: 1em;
+  padding: 0.62em 0.85em 0.5em;
+  font-weight: 700;
+  font-size: 1.06em;
   letter-spacing: 0.01em;
 }
 
 .callout-content {
   color: var(--text-normal);
-  padding: 0.08em 0.9em 0.72em;
+  padding: 0 0.9em 0.42em;
+}
+
+.callout-content > :first-child {
+  margin-block-start: 0.52em;
+}
+
+.callout-content > :last-child {
+  margin-block-end: 0.28em;
 }
 
 .callout[data-callout="note"],
@@ -968,9 +1129,12 @@ blockquote,
   --callout-color: 94, 132, 103;
 }
 
-.callout[data-callout="warning"],
+.callout[data-callout="warning"] {
+  --callout-color: 184, 82, 69;
+}
+
 .callout[data-callout="question"] {
-  --callout-color: 164, 125, 72;
+  --callout-color: 154, 112, 62;
 }
 
 .callout[data-callout="danger"],
@@ -1039,6 +1203,7 @@ blockquote,
 .menu-item {
   color: var(--text-muted);
   border-radius: var(--radius-s);
+  transition: color var(--eone-transition-fast), background-color var(--eone-transition-medium);
 }
 
 .suggestion-item.is-selected,
@@ -1058,9 +1223,11 @@ textarea,
 select,
 .dropdown {
   color: var(--text-normal);
-  background: var(--background-modifier-form-field);
+  /* Preserve Obsidian's native dropdown arrow image, position, and repeat rules. */
+  background-color: var(--background-modifier-form-field);
   border-color: var(--background-modifier-border);
   box-shadow: none;
+  transition: background-color var(--eone-transition-medium), border-color var(--eone-transition-fast), box-shadow var(--eone-transition-medium);
 }
 
 input:focus,
@@ -1073,18 +1240,37 @@ select:focus,
 
 button,
 .clickable-icon {
-  transition: color var(--eone-transition-fast), background-color var(--eone-transition-fast), border-color var(--eone-transition-fast);
+  transition: color var(--eone-transition-fast), background-color var(--eone-transition-medium), border-color var(--eone-transition-fast), box-shadow var(--eone-transition-medium), opacity var(--eone-transition-fast);
 }
 
-button:not(.mod-cta) {
+.checkbox-container,
+.checkbox-container::after,
+.collapse-icon svg,
+.tree-item-icon svg {
+  transition-duration: 210ms;
+  transition-timing-function: var(--eone-ease-out);
+}
+
+button:not(.mod-cta):not(.mod-warning) {
   color: var(--text-normal);
   background: var(--interactive-normal);
   border-color: var(--background-modifier-border);
   box-shadow: none;
 }
 
-button:not(.mod-cta):hover {
+button:not(.mod-cta):not(.mod-warning):hover {
   background: var(--interactive-hover);
+}
+
+button.mod-warning {
+  color: var(--text-on-accent);
+  background: var(--background-modifier-error);
+  border-color: transparent;
+  box-shadow: none;
+}
+
+button.mod-warning:hover {
+  background: var(--background-modifier-error-hover);
 }
 
 .clickable-icon,

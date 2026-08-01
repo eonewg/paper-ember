@@ -1,12 +1,12 @@
-# Claudy
+# Paper Ember
 
 [中文](#中文) · [English](#english)
 
-![Claudy theme preview](screenshot.png)
+![Paper Ember theme preview](screenshot.png)
 
 ## 中文
 
-Claudy 是一套采用柔和纸面背景、陶土橙强调色和克制界面层级的 Obsidian 主题，支持浅色与深色模式。
+Paper Ember 是一套采用柔和纸面背景、陶土橙强调色和克制界面层级的 Obsidian 主题，支持浅色与深色模式。
 
 ### 特点
 
@@ -18,25 +18,25 @@ Claudy 是一套采用柔和纸面背景、陶土橙强调色和克制界面层�
 
 ### 安装
 
-主题进入 Obsidian 社区目录后，可在“设置 → 外观 → 主题 → 管理”中搜索 `Claudy` 安装。
+主题进入 Obsidian 社区目录后，可在“设置 → 外观 → 主题 → 管理”中搜索 `Paper Ember` 安装。
 
 手动安装：
 
-1. 从 [Releases](https://github.com/eonewg/claudy-obsidian/releases) 下载 `manifest.json` 和 `theme.css`。
-2. 在仓库的 `.obsidian/themes/` 中创建 `Claudy` 文件夹。
-3. 将两个文件放入该文件夹，然后在 Obsidian 的主题列表中选择 `Claudy`。
+1. 从 [Releases](https://github.com/eonewg/paper-ember/releases) 下载 `manifest.json` 和 `theme.css`。
+2. 在仓库的 `.obsidian/themes/` 中创建 `Paper Ember` 文件夹。
+3. 将两个文件放入该文件夹，然后在 Obsidian 的主题列表中选择 `Paper Ember`。
 
 最终目录：
 
 ```text
-你的仓库/.obsidian/themes/Claudy/
+你的仓库/.obsidian/themes/Paper Ember/
 ├─ manifest.json
 └─ theme.css
 ```
 
 ### 字体
 
-Obsidian 原生设置中的界面字体、正文字体和等宽字体优先于主题默认值。未指定时，Claudy 优先使用设备上已安装的 Inter，并回退到 Noto Sans SC 和系统中文字体。主题不会联网下载字体。
+Obsidian 原生设置中的界面字体、正文字体和等宽字体优先于主题默认值。未指定时，Paper Ember 优先使用设备上已安装的 Inter，并回退到 Noto Sans SC 和系统中文字体。主题不会联网下载字体。
 
 ### 兼容性
 
@@ -49,7 +49,7 @@ Obsidian 原生设置中的界面字体、正文字体和等宽字体优先于�
 
 ## English
 
-Claudy is an Obsidian theme with soft paper-like backgrounds, restrained terracotta accents, and a calm visual hierarchy. Both light and dark modes are supported.
+Paper Ember is an Obsidian theme with soft paper-like backgrounds, restrained terracotta accents, and a calm visual hierarchy. Both light and dark modes are supported.
 
 ### Features
 
@@ -61,25 +61,25 @@ Claudy is an Obsidian theme with soft paper-like backgrounds, restrained terraco
 
 ### Installation
 
-After Claudy is published in the Obsidian Community directory, search for `Claudy` under Settings → Appearance → Themes → Manage.
+After Paper Ember is published in the Obsidian Community directory, search for `Paper Ember` under Settings → Appearance → Themes → Manage.
 
 For manual installation:
 
-1. Download `manifest.json` and `theme.css` from [Releases](https://github.com/eonewg/claudy-obsidian/releases).
-2. Create a `Claudy` folder inside your vault's `.obsidian/themes/` directory.
-3. Place both files in that folder, then select `Claudy` in Obsidian's theme list.
+1. Download `manifest.json` and `theme.css` from [Releases](https://github.com/eonewg/paper-ember/releases).
+2. Create a `Paper Ember` folder inside your vault's `.obsidian/themes/` directory.
+3. Place both files in that folder, then select `Paper Ember` in Obsidian's theme list.
 
 The final directory should look like this:
 
 ```text
-your-vault/.obsidian/themes/Claudy/
+your-vault/.obsidian/themes/Paper Ember/
 ├─ manifest.json
 └─ theme.css
 ```
 
 ### Fonts
 
-Fonts selected in Obsidian's native interface, text, and monospace font settings take priority over the theme defaults. Otherwise, Claudy uses Inter when it is installed and falls back to Noto Sans SC and platform fonts. The theme does not download fonts from the network.
+Fonts selected in Obsidian's native interface, text, and monospace font settings take priority over the theme defaults. Otherwise, Paper Ember uses Inter when it is installed and falls back to Noto Sans SC and platform fonts. The theme does not download fonts from the network.
 
 ### Compatibility
 
