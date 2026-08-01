@@ -884,6 +884,8 @@ pre,
 }
 
 .markdown-source-view.mod-cm6 .cm-table-widget {
+  width: calc(100% + var(--table-drag-handle-size) + var(--table-drag-handle-size));
+  max-width: none;
   overflow: visible;
 }
 
