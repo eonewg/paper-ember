@@ -1,5 +1,5 @@
 /* 1. Theme metadata and Style Settings
-   Paper Ember 1.4.0 — a warm, restrained theme for Obsidian. */
+   Paper Ember 1.4.1 — a warm, restrained theme for Obsidian. */
 
 /* @settings
 name: Paper Ember
@@ -1236,6 +1236,17 @@ select:focus,
 .dropdown:focus {
   border-color: var(--background-modifier-border-focus);
   box-shadow: 0 0 0 2px rgba(var(--eone-accent-rgb), 0.12);
+}
+
+/* Property names are inline labels, not standalone form fields. */
+input.metadata-property-key-input,
+input.metadata-property-key-input:hover,
+input.metadata-property-key-input:active,
+input.metadata-property-key-input:focus,
+input.metadata-property-key-input:focus-visible {
+  background: transparent;
+  border-color: transparent;
+  box-shadow: none;
 }
 
 button,
