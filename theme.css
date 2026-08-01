@@ -993,7 +993,7 @@ body.eone-enable-table-stripes .markdown-source-view.mod-cm6 .cm-table-widget tb
 }
 
 .markdown-rendered :is(th, td):hover,
-.markdown-source-view.mod-cm6 .cm-table-widget :is(th, td):hover {
+.markdown-source-view.mod-cm6 .cm-table-widget :is(th, td):hover:not(:has(:is(.table-row-drag-handle, .table-col-drag-handle):hover)) {
   background: rgba(var(--eone-accent-rgb), 0.055);
 }
 
