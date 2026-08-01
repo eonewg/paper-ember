@@ -1,5 +1,5 @@
 /* 1. Theme metadata and Style Settings
-   Claudy Obsidian 1.2.3 — a warm, restrained theme for Obsidian. */
+   Claudy Obsidian 1.2.4 — a warm, restrained theme for Obsidian. */
 
 /* @settings
 name: Claudy Obsidian
@@ -529,19 +529,12 @@ mark,
 
 .workspace-tab-header-container {
   background: var(--background-secondary);
-  border-color: transparent;
-  box-shadow: none;
+  border-color: var(--background-modifier-border);
 }
 
 .workspace-tab-header {
   color: var(--text-muted);
   transition: color var(--eone-transition-fast), background-color var(--eone-transition-fast);
-}
-
-/* Merge adjacent tab and view chrome into one surface; resize dividers remain. */
-.workspace-leaf-content .view-header {
-  border-bottom-color: transparent;
-  box-shadow: none;
 }
 
 .workspace-tab-header:hover {
