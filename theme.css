@@ -879,10 +879,15 @@ pre,
   max-width: 100%;
 }
 
+.markdown-source-view.mod-cm6 .cm-table-widget {
+  overflow: visible;
+}
+
 /* Obsidian sets the Live Preview table wrapper to fit-content by default. */
 .markdown-source-view.mod-cm6 .cm-table-widget .table-wrapper {
   width: 100%;
   max-width: 100%;
+  overflow: visible;
 }
 
 .markdown-source-view.mod-cm6 .cm-table-widget .table-cell-wrapper,
@@ -897,6 +902,7 @@ pre,
   border-collapse: collapse;
   border-spacing: 0;
   font-size: 0.94em;
+  table-layout: fixed;
 }
 
 .markdown-rendered th,
@@ -904,6 +910,7 @@ pre,
 .markdown-source-view.mod-cm6 .cm-table-widget th,
 .markdown-source-view.mod-cm6 .cm-table-widget td {
   border: 1px solid var(--background-modifier-border);
+  min-width: 0;
   padding: 0.52em 0.72em;
   text-align: center;
   vertical-align: top;
@@ -981,11 +988,15 @@ blockquote,
 
 .callout-content {
   color: var(--text-normal);
-  padding: 0 0.9em 0.72em;
+  padding: 0 0.9em 0.42em;
 }
 
 .callout-content > :first-child {
   margin-block-start: 0.52em;
+}
+
+.callout-content > :last-child {
+  margin-block-end: 0.28em;
 }
 
 .callout[data-callout="note"],
