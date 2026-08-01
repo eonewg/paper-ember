@@ -994,6 +994,11 @@ pre,
   transition: background-color var(--eone-transition-medium), border-color var(--eone-transition-medium);
 }
 
+/* Obsidian gives even columns a separate background in Reading view. */
+.markdown-rendered tbody tr > td:nth-child(2n+2) {
+  background: var(--eone-table-surface);
+}
+
 .markdown-rendered tbody tr:first-child td,
 .markdown-source-view.mod-cm6 .cm-table-widget tbody tr:first-child td {
   border-block-start: 1px solid var(--eone-table-border);
