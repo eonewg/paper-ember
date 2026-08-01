@@ -1039,7 +1039,8 @@ body.eone-enable-table-stripes .markdown-source-view.mod-cm6 .cm-table-widget tb
   background: rgba(var(--eone-accent-rgb), 0.055);
 }
 
-/* Keep the Reading-view hover above Obsidian's alternating-column rule. */
+/* Keep Reading-view hover above Obsidian's alternating-column rules. */
+.markdown-rendered thead tr > th:hover,
 .markdown-rendered tbody tr > td:hover {
   background: rgba(var(--eone-accent-rgb), 0.055);
 }
