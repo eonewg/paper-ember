@@ -885,6 +885,11 @@ pre,
   max-width: 100%;
 }
 
+.markdown-source-view.mod-cm6 .cm-table-widget .table-cell-wrapper,
+.markdown-source-view.mod-cm6 .cm-table-widget .table-cell-wrapper :is(.cm-editor, .cm-scroller, .cm-content, .cm-gutters) {
+  background: transparent;
+}
+
 .markdown-rendered table,
 .markdown-source-view.mod-cm6 .cm-table-widget table {
   width: 100%;
@@ -967,7 +972,7 @@ blockquote,
 
 .callout-title {
   color: rgb(var(--callout-color));
-  background: rgba(var(--callout-color), 0.025);
+  background: transparent;
   padding: 0.62em 0.85em;
   font-weight: 700;
   font-size: 1.06em;
