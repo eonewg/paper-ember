@@ -135,7 +135,7 @@ body {
   --eone-quote-line-cap: 0.28em;
   --eone-callout-bg-alpha: 0.045;
   --eone-callout-border-alpha: 0.42;
-  --eone-settings-nav-width: 282px;
+  --eone-settings-nav-width: 252px;
   --eone-settings-row-padding: 17px;
 
   --font-interface-theme: var(--eone-font-interface);
@@ -1358,21 +1358,34 @@ button.mod-cta:hover {
 .modal.mod-settings .vertical-tab-header {
   flex: 0 0 var(--eone-settings-nav-width);
   width: var(--eone-settings-nav-width);
-  padding: 18px 16px 24px;
+  padding: 16px 10px 22px;
   background: var(--eone-settings-nav-bg);
   border-right: 1px solid var(--eone-settings-divider);
 }
 
 .modal.mod-settings .vertical-tab-header .search-input-container {
-  margin: 0 0 28px;
+  box-sizing: border-box;
+  width: 100%;
+  height: 38px;
+  margin: 0 0 22px;
+  padding: 0;
 }
 
 .modal.mod-settings .vertical-tab-header .search-input-container input {
-  height: 42px;
-  padding-inline: 38px 12px;
+  box-sizing: border-box;
+  width: 100%;
+  height: 38px;
+  padding-inline: 36px 10px;
   background: var(--eone-settings-input-bg);
   border: 1px solid var(--background-modifier-border);
   border-radius: calc(var(--eone-radius) + 4px);
+  line-height: 38px;
+}
+
+.modal.mod-settings .vertical-tab-header .search-input-container::before {
+  top: 50%;
+  left: 10px;
+  transform: translateY(-50%);
 }
 
 .modal.mod-settings .vertical-tab-header-group {
@@ -1380,11 +1393,11 @@ button.mod-cta:hover {
 }
 
 .modal.mod-settings .vertical-tab-header-group + .vertical-tab-header-group {
-  margin-top: 14px;
+  margin-top: 12px;
 }
 
 .modal.mod-settings .vertical-tab-header-group-title {
-  margin: 0 10px 5px;
+  margin: 0 8px 4px;
   padding: 0;
   color: var(--text-faint);
   font-size: var(--font-ui-small);
@@ -1394,12 +1407,12 @@ button.mod-cta:hover {
 .modal.mod-settings .vertical-tab-nav-item {
   display: flex;
   align-items: center;
-  gap: 11px;
+  gap: 9px;
   box-sizing: border-box;
-  height: 38px;
-  min-height: 38px;
+  height: 35px;
+  min-height: 35px;
   margin: 0;
-  padding: 0 11px;
+  padding: 0 8px;
   color: var(--text-muted);
   border-radius: calc(var(--eone-radius) + 3px);
   cursor: pointer;
@@ -1408,18 +1421,18 @@ button.mod-cta:hover {
 
 .modal.mod-settings .vertical-tab-nav-item-icon {
   display: flex;
-  flex: 0 0 21px;
+  flex: 0 0 20px;
   align-items: center;
   justify-content: center;
-  width: 21px;
-  height: 21px;
+  width: 20px;
+  height: 20px;
   margin: 0;
 }
 
 .modal.mod-settings .vertical-tab-nav-item-icon svg {
   display: block;
-  width: 20px;
-  height: 20px;
+  width: 19px;
+  height: 19px;
 }
 
 .modal.mod-settings .vertical-tab-nav-item-title {
@@ -1446,7 +1459,7 @@ button.mod-cta:hover {
 
 .modal.mod-settings .vertical-tab-content {
   max-width: none;
-  padding: 40px clamp(34px, 4.5vw, 68px) 60px;
+  padding: 40px clamp(30px, 3.5vw, 52px) 60px;
 }
 
 .modal.mod-settings .vertical-tab-content > h2 {
@@ -1687,7 +1700,7 @@ button.mod-cta:hover {
 
 @media (max-width: 900px) {
   .modal.mod-settings {
-    --eone-settings-nav-width: 224px;
+    --eone-settings-nav-width: 210px;
   }
 
   .modal.mod-settings .vertical-tab-content {
