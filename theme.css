@@ -13,9 +13,13 @@ settings:
   - id: eone-accent
     title: 强调色
     description: 用于链接、光标、选中项和复选框。
-    type: variable-color
+    type: variable-themed-color
     format: hex
-    default: '#d97757'
+    default-light: '#d97757'
+    default-dark: '#e38a6c'
+    alt-format:
+      - id: eone-accent-rgb
+        format: rgb-values
   - id: eone-light-bg-warmth
     title: 浅色背景暖度
     description: 调整浅色模式主背景的暖色程度。
@@ -68,6 +72,25 @@ settings:
     title: 代码字体
     type: variable-text
     default: '"Cascadia Code", "Cascadia Mono", "JetBrains Mono", Consolas, monospace'
+  - id: eone-claudian-heading
+    title: Claudian
+    type: heading
+    level: 3
+    collapsed: false
+  - id: eone-claudian-follow-editor-font-size
+    title: 跟随编辑器字号
+    description: 开启后，Claudian 使用 Obsidian 当前编辑器字号；关闭后使用下方的独立字号。
+    type: class-toggle
+    default: false
+  - id: eone-claudian-font-size
+    title: Claudian 字号
+    description: 仅在关闭“跟随编辑器字号”时生效。
+    type: variable-number-slider
+    default: 18
+    min: 12
+    max: 26
+    step: 1
+    format: px
   - id: eone-shape-heading
     title: 外观与密度
     type: heading
@@ -120,6 +143,7 @@ body {
   --eone-font-text: "Inter Variable", "Inter", "Noto Sans SC", "Microsoft YaHei", "PingFang SC", "Noto Sans CJK SC", sans-serif;
   --eone-font-monospace: "Cascadia Code", "Cascadia Mono", "JetBrains Mono", Consolas, monospace;
   --eone-font-text-size: 16px;
+  --eone-claudian-font-size: 18px;
   --eone-line-height: 1.7;
   --eone-reading-width: 850px;
   --eone-radius: 6px;
@@ -194,14 +218,15 @@ body.eone-sidebar-comfortable {
   --eone-text-muted: #66625b;
   --eone-text-faint: #918b82;
   --eone-accent: #d97757;
-  --eone-accent-strong: #b85f43;
+  --eone-accent-strong: color-mix(in srgb, var(--eone-accent) 80%, #7d2e1c 20%);
   --eone-accent-rgb: 217, 119, 87;
   --eone-code-bg: rgba(61, 61, 58, 0.055);
   --eone-code-block-bg: #fcfbfb;
   --eone-code-block-border: #dad9da;
   --eone-inline-code: #8a3f27;
-  --eone-quote-border: rgba(var(--eone-accent-rgb), 0.72);
-  --eone-selection: rgba(217, 119, 87, 0.19);
+  --eone-quote-border: #e3e3e1;
+  --eone-active-line-marker: #dadada;
+  --eone-selection: rgba(var(--eone-accent-rgb), 0.19);
   --eone-highlight: rgba(255, 208, 0, 0.4);
   --eone-shadow: rgba(68, 57, 47, 0.1);
   --eone-table-stripe: rgba(79, 68, 57, 0.032);
@@ -288,14 +313,15 @@ body.eone-sidebar-comfortable {
   --eone-text-muted: #c2c0b6;
   --eone-text-faint: #89877f;
   --eone-accent: #e38a6c;
-  --eone-accent-strong: #f09b7c;
+  --eone-accent-strong: color-mix(in srgb, var(--eone-accent) 82%, white 18%);
   --eone-accent-rgb: 227, 138, 108;
   --eone-code-bg: rgba(194, 192, 182, 0.07);
   --eone-code-block-bg: #262624;
   --eone-code-block-border: #434340;
   --eone-inline-code: #f0a486;
-  --eone-quote-border: rgba(var(--eone-accent-rgb), 0.68);
-  --eone-selection: rgba(227, 138, 108, 0.22);
+  --eone-quote-border: #4a4b48;
+  --eone-active-line-marker: #555652;
+  --eone-selection: rgba(var(--eone-accent-rgb), 0.22);
   --eone-highlight: rgba(255, 208, 0, 0.4);
   --eone-shadow: rgba(0, 0, 0, 0.24);
   --eone-table-stripe: rgba(255, 244, 232, 0.026);
@@ -709,13 +735,14 @@ mark,
   background: transparent;
 }
 
-.markdown-source-view.mod-cm6 .cm-line.cm-active:not(.HyperMD-quote)::before {
+.markdown-source-view.mod-cm6
+  .cm-line.cm-active:not(.HyperMD-quote):not(.HyperMD-header)::before {
   content: "";
   position: absolute;
   inset-block: 0.2em;
   inset-inline-start: -0.8em;
   width: 3px;
-  background: var(--eone-quote-border);
+  background: var(--eone-active-line-marker);
   border-radius: 999px;
   pointer-events: none;
 }
@@ -1080,7 +1107,7 @@ blockquote,
 .markdown-rendered blockquote {
   box-sizing: border-box;
   width: 100%;
-  padding-inline-start: 1.55em;
+  padding-inline-start: 1.3em;
   padding-inline-end: 0;
 }
 
@@ -1094,7 +1121,7 @@ blockquote,
 }
 
 .markdown-source-view.mod-cm6 span.cm-formatting-quote {
-  margin-inline-start: 0.75em;
+  margin-inline-start: 0.5em;
 }
 
 .callout {
@@ -1576,6 +1603,7 @@ button.mod-cta:hover {
   max-width: none;
   padding: 40px clamp(30px, 3.5vw, 52px) 60px;
   background: var(--eone-settings-bg);
+  scrollbar-gutter: stable;
 }
 
 /* Obsidian opens navigable settings in a nested setting page. Give the
@@ -2260,8 +2288,18 @@ button.mod-cta:hover {
 /* Obsidian adds a large bottom padding to generic view-content panels. Claudian
    uses that same element as its flex root, so remove only the host padding. */
 .workspace-leaf-content .view-content.claudian-container {
-  padding: 0;
+  --eone-claudian-edge-gap: 18px;
+  --eone-claudian-message-end-gap: 10px;
+  --eone-claudian-composer-start-gap: 14px;
+  --eone-claudian-composer-end-gap: 14px;
+  --eone-claudian-bottom-gap: calc(var(--eone-claudian-composer-end-gap) / 2);
+  box-sizing: border-box;
+  padding: 14px 0 0;
   overflow: hidden;
+  font-size: var(--eone-claudian-font-size);
+}
+
+body.eone-claudian-follow-editor-font-size .workspace-leaf-content .view-content.claudian-container {
   font-size: var(--font-text-size);
 }
 
@@ -2274,10 +2312,36 @@ button.mod-cta:hover {
   font-size: 1.75em;
 }
 
+/* Keep right-aligned user messages off the view edge and aligned with the composer. */
+.claudian-container .claudian-message-user {
+  margin-inline-end: var(--eone-claudian-message-end-gap);
+  max-width: calc(95% - var(--eone-claudian-message-end-gap));
+}
+
 /* Align the conversation badges and composer on one inset baseline. */
 .claudian-container .claudian-input-container {
   box-sizing: border-box;
-  padding-inline: 8px;
+  padding-inline-start: var(--eone-claudian-composer-start-gap);
+  padding-inline-end: var(--eone-claudian-composer-end-gap);
+}
+
+/* Keep the absolutely positioned conversation history aligned with the
+   composer instead of allowing it to span the full Claudian view. */
+.claudian-container .claudian-history-menu {
+  inset-inline-start: var(--eone-claudian-composer-start-gap);
+  inset-inline-end: var(--eone-claudian-composer-end-gap);
+}
+
+/* History-row actions are icon controls, not raised buttons. Keep them quiet
+   until the pointer reaches the individual action. */
+.claudian-container .claudian-history-item-actions button.claudian-action-btn {
+  background: transparent;
+  border-color: transparent;
+  box-shadow: none;
+}
+
+.claudian-container .claudian-history-item-actions button.claudian-action-btn:hover {
+  background: var(--eone-icon-button-hover);
 }
 
 .claudian-container .claudian-active-input-slot > .claudian-input-composer > .claudian-input-container {
@@ -2285,14 +2349,14 @@ button.mod-cta:hover {
 }
 
 .claudian-container .claudian-input-footer {
-  padding-bottom: 4px;
+  padding-bottom: var(--eone-claudian-bottom-gap);
 }
 
 /* In current Claudian builds the view-level nav row and active composer are siblings.
    Give both containers the same inset instead of compensating individual buttons. */
 .claudian-container .claudian-view-input-nav-row {
   box-sizing: border-box;
-  padding-inline: 8px;
+  padding-inline: var(--eone-claudian-edge-gap);
 }
 
 .claudian-container .claudian-tab-badges {
@@ -2310,9 +2374,51 @@ button.mod-cta:hover {
   background: var(--eone-icon-button-hover);
 }
 
+/* Claudian deliberately dims its five-button message navigator to 15%.
+   Keep the native overflow-only visibility logic, but make visible controls legible. */
+.claudian-container .claudian-nav-sidebar.visible {
+  right: 20px;
+  opacity: 0.28;
+}
+
+.claudian-container .claudian-nav-sidebar.visible:hover {
+  opacity: 0.85;
+}
+
+.claudian-container .claudian-nav-btn {
+  color: var(--icon-color);
+  background: var(--background-primary);
+  border-color: var(--background-modifier-border);
+  box-shadow: var(--shadow-s);
+}
+
+.claudian-container .claudian-nav-btn:hover {
+  color: var(--icon-color-hover);
+  background: var(--eone-icon-button-hover);
+}
+
 .claudian-container .claudian-input-wrapper {
+  min-height: 74px;
   background: var(--eone-claudian-input-bg);
   border-radius: 8px;
+}
+
+.claudian-container .claudian-input-wrapper textarea.claudian-input {
+  /* Claudian updates this custom property from the textarea scroll height.
+     Preserve that native auto-grow path and let max-height start scrolling. */
+  min-height: min(var(--claudian-textarea-min-height, 40px), calc(9em + 7px));
+  max-height: calc(9em + 7px);
+  overflow-y: auto;
+  field-sizing: fixed;
+  padding: 3px 8px 4px;
+}
+
+.claudian-container .claudian-context-row {
+  padding: 3px 6px 0;
+}
+
+.claudian-container .claudian-input-toolbar {
+  padding: 0 4px 1px;
 }
 
 /* Claudian context chips provide their own single surface. Cover both current and legacy markup. */
