@@ -23,6 +23,7 @@ $requiredFiles = @(
     "theme.css",
     "manifest.json",
     "README.md",
+    "README.en.md",
     "LICENSE",
     "screenshot.png",
     "scripts\validate.ps1",
