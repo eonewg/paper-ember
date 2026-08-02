@@ -27,7 +27,7 @@ settings:
     description: 调整深色模式主背景的亮度。
     type: variable-color
     format: hex
-    default: '#262624'
+    default: '#20201f'
   - id: eone-typography-heading
     title: 排版
     type: heading
@@ -115,7 +115,7 @@ settings:
 
 body {
   --eone-light-bg-warmth: #f9f9f7;
-  --eone-dark-bg-brightness: #262624;
+  --eone-dark-bg-brightness: #20201f;
   --eone-font-interface: "Inter Variable", "Inter", "Noto Sans SC", "Microsoft YaHei UI", "Microsoft YaHei", sans-serif;
   --eone-font-text: "Inter Variable", "Inter", "Noto Sans SC", "Microsoft YaHei", "PingFang SC", "Noto Sans CJK SC", sans-serif;
   --eone-font-monospace: "Cascadia Code", "Cascadia Mono", "JetBrains Mono", Consolas, monospace;
@@ -203,8 +203,9 @@ body.eone-sidebar-comfortable {
   --eone-highlight: rgba(255, 208, 0, 0.4);
   --eone-shadow: rgba(68, 57, 47, 0.1);
   --eone-table-stripe: rgba(79, 68, 57, 0.032);
-  --eone-table-border: rgba(0, 0, 0, 0.11);
-  --eone-table-surface: rgba(0, 0, 0, 0.018);
+  --eone-table-border: rgba(37, 35, 31, 0.16);
+  --eone-table-header-border: rgba(37, 35, 31, 0.42);
+  --eone-table-surface: transparent;
   --eone-table-selection: rgba(var(--eone-accent-rgb), 0.09);
   --eone-table-selection-border: rgba(var(--eone-accent-rgb), 0.78);
   --eone-nav-item-hover: rgba(31, 30, 29, 0.045);
@@ -277,16 +278,17 @@ body.eone-sidebar-comfortable {
   --eone-accent-strong: #f09b7c;
   --eone-accent-rgb: 227, 138, 108;
   --eone-code-bg: rgba(194, 192, 182, 0.07);
-  --eone-code-block-bg: #282c34;
-  --eone-code-block-border: rgba(198, 203, 213, 0.22);
+  --eone-code-block-bg: #262624;
+  --eone-code-block-border: #434340;
   --eone-inline-code: #f0a486;
   --eone-quote-border: rgba(var(--eone-accent-rgb), 0.68);
   --eone-selection: rgba(227, 138, 108, 0.22);
   --eone-highlight: rgba(255, 208, 0, 0.4);
   --eone-shadow: rgba(0, 0, 0, 0.24);
   --eone-table-stripe: rgba(255, 244, 232, 0.026);
-  --eone-table-border: rgba(255, 255, 255, 0.13);
-  --eone-table-surface: rgba(255, 255, 255, 0.025);
+  --eone-table-border: rgba(240, 237, 230, 0.17);
+  --eone-table-header-border: rgba(240, 237, 230, 0.44);
+  --eone-table-surface: transparent;
   --eone-table-selection: rgba(var(--eone-accent-rgb), 0.13);
   --eone-table-selection-border: rgba(var(--eone-accent-rgb), 0.86);
   --eone-nav-item-hover: rgba(240, 237, 230, 0.085);
@@ -321,17 +323,17 @@ body.eone-sidebar-comfortable {
   --text-selection: var(--eone-selection);
   --text-highlight-bg: var(--eone-highlight);
   --code-background: var(--eone-code-bg);
-  --code-normal: #d7dae0;
-  --code-comment: #8b93a3;
-  --code-function: #e5c07b;
-  --code-important: #f08088;
-  --code-keyword: #e06c75;
-  --code-operator: #e06c75;
-  --code-property: #61afef;
-  --code-punctuation: #abb2bf;
-  --code-string: #98c379;
-  --code-tag: #e06c75;
-  --code-value: #d19a66;
+  --code-normal: #eaecf0;
+  --code-comment: #818898;
+  --code-function: #fbad60;
+  --code-important: #70b8ff;
+  --code-keyword: #cc7bf4;
+  --code-operator: #eaecf0;
+  --code-property: #fbad60;
+  --code-punctuation: #eaecf0;
+  --code-string: #9be963;
+  --code-tag: #fbad60;
+  --code-value: #5eeded;
   --icon-color: var(--eone-text-muted);
   --icon-color-hover: var(--eone-text-normal);
   --icon-color-active: var(--eone-accent-strong);
@@ -974,11 +976,11 @@ pre,
 .markdown-source-view.mod-cm6 .cm-table-widget th {
   color: var(--text-normal);
   background: transparent;
-  border: 1px solid transparent;
+  border: 0;
   font-weight: 650;
 }
 
-/* Reading view keeps the header open and lets only the table body form a card. */
+/* Keep the table open and lightweight; structure comes from separators, not fills. */
 .markdown-rendered thead,
 .markdown-rendered thead tr,
 .markdown-rendered thead th {
@@ -999,7 +1001,6 @@ pre,
 .markdown-rendered tbody td,
 .markdown-source-view.mod-cm6 .cm-table-widget tbody td {
   background: var(--eone-table-surface);
-  border-inline-end: 1px solid var(--eone-table-border);
   border-block-end: 1px solid var(--eone-table-border);
   transition: background-color var(--eone-transition-medium), border-color var(--eone-transition-medium);
 }
@@ -1009,34 +1010,14 @@ pre,
   background: var(--eone-table-surface);
 }
 
-.markdown-rendered tbody tr:first-child td,
-.markdown-source-view.mod-cm6 .cm-table-widget tbody tr:first-child td {
-  border-block-start: 1px solid var(--eone-table-border);
+.markdown-rendered tr > :is(th, td):not(:last-child),
+.markdown-source-view.mod-cm6 .cm-table-widget tr > :is(th, td):not(:last-child) {
+  border-inline-end: 1px solid var(--eone-table-border);
 }
 
-.markdown-rendered tbody td:first-child,
-.markdown-source-view.mod-cm6 .cm-table-widget tbody td:first-child {
-  border-inline-start: 1px solid var(--eone-table-border);
-}
-
-.markdown-rendered tbody tr:first-child td:first-child,
-.markdown-source-view.mod-cm6 .cm-table-widget tbody tr:first-child td:first-child {
-  border-start-start-radius: var(--radius-s);
-}
-
-.markdown-rendered tbody tr:first-child td:last-child,
-.markdown-source-view.mod-cm6 .cm-table-widget tbody tr:first-child td:last-child {
-  border-start-end-radius: var(--radius-s);
-}
-
-.markdown-rendered tbody tr:last-child td:first-child,
-.markdown-source-view.mod-cm6 .cm-table-widget tbody tr:last-child td:first-child {
-  border-end-start-radius: var(--radius-s);
-}
-
-.markdown-rendered tbody tr:last-child td:last-child,
-.markdown-source-view.mod-cm6 .cm-table-widget tbody tr:last-child td:last-child {
-  border-end-end-radius: var(--radius-s);
+.markdown-rendered thead th,
+.markdown-source-view.mod-cm6 .cm-table-widget thead th {
+  border-block-end: 1px solid var(--eone-table-header-border);
 }
 
 body.eone-enable-table-stripes .markdown-rendered tbody tr:nth-child(even) td,
@@ -1046,13 +1027,13 @@ body.eone-enable-table-stripes .markdown-source-view.mod-cm6 .cm-table-widget tb
 
 .markdown-rendered :is(th, td):hover,
 .markdown-source-view.mod-cm6 .cm-table-widget .table-cell-wrapper:hover {
-  background: rgba(var(--eone-accent-rgb), 0.055);
+  background: var(--eone-bg-hover);
 }
 
 /* Keep Reading-view hover above Obsidian's alternating-column rules. */
 .markdown-rendered thead tr > th:hover,
 .markdown-rendered tbody tr > td:hover {
-  background: rgba(var(--eone-accent-rgb), 0.055);
+  background: var(--eone-bg-hover);
 }
 
 .table-wrapper {
