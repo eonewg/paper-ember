@@ -1333,6 +1333,54 @@ button.mod-cta:hover {
   background: var(--interactive-accent-hover);
 }
 
+/* Community Plugins uses a standalone modal outside the main settings view. */
+.modal.mod-community-modal .community-modal-search .search-input-container {
+  height: 38px;
+  margin: 0;
+  box-shadow: none;
+}
+
+.modal.mod-community-modal .community-modal-search .search-input-container::before {
+  inset-inline-start: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.modal.mod-community-modal .community-modal-search .search-input-container input {
+  box-sizing: border-box;
+  width: 100%;
+  height: 38px;
+  padding-inline: 38px 12px;
+  background: var(--eone-settings-input-bg);
+  border: 1px solid var(--eone-settings-control-border);
+  border-radius: calc(var(--eone-radius) + 4px);
+  box-shadow: none;
+}
+
+.modal.mod-community-modal .community-modal-search .search-input-container input:is(:focus, :focus-visible) {
+  outline: none;
+  border-color: var(--eone-settings-picker-border);
+  box-shadow: none;
+}
+
+.modal.mod-community-modal .community-modal-controls .checkbox-container,
+.modal.mod-community-modal .community-modal-controls .checkbox-container::after {
+  cursor: pointer;
+  transition-duration: 80ms;
+}
+
+.modal.mod-community-modal :is(button, .clickable-icon, .checkbox-container, [role="button"], .community-item) {
+  cursor: pointer;
+}
+
+.modal.mod-community-modal .community-modal-search-results .community-item {
+  background: var(--eone-settings-input-bg);
+}
+
+.modal.mod-community-modal .community-modal-search-results .community-item:hover {
+  background: var(--eone-settings-option-hover);
+}
+
 /* Plugin settings tab strips are navigation, not generic raised buttons. */
 .modal.mod-settings :is([role="tablist"], [class*="-tabs"]) {
   gap: 4px;
@@ -1370,8 +1418,6 @@ button.mod-cta:hover {
   --font-ui-small: 14px;
   --font-ui-medium: 16px;
   --font-ui-large: 21px;
-  width: min(94vw, 1480px);
-  height: min(92vh, 940px);
   color: var(--text-normal);
   background: var(--eone-settings-bg);
   overflow: hidden;
@@ -1395,9 +1441,13 @@ button.mod-cta:hover {
 .modal.mod-settings .vertical-tab-header {
   flex: 0 0 var(--eone-settings-nav-width);
   width: var(--eone-settings-nav-width);
-  padding: 16px 10px 22px;
+  padding: 16px 0 22px 10px;
   background: var(--eone-settings-nav-bg);
   border-right: 1px solid var(--eone-settings-divider);
+}
+
+.modal.mod-settings .vertical-tab-header > :is(.setting-search-container, .vertical-tab-header-group) {
+  margin-right: 10px;
 }
 
 /* The header already provides the modal's top inset. Obsidian's nested search
@@ -1619,6 +1669,78 @@ button.mod-cta:hover {
 }
 
 .modal.mod-settings .setting-page .setting-group-search:focus-visible {
+  outline: 1px solid var(--eone-settings-picker-border);
+  outline-offset: 2px;
+}
+
+/* First-level settings pages (hotkeys, community plugins, etc.) use the same
+   search group component as nested pages, but Obsidian wraps it in a filled
+   settings card. Keep only the field itself visible so filters beneath it can
+   retain their own spacing and interaction states. */
+.modal.mod-settings .vertical-tab-content:not(.setting-page) .setting-group-search {
+  margin: 0;
+  padding-block: 0 12px;
+  background: transparent;
+  border: 0;
+  border-radius: 0;
+}
+
+.modal.mod-settings .vertical-tab-content:not(.setting-page) .setting-group-search .search-input-container {
+  box-sizing: border-box;
+  width: 100%;
+  height: 38px;
+  margin: 0;
+}
+
+.modal.mod-settings .vertical-tab-content:not(.setting-page) .setting-group-search .search-input-container::before {
+  top: 50%;
+  inset-inline-start: 12px;
+  margin: 0;
+  transform: translateY(-50%);
+}
+
+.modal.mod-settings .vertical-tab-content:not(.setting-page) .setting-group-search .search-input-container input {
+  box-sizing: border-box;
+  width: 100%;
+  height: 38px;
+  padding-inline: 38px 12px;
+  background: var(--eone-settings-input-bg);
+  border: 1px solid var(--eone-settings-control-border);
+  border-radius: calc(var(--eone-radius) + 4px);
+  box-shadow: none;
+}
+
+.modal.mod-settings .vertical-tab-content:not(.setting-page) .setting-group-search .search-input-container input:is(:focus, :focus-visible) {
+  outline: none;
+  border-color: var(--eone-settings-picker-border);
+  box-shadow: none;
+}
+
+.modal.mod-settings .vertical-tab-content:not(.setting-page) .setting-group-search:focus-visible {
+  outline: none;
+}
+
+/* Status filters are navigation choices, not accent actions. Match the
+   neutral selected and hover states used throughout the settings sidebar. */
+.modal.mod-settings .setting-group-filter {
+  cursor: pointer;
+  transition: color var(--eone-transition-fast), background-color var(--eone-transition-medium), border-color var(--eone-transition-fast);
+}
+
+.modal.mod-settings .setting-group-filter:hover {
+  color: var(--text-normal);
+  background-color: var(--background-modifier-hover);
+  border-color: transparent;
+}
+
+.modal.mod-settings .setting-group-filter.is-active,
+.modal.mod-settings .setting-group-filter.is-active:hover {
+  color: var(--text-normal);
+  background-color: var(--eone-settings-nav-active);
+  border-color: transparent;
+}
+
+.modal.mod-settings .setting-group-filter:focus-visible {
   outline: 1px solid var(--eone-settings-picker-border);
   outline-offset: 2px;
 }
