@@ -1,6 +1,6 @@
 # Paper Ember
 
-[简体中文](README.md)
+[简体中文](README.md#简体中文)
 
 Paper Ember is an Obsidian theme with soft paper-like backgrounds, restrained terracotta accents, and a calm visual hierarchy. It supports both light and dark modes.
 
