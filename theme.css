@@ -450,12 +450,7 @@ body.eone-enable-h2-decoration .markdown-source-view .HyperMD-header-2 {
   margin-block: 0.4em 0.3em;
 }
 
-/* Keep consecutive hierarchy headings compact without tightening heading-to-body spacing. */
-.markdown-rendered :is(h1, h2, h3, h4, h5, h6):has(+ :is(h1, h2, h3, h4, h5, h6)),
-.markdown-source-view .HyperMD-header:has(+ .HyperMD-header) {
-  margin-block-end: var(--eone-stacked-heading-gap);
-}
-
+/* Keep the following hierarchy heading compact; adjacent block margins collapse in Reading view. */
 .markdown-rendered :is(h1, h2, h3, h4, h5, h6) + :is(h1, h2, h3, h4, h5, h6),
 .markdown-source-view .HyperMD-header + .HyperMD-header {
   margin-block-start: var(--eone-stacked-heading-gap);
@@ -477,8 +472,6 @@ mark,
   color: var(--text-normal);
   background-color: var(--text-highlight-bg);
   border-radius: 2px;
-  box-decoration-break: clone;
-  -webkit-box-decoration-break: clone;
   padding-inline: 0.05em;
   text-decoration: none;
 }
@@ -754,7 +747,6 @@ input[type="checkbox"]:checked,
 .task-list-item.is-checked,
 .task-list-item[data-task="x"] {
   color: var(--text-muted);
-  text-decoration-color: var(--text-faint);
 }
 
 .tag,
@@ -881,8 +873,7 @@ pre,
   color: var(--text-normal);
 }
 
-.math-block,
-.markdown-rendered mjx-container[display="true"] {
+.math-block {
   overflow-x: auto;
   margin-block: 1.15em;
   padding-block: 0.15em;
@@ -943,10 +934,10 @@ pre,
 }
 
 /* Override Obsidian's first/last-column alignment only in Reading view. */
-.markdown-rendered table :is(th, td),
-.markdown-rendered table :is(th, td):first-child,
-.markdown-rendered table :is(th, td):last-child {
-  text-align: center !important;
+.markdown-preview-view.markdown-rendered table > :is(thead, tbody) > tr > :is(th, td),
+.markdown-preview-view.markdown-rendered table > :is(thead, tbody) > tr > :is(th, td):first-child,
+.markdown-preview-view.markdown-rendered table > :is(thead, tbody) > tr > :is(th, td):last-child {
+  text-align: center;
 }
 
 .markdown-rendered :is(th, td) {
@@ -1035,7 +1026,7 @@ body.eone-enable-table-stripes .markdown-source-view.mod-cm6 .cm-table-widget tb
 }
 
 .markdown-rendered :is(th, td):hover,
-.markdown-source-view.mod-cm6 .cm-table-widget :is(th, td):hover:not(:has(:is(.table-row-drag-handle, .table-col-drag-handle):hover)) {
+.markdown-source-view.mod-cm6 .cm-table-widget .table-cell-wrapper:hover {
   background: rgba(var(--eone-accent-rgb), 0.055);
 }
 
@@ -1076,10 +1067,6 @@ blockquote,
 .markdown-source-view.mod-cm6.is-live-preview .cm-line.HyperMD-quote:first-child::before,
 .markdown-source-view.mod-cm6.is-live-preview .cm-line:not(.HyperMD-quote) + .cm-line.HyperMD-quote::before {
   top: var(--eone-quote-line-cap);
-}
-
-.markdown-source-view.mod-cm6.is-live-preview .cm-line.HyperMD-quote:not(:has(+ .cm-line.HyperMD-quote))::before {
-  bottom: var(--eone-quote-line-cap);
 }
 
 .markdown-source-view.mod-cm6 span.cm-formatting-quote {
