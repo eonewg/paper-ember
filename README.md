@@ -5,9 +5,7 @@
 ![Paper Ember theme preview](screenshot.png)
 
 <p align="center">
-  <img src="screenshots/reading-and-math.png" width="32%" alt="Paper Ember reading, quotes, callouts, and mathematics preview">
-  <img src="screenshots/code-and-table.png" width="32%" alt="Paper Ember tasks, code blocks, and tables preview">
-  <img src="screenshots/table-callout-links.png" width="32%" alt="Paper Ember tables, callouts, links, and footnotes preview">
+  <img src="screenshots/showcase-details.png" width="100%" alt="Paper Ember tasks, code blocks, tables, callouts, links, and footnotes preview">
 </p>
 
 ## 中文
