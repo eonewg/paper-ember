@@ -10,16 +10,6 @@ settings:
     type: heading
     level: 2
     collapsed: false
-  - id: eone-accent
-    title: 强调色
-    description: 用于链接、光标、选中项和复选框。
-    type: variable-themed-color
-    format: hex
-    default-light: '#d97757'
-    default-dark: '#e38a6c'
-    alt-format:
-      - id: eone-accent-rgb
-        format: rgb-values
   - id: eone-light-bg-warmth
     title: 浅色背景暖度
     description: 调整浅色模式主背景的暖色程度。
@@ -217,24 +207,24 @@ body.eone-sidebar-comfortable {
   --eone-text-normal: #25231f;
   --eone-text-muted: #66625b;
   --eone-text-faint: #918b82;
-  --eone-accent: #d97757;
-  --eone-accent-strong: color-mix(in srgb, var(--eone-accent) 80%, #7d2e1c 20%);
-  --eone-accent-rgb: 217, 119, 87;
+  --paper-ember-accent: var(--interactive-accent);
+  --paper-ember-accent-strong: var(--interactive-accent-hover);
+  --paper-ember-accent-rgb: var(--interactive-accent-rgb);
   --eone-code-bg: rgba(61, 61, 58, 0.055);
   --eone-code-block-bg: #fcfbfb;
   --eone-code-block-border: #dad9da;
   --eone-inline-code: #8a3f27;
   --eone-quote-border: #e3e3e1;
   --eone-active-line-marker: #dadada;
-  --eone-selection: rgba(var(--eone-accent-rgb), 0.19);
+  --eone-selection: rgba(var(--paper-ember-accent-rgb), 0.19);
   --eone-highlight: rgba(255, 208, 0, 0.4);
   --eone-shadow: rgba(68, 57, 47, 0.1);
   --eone-table-stripe: rgba(79, 68, 57, 0.032);
   --eone-table-border: rgba(37, 35, 31, 0.16);
   --eone-table-header-border: rgba(37, 35, 31, 0.42);
   --eone-table-surface: transparent;
-  --eone-table-selection: rgba(var(--eone-accent-rgb), 0.09);
-  --eone-table-selection-border: rgba(var(--eone-accent-rgb), 0.78);
+  --eone-table-selection: rgba(var(--paper-ember-accent-rgb), 0.09);
+  --eone-table-selection-border: rgba(var(--paper-ember-accent-rgb), 0.78);
   --eone-nav-item-hover: rgba(31, 30, 29, 0.045);
   --eone-nav-item-active: rgba(31, 30, 29, 0.045);
   --eone-icon-button-hover: var(--eone-bg-hover);
@@ -245,9 +235,9 @@ body.eone-sidebar-comfortable {
   --eone-settings-divider: #ececea;
   --eone-settings-option-hover: #f3f3f3;
   --eone-settings-picker-border: #dbdbdb;
-  --eone-settings-checkmark: #3666a3;
+  --eone-settings-checkmark: var(--paper-ember-accent);
   --eone-settings-control-border: #e6e6e6;
-  --eone-settings-toggle-active: #2a78d6;
+  --eone-settings-toggle-active: var(--paper-ember-accent);
   --eone-claudian-input-bg: #ffffff;
 
   --background-primary: var(--eone-bg-primary);
@@ -258,7 +248,7 @@ body.eone-sidebar-comfortable {
   --background-modifier-active-hover: #e8e5dd;
   --background-modifier-border: var(--eone-border);
   --background-modifier-border-hover: var(--eone-border-strong);
-  --background-modifier-border-focus: rgba(var(--eone-accent-rgb), 0.62);
+  --background-modifier-border-focus: rgba(var(--paper-ember-accent-rgb), 0.62);
   --background-modifier-form-field: var(--eone-bg-elevated);
   --background-modifier-form-field-highlighted: var(--eone-bg-primary);
   --background-modifier-box-shadow: var(--eone-shadow);
@@ -266,15 +256,8 @@ body.eone-sidebar-comfortable {
   --text-normal: var(--eone-text-normal);
   --text-muted: var(--eone-text-muted);
   --text-faint: var(--eone-text-faint);
-  --text-accent: var(--eone-accent-strong);
-  --text-accent-hover: #984c35;
-  --text-on-accent: #fffaf6;
-  --text-on-accent-inverted: #2d2a26;
   --interactive-normal: var(--eone-bg-elevated);
   --interactive-hover: var(--eone-bg-hover);
-  --interactive-accent: var(--eone-accent);
-  --interactive-accent-hover: var(--eone-accent-strong);
-  --interactive-accent-rgb: var(--eone-accent-rgb);
   --text-selection: var(--eone-selection);
   --text-highlight-bg: var(--eone-highlight);
   --code-background: var(--eone-code-bg);
@@ -291,7 +274,7 @@ body.eone-sidebar-comfortable {
   --code-value: #008080;
   --icon-color: var(--eone-text-muted);
   --icon-color-hover: var(--eone-text-normal);
-  --icon-color-active: var(--eone-accent-strong);
+  --icon-color-active: var(--paper-ember-accent-strong);
   --divider-color: var(--eone-border);
   --divider-color-hover: var(--eone-border-strong);
   --scrollbar-bg: transparent;
@@ -312,24 +295,24 @@ body.eone-sidebar-comfortable {
   --eone-text-normal: #f0ede6;
   --eone-text-muted: #c2c0b6;
   --eone-text-faint: #89877f;
-  --eone-accent: #e38a6c;
-  --eone-accent-strong: color-mix(in srgb, var(--eone-accent) 82%, white 18%);
-  --eone-accent-rgb: 227, 138, 108;
+  --paper-ember-accent: var(--interactive-accent);
+  --paper-ember-accent-strong: var(--interactive-accent-hover);
+  --paper-ember-accent-rgb: var(--interactive-accent-rgb);
   --eone-code-bg: rgba(194, 192, 182, 0.07);
   --eone-code-block-bg: #262624;
   --eone-code-block-border: #434340;
   --eone-inline-code: #f0a486;
   --eone-quote-border: #4a4b48;
   --eone-active-line-marker: #555652;
-  --eone-selection: rgba(var(--eone-accent-rgb), 0.22);
+  --eone-selection: rgba(var(--paper-ember-accent-rgb), 0.22);
   --eone-highlight: rgba(255, 208, 0, 0.4);
   --eone-shadow: rgba(0, 0, 0, 0.24);
   --eone-table-stripe: rgba(255, 244, 232, 0.026);
   --eone-table-border: rgba(240, 237, 230, 0.17);
   --eone-table-header-border: rgba(240, 237, 230, 0.44);
   --eone-table-surface: transparent;
-  --eone-table-selection: rgba(var(--eone-accent-rgb), 0.13);
-  --eone-table-selection-border: rgba(var(--eone-accent-rgb), 0.86);
+  --eone-table-selection: rgba(var(--paper-ember-accent-rgb), 0.13);
+  --eone-table-selection-border: rgba(var(--paper-ember-accent-rgb), 0.86);
   --eone-nav-item-hover: rgba(240, 237, 230, 0.085);
   --eone-nav-item-active: rgba(240, 237, 230, 0.085);
   --eone-icon-button-hover: var(--eone-bg-hover);
@@ -340,9 +323,9 @@ body.eone-sidebar-comfortable {
   --eone-settings-divider: #3a3a38;
   --eone-settings-option-hover: #373735;
   --eone-settings-picker-border: #464644;
-  --eone-settings-checkmark: #70b8ff;
+  --eone-settings-checkmark: var(--paper-ember-accent);
   --eone-settings-control-border: #53534f;
-  --eone-settings-toggle-active: #2a78d6;
+  --eone-settings-toggle-active: var(--paper-ember-accent);
   --eone-claudian-input-bg: #2c2c2a;
 
   --background-primary: var(--eone-bg-primary);
@@ -353,7 +336,7 @@ body.eone-sidebar-comfortable {
   --background-modifier-active-hover: #3b3b37;
   --background-modifier-border: var(--eone-border);
   --background-modifier-border-hover: var(--eone-border-strong);
-  --background-modifier-border-focus: rgba(var(--eone-accent-rgb), 0.66);
+  --background-modifier-border-focus: rgba(var(--paper-ember-accent-rgb), 0.66);
   --background-modifier-form-field: var(--eone-bg-elevated);
   --background-modifier-form-field-highlighted: var(--eone-bg-primary);
   --background-modifier-box-shadow: var(--eone-shadow);
@@ -361,15 +344,8 @@ body.eone-sidebar-comfortable {
   --text-normal: var(--eone-text-normal);
   --text-muted: var(--eone-text-muted);
   --text-faint: var(--eone-text-faint);
-  --text-accent: var(--eone-accent);
-  --text-accent-hover: var(--eone-accent-strong);
-  --text-on-accent: #211f1c;
-  --text-on-accent-inverted: #f8f3ed;
   --interactive-normal: var(--eone-bg-elevated);
   --interactive-hover: var(--eone-bg-hover);
-  --interactive-accent: var(--eone-accent);
-  --interactive-accent-hover: var(--eone-accent-strong);
-  --interactive-accent-rgb: var(--eone-accent-rgb);
   --text-selection: var(--eone-selection);
   --text-highlight-bg: var(--eone-highlight);
   --code-background: var(--eone-code-bg);
@@ -386,7 +362,7 @@ body.eone-sidebar-comfortable {
   --code-value: #5eeded;
   --icon-color: var(--eone-text-muted);
   --icon-color-hover: var(--eone-text-normal);
-  --icon-color-active: var(--eone-accent-strong);
+  --icon-color-active: var(--paper-ember-accent-strong);
   --divider-color: var(--eone-border);
   --divider-color-hover: var(--eone-border-strong);
   --scrollbar-bg: transparent;
@@ -444,7 +420,7 @@ textarea {
 
 body.eone-enable-h2-decoration .markdown-rendered h2,
 body.eone-enable-h2-decoration .markdown-source-view .HyperMD-header-2 {
-  border-inline-start: 3px solid var(--eone-accent);
+  border-inline-start: 3px solid var(--paper-ember-accent);
   padding-inline-start: 0.68em;
 }
 
@@ -537,7 +513,7 @@ mark,
 
 .markdown-source-view.mod-cm6 .cm-cursor,
 .markdown-source-view.mod-cm6 .cm-dropCursor {
-  border-left-color: var(--eone-accent);
+  border-left-color: var(--paper-ember-accent);
   border-left-width: 2px;
 }
 
@@ -581,7 +557,7 @@ mark,
 .workspace-tab-header.is-active {
   color: var(--text-normal);
   background: var(--background-primary);
-  box-shadow: inset 0 -2px 0 var(--eone-accent);
+  box-shadow: inset 0 -2px 0 var(--paper-ember-accent);
 }
 
 .workspace-tab-header.is-active::before,
@@ -690,7 +666,7 @@ mark,
 
 .tree-item-self.is-selected,
 .tree-item-self.is-active {
-  background: rgba(var(--eone-accent-rgb), 0.12);
+  background: rgba(var(--paper-ember-accent-rgb), 0.12);
   color: var(--text-normal);
 }
 
@@ -727,7 +703,7 @@ mark,
 }
 
 .markdown-source-view.mod-cm6 .cm-line {
-  caret-color: var(--eone-accent);
+  caret-color: var(--paper-ember-accent);
 }
 
 .markdown-source-view.mod-cm6 .cm-active.cm-line {
@@ -807,13 +783,13 @@ mark,
 input[type="checkbox"],
 .task-list-item-checkbox {
   border-color: var(--eone-border-strong);
-  accent-color: var(--eone-accent);
+  accent-color: var(--paper-ember-accent);
 }
 
 input[type="checkbox"]:checked,
 .task-list-item-checkbox:checked {
-  background-color: var(--eone-accent);
-  border-color: var(--eone-accent);
+  background-color: var(--paper-ember-accent);
+  border-color: var(--paper-ember-accent);
 }
 
 .task-list-item.is-checked,
@@ -824,8 +800,8 @@ input[type="checkbox"]:checked,
 .tag,
 a.tag {
   color: var(--text-accent);
-  background: rgba(var(--eone-accent-rgb), 0.1);
-  border: 1px solid rgba(var(--eone-accent-rgb), 0.18);
+  background: rgba(var(--paper-ember-accent-rgb), 0.1);
+  border: 1px solid rgba(var(--paper-ember-accent-rgb), 0.18);
   border-radius: 999px;
   padding: 0.08em 0.5em;
   font-size: 0.86em;
@@ -837,7 +813,7 @@ a.tag {
 .tag:hover,
 a.tag:hover {
   color: var(--text-accent-hover);
-  background: rgba(var(--eone-accent-rgb), 0.16);
+  background: rgba(var(--paper-ember-accent-rgb), 0.16);
 }
 
 .footnote-ref,
@@ -1274,7 +1250,7 @@ textarea:focus,
 select:focus,
 .dropdown:focus {
   border-color: var(--background-modifier-border-focus);
-  box-shadow: 0 0 0 2px rgba(var(--eone-accent-rgb), 0.12);
+  box-shadow: 0 0 0 2px rgba(var(--paper-ember-accent-rgb), 0.12);
 }
 
 /* Property names are inline labels, not standalone form fields. */
@@ -1342,7 +1318,7 @@ button.clickable-icon:not(.mod-cta):hover {
 .clickable-icon:is(.is-active, .mod-active, [aria-pressed="true"]),
 button.clickable-icon:not(.mod-cta):is(.is-active, .mod-active, [aria-pressed="true"]) {
   color: var(--icon-color-active);
-  background: rgba(var(--eone-accent-rgb), 0.12);
+  background: rgba(var(--paper-ember-accent-rgb), 0.12);
 }
 
 .clickable-icon svg,
@@ -1924,7 +1900,7 @@ button.mod-cta:hover {
 .modal.mod-settings :is(select, .dropdown):focus-visible {
   background-color: var(--background-modifier-hover);
   border-color: var(--background-modifier-border-focus);
-  box-shadow: 0 0 0 2px rgba(var(--eone-accent-rgb), 0.1);
+  box-shadow: 0 0 0 2px rgba(var(--paper-ember-accent-rgb), 0.1);
   outline: none;
 }
 
@@ -2170,7 +2146,7 @@ button.mod-cta:hover {
 
 .workspace-leaf-content[data-type="calendar"] .today {
   color: var(--text-accent);
-  box-shadow: inset 0 -2px 0 var(--eone-accent);
+  box-shadow: inset 0 -2px 0 var(--paper-ember-accent);
 }
 
 /* Kanban: lanes are structural surfaces; individual cards stay quiet. */
@@ -2193,8 +2169,8 @@ button.mod-cta:hover {
 /* Excalidraw consumes these semantic colors while retaining canvas behavior. */
 .excalidraw,
 .excalidraw-wrapper {
-  --color-primary: var(--eone-accent);
-  --color-primary-darker: var(--eone-accent-strong);
+  --color-primary: var(--paper-ember-accent);
+  --color-primary-darker: var(--paper-ember-accent-strong);
   --color-surface-low: var(--background-secondary);
 }
 
@@ -2247,13 +2223,13 @@ button.mod-cta:hover {
   --nn-theme-file-selected-bg: var(--eone-nav-item-active);
   --nn-theme-file-selected-inactive-bg: var(--eone-nav-item-active);
   --nn-theme-file-tag-color: var(--text-accent);
-  --nn-theme-file-tag-border-color: rgba(var(--eone-accent-rgb), 0.24);
-  --nn-theme-file-tag-bg: rgba(var(--eone-accent-rgb), 0.075);
+  --nn-theme-file-tag-border-color: rgba(var(--paper-ember-accent-rgb), 0.24);
+  --nn-theme-file-tag-bg: rgba(var(--paper-ember-accent-rgb), 0.075);
   --nn-theme-file-selected-tag-color: var(--text-accent);
-  --nn-theme-file-selected-tag-border-color: rgba(var(--eone-accent-rgb), 0.32);
-  --nn-theme-file-selected-tag-bg: rgba(var(--eone-accent-rgb), 0.12);
+  --nn-theme-file-selected-tag-border-color: rgba(var(--paper-ember-accent-rgb), 0.32);
+  --nn-theme-file-selected-tag-bg: rgba(var(--paper-ember-accent-rgb), 0.12);
   --nn-theme-file-selected-inactive-tag-color: var(--text-accent);
-  --nn-theme-file-selected-inactive-tag-bg: rgba(var(--eone-accent-rgb), 0.085);
+  --nn-theme-file-selected-inactive-tag-bg: rgba(var(--paper-ember-accent-rgb), 0.085);
 }
 
 .notebook-navigator .nn-file.nn-selected:not(.nn-compact) .nn-file-name {
@@ -2489,7 +2465,7 @@ body.eone-claudian-follow-editor-font-size .workspace-leaf-content .view-content
 /* 12. Accessibility and motion */
 
 :focus-visible {
-  outline: 2px solid rgba(var(--eone-accent-rgb), 0.72);
+  outline: 2px solid rgba(var(--paper-ember-accent-rgb), 0.72);
   outline-offset: 2px;
 }
 
@@ -2497,7 +2473,7 @@ body.eone-claudian-follow-editor-font-size .workspace-leaf-content .view-content
 button:focus-visible,
 .nav-file-title:focus-visible,
 .nav-folder-title:focus-visible {
-  box-shadow: 0 0 0 2px rgba(var(--eone-accent-rgb), 0.18);
+  box-shadow: 0 0 0 2px rgba(var(--paper-ember-accent-rgb), 0.18);
 }
 
 @media (prefers-reduced-motion: reduce) {
