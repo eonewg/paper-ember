@@ -46,8 +46,12 @@ Obsidian 原生设置中的界面字体、正文字体和等宽字体优先于�
 
 ### 兼容性
 
-- 最低 Obsidian 版本：1.8.0
+- 最低 Obsidian 版本：1.13.0
 - Style Settings 为可选插件；不安装也可正常使用主题
+
+### 致谢
+
+部分组件的设计灵感来自 [Cupertino](https://github.com/aaaaalexis/obsidian-cupertino)。感谢 aaaaalexis 的优秀设计与开源分享。
 
 ### 许可证
 
@@ -89,8 +93,12 @@ Fonts selected in Obsidian's native interface, text, and monospace font settings
 
 ### Compatibility
 
-- Minimum Obsidian version: 1.8.0
+- Minimum Obsidian version: 1.13.0
 - Style Settings is optional; the theme works without it
+
+### Acknowledgements
+
+Some component designs were inspired by [Cupertino](https://github.com/aaaaalexis/obsidian-cupertino). Thanks to aaaaalexis for the thoughtful design work and for sharing it openly.
 
 ### License
 

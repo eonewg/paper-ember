@@ -195,8 +195,8 @@ body.eone-sidebar-comfortable {
   --eone-accent-strong: #b85f43;
   --eone-accent-rgb: 217, 119, 87;
   --eone-code-bg: rgba(61, 61, 58, 0.055);
-  --eone-code-block-bg: rgba(79, 68, 57, 0.052);
-  --eone-code-block-border: rgba(79, 68, 57, 0.19);
+  --eone-code-block-bg: rgba(255, 255, 255, 0.56);
+  --eone-code-block-border: rgba(56, 58, 66, 0.2);
   --eone-inline-code: #8a3f27;
   --eone-quote-border: rgba(var(--eone-accent-rgb), 0.72);
   --eone-selection: rgba(217, 119, 87, 0.19);
@@ -239,17 +239,17 @@ body.eone-sidebar-comfortable {
   --text-selection: var(--eone-selection);
   --text-highlight-bg: var(--eone-highlight);
   --code-background: var(--eone-code-bg);
-  --code-normal: #4c4741;
-  --code-comment: #80786f;
-  --code-function: #945f47;
-  --code-important: #9b4f43;
-  --code-keyword: #8c5d74;
-  --code-operator: #665f58;
-  --code-property: #47717a;
-  --code-punctuation: #716a62;
-  --code-string: #657446;
-  --code-tag: #a05343;
-  --code-value: #8a642f;
+  --code-normal: #383a42;
+  --code-comment: #737984;
+  --code-function: #b66300;
+  --code-important: #d33f49;
+  --code-keyword: #e45649;
+  --code-operator: #e45649;
+  --code-property: #4078d8;
+  --code-punctuation: #4b4f59;
+  --code-string: #438f45;
+  --code-tag: #d94f45;
+  --code-value: #986801;
   --icon-color: var(--eone-text-muted);
   --icon-color-hover: var(--eone-text-normal);
   --icon-color-active: var(--eone-accent-strong);
@@ -277,8 +277,8 @@ body.eone-sidebar-comfortable {
   --eone-accent-strong: #f09b7c;
   --eone-accent-rgb: 227, 138, 108;
   --eone-code-bg: rgba(194, 192, 182, 0.07);
-  --eone-code-block-bg: rgba(0, 0, 0, 0.2);
-  --eone-code-block-border: rgba(255, 244, 232, 0.17);
+  --eone-code-block-bg: #282c34;
+  --eone-code-block-border: rgba(198, 203, 213, 0.22);
   --eone-inline-code: #f0a486;
   --eone-quote-border: rgba(var(--eone-accent-rgb), 0.68);
   --eone-selection: rgba(227, 138, 108, 0.22);
@@ -321,17 +321,17 @@ body.eone-sidebar-comfortable {
   --text-selection: var(--eone-selection);
   --text-highlight-bg: var(--eone-highlight);
   --code-background: var(--eone-code-bg);
-  --code-normal: #ddd5cc;
-  --code-comment: #968e84;
-  --code-function: #e0a080;
-  --code-important: #ed9184;
-  --code-keyword: #c9a0b4;
-  --code-operator: #c4bbb1;
-  --code-property: #8eb5ba;
-  --code-punctuation: #aaa198;
-  --code-string: #aabc86;
-  --code-tag: #e29480;
-  --code-value: #d1ad70;
+  --code-normal: #d7dae0;
+  --code-comment: #8b93a3;
+  --code-function: #e5c07b;
+  --code-important: #f08088;
+  --code-keyword: #e06c75;
+  --code-operator: #e06c75;
+  --code-property: #61afef;
+  --code-punctuation: #abb2bf;
+  --code-string: #98c379;
+  --code-tag: #e06c75;
+  --code-value: #d19a66;
   --icon-color: var(--eone-text-muted);
   --icon-color-hover: var(--eone-text-normal);
   --icon-color-active: var(--eone-accent-strong);
@@ -1093,16 +1093,16 @@ blockquote,
 }
 
 .callout {
-  --callout-color: 102, 118, 126;
-  background: rgba(var(--callout-color), var(--eone-callout-bg-alpha));
-  border: 1px solid rgba(var(--callout-color), var(--eone-callout-border-alpha));
+  --callout-color: rgb(102, 118, 126);
+  background: color-mix(in srgb, var(--callout-color) calc(var(--eone-callout-bg-alpha) * 100%), transparent);
+  border: 1px solid color-mix(in srgb, var(--callout-color) calc(var(--eone-callout-border-alpha) * 100%), transparent);
   border-radius: var(--radius-m);
   padding: 0;
   box-shadow: none;
 }
 
 .callout-title {
-  color: rgb(var(--callout-color));
+  color: var(--callout-color);
   background: transparent;
   padding: 0.62em 0.85em 0.5em;
   font-weight: 700;
@@ -1127,33 +1127,33 @@ blockquote,
 .callout[data-callout="info"],
 .callout[data-callout="todo"],
 .callout[data-callout="abstract"] {
-  --callout-color: 92, 123, 140;
+  --callout-color: rgb(92, 123, 140);
 }
 
 .callout[data-callout="tip"],
 .callout[data-callout="success"] {
-  --callout-color: 94, 132, 103;
+  --callout-color: rgb(94, 132, 103);
 }
 
 .callout[data-callout="warning"] {
-  --callout-color: 184, 82, 69;
+  --callout-color: rgb(184, 82, 69);
 }
 
 .callout[data-callout="question"] {
-  --callout-color: 154, 112, 62;
+  --callout-color: rgb(154, 112, 62);
 }
 
 .callout[data-callout="danger"],
 .callout[data-callout="bug"] {
-  --callout-color: 160, 83, 75;
+  --callout-color: rgb(160, 83, 75);
 }
 
 .callout[data-callout="example"] {
-  --callout-color: 126, 105, 137;
+  --callout-color: rgb(126, 105, 137);
 }
 
 .callout[data-callout="quote"] {
-  --callout-color: 113, 107, 99;
+  --callout-color: rgb(113, 107, 99);
 }
 
 /* 10. Properties, modals and controls */
