@@ -223,6 +223,7 @@ body.eone-sidebar-comfortable {
   --eone-settings-checkmark: #3666a3;
   --eone-settings-control-border: #e6e6e6;
   --eone-settings-toggle-active: #2a78d6;
+  --eone-claudian-input-bg: #ffffff;
 
   --background-primary: var(--eone-bg-primary);
   --background-primary-alt: var(--eone-bg-elevated);
@@ -316,6 +317,7 @@ body.eone-sidebar-comfortable {
   --eone-settings-checkmark: #70b8ff;
   --eone-settings-control-border: #53534f;
   --eone-settings-toggle-active: #2a78d6;
+  --eone-claudian-input-bg: #2c2c2a;
 
   --background-primary: var(--eone-bg-primary);
   --background-primary-alt: var(--eone-bg-elevated);
@@ -1331,6 +1333,37 @@ button.mod-cta:hover {
   background: var(--interactive-accent-hover);
 }
 
+/* Plugin settings tab strips are navigation, not generic raised buttons. */
+.modal.mod-settings :is([role="tablist"], [class*="-tabs"]) {
+  gap: 4px;
+  border-bottom-color: var(--eone-settings-divider);
+}
+
+.modal.mod-settings :is([role="tablist"], [class*="-tabs"]) > :is(button, [role="tab"], .image-converter-tab) {
+  margin-bottom: 4px;
+  padding: 8px 14px;
+  color: var(--text-muted);
+  background: transparent;
+  border: 0;
+  border-radius: 8px;
+  box-shadow: none;
+}
+
+.modal.mod-settings :is([role="tablist"], [class*="-tabs"]) > :is(button, [role="tab"], .image-converter-tab):hover {
+  color: var(--text-normal);
+  background: var(--eone-settings-option-hover);
+  border-bottom-color: transparent;
+  box-shadow: none;
+}
+
+.modal.mod-settings :is([role="tablist"], [class*="-tabs"]) > :is(button, [role="tab"], .image-converter-tab):is(.active, .is-active, .claudian-settings-tab--active, .image-converter-tab-active, [aria-selected="true"]),
+.modal.mod-settings :is([role="tablist"], [class*="-tabs"]) > :is(button, [role="tab"], .image-converter-tab):is(.active, .is-active, .claudian-settings-tab--active, .image-converter-tab-active, [aria-selected="true"]):hover {
+  color: var(--text-normal);
+  background: var(--eone-settings-nav-active);
+  border-color: transparent;
+  box-shadow: none;
+}
+
 /* Keep the desktop settings view spacious, flat, and easy to scan. */
 .modal.mod-settings {
   --font-ui-smaller: 13px;
@@ -1392,6 +1425,21 @@ button.mod-cta:hover {
   box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.035);
 }
 
+/* Setting values use one quiet field boundary; avoid the global accent focus ring. */
+.modal.mod-settings .setting-item-control input:is([type="text"], [type="email"], [type="password"], [type="number"]),
+.modal.mod-settings .setting-item-control textarea {
+  background: var(--eone-settings-input-bg);
+  border: 1px solid var(--eone-settings-control-border);
+  box-shadow: none;
+}
+
+.modal.mod-settings .setting-item-control input:is([type="text"], [type="email"], [type="password"], [type="number"]):is(:focus, :focus-visible),
+.modal.mod-settings .setting-item-control textarea:is(:focus, :focus-visible) {
+  outline: none;
+  border-color: var(--eone-settings-picker-border);
+  box-shadow: none;
+}
+
 .modal.mod-settings .vertical-tab-header .search-input-container::before {
   top: 50%;
   left: 10px;
@@ -1419,9 +1467,9 @@ button.mod-cta:hover {
   align-items: center;
   gap: 9px;
   box-sizing: border-box;
-  height: 35px;
-  min-height: 35px;
-  margin: 0;
+  height: 32px;
+  min-height: 32px;
+  margin: 2px 0;
   padding: 0 8px;
   color: var(--text-muted);
   border-radius: calc(var(--eone-radius) + 3px);
@@ -1626,7 +1674,8 @@ button.mod-cta:hover {
   }
 
   .modal.mod-settings select.dropdown::picker(select) {
-    min-width: 220px;
+    width: max-content;
+    min-width: 0;
     max-width: min(440px, calc(100vw - 24px));
     max-height: min(460px, calc(100vh - 32px));
     margin-block: 6px;
@@ -1859,6 +1908,42 @@ button.mod-cta:hover {
   --color-surface-low: var(--background-secondary);
 }
 
+/* Image Converter nests controls inside its section headers. Keep those inner
+   controls from inheriting a partial settings-row divider. */
+.modal.mod-settings .image-converter-settings-tab .image-converter-global-preset-container .setting-item,
+.modal.mod-settings .image-converter-settings-tab .settings-section-header .setting-item {
+  border-bottom: 0;
+}
+
+/* Image Converter preset cards follow the same quiet option states as the
+   settings navigation instead of introducing raised cards and accent glows. */
+.modal.mod-settings .image-converter-preset-card {
+  background: transparent;
+  border: 1px solid var(--eone-settings-divider);
+  border-radius: calc(var(--eone-radius) + 4px);
+  box-shadow: none;
+  transition:
+    background-color var(--eone-transition-fast),
+    border-color var(--eone-transition-fast);
+}
+
+.modal.mod-settings .image-converter-preset-card:hover {
+  background: var(--eone-settings-option-hover);
+  border-color: var(--eone-settings-divider);
+  box-shadow: none;
+}
+
+.modal.mod-settings .image-converter-preset-card.image-converter-default-preset {
+  background: transparent;
+}
+
+.modal.mod-settings .image-converter-preset-card.image-converter-active-preset,
+.modal.mod-settings .image-converter-preset-card.image-converter-active-preset:hover {
+  background: var(--eone-settings-nav-active);
+  border-color: transparent;
+  box-shadow: none;
+}
+
 /* Notebook Navigator varies icon opacity and active colors by button state. */
 .notebook-navigator {
   --nn-theme-header-button-icon-color: var(--icon-color);
@@ -1949,8 +2034,7 @@ button.mod-cta:hover {
   padding-inline: 8px;
 }
 
-.claudian-container .claudian-tab-badges,
-.claudian-container .claudian-input-nav-actions {
+.claudian-container .claudian-tab-badges {
   margin-inline: 0;
 }
 
@@ -1966,6 +2050,7 @@ button.mod-cta:hover {
 }
 
 .claudian-container .claudian-input-wrapper {
+  background: var(--eone-claudian-input-bg);
   border-radius: 8px;
 }
 
@@ -1978,7 +2063,7 @@ button.mod-cta:hover {
 
 .claudian-container .claudian-context-chip:hover,
 .claudian-container .claudian-file-chip:hover {
-  background: var(--background-secondary-alt);
+  background: var(--background-primary);
   border-color: var(--background-modifier-border);
 }
 
