@@ -135,6 +135,8 @@ body {
   --eone-quote-line-cap: 0.28em;
   --eone-callout-bg-alpha: 0.045;
   --eone-callout-border-alpha: 0.42;
+  --eone-settings-nav-width: 252px;
+  --eone-settings-row-padding: 17px;
 
   --font-interface-theme: var(--eone-font-interface);
   --font-text-theme: var(--eone-font-text);
@@ -211,6 +213,16 @@ body.eone-sidebar-comfortable {
   --eone-nav-item-hover: rgba(31, 30, 29, 0.045);
   --eone-nav-item-active: rgba(31, 30, 29, 0.045);
   --eone-icon-button-hover: var(--eone-bg-hover);
+  --eone-settings-bg: #ffffff;
+  --eone-settings-nav-bg: #fcfcfb;
+  --eone-settings-input-bg: #ffffff;
+  --eone-settings-nav-active: #e3e3e2;
+  --eone-settings-divider: #ececea;
+  --eone-settings-option-hover: #f3f3f3;
+  --eone-settings-picker-border: #dbdbdb;
+  --eone-settings-checkmark: #3666a3;
+  --eone-settings-control-border: #e6e6e6;
+  --eone-settings-toggle-active: #2a78d6;
 
   --background-primary: var(--eone-bg-primary);
   --background-primary-alt: var(--eone-bg-elevated);
@@ -294,6 +306,16 @@ body.eone-sidebar-comfortable {
   --eone-nav-item-hover: rgba(240, 237, 230, 0.085);
   --eone-nav-item-active: rgba(240, 237, 230, 0.085);
   --eone-icon-button-hover: var(--eone-bg-hover);
+  --eone-settings-bg: #2c2c2a;
+  --eone-settings-nav-bg: #1a1a19;
+  --eone-settings-input-bg: #262625;
+  --eone-settings-nav-active: #313130;
+  --eone-settings-divider: #3a3a38;
+  --eone-settings-option-hover: #373735;
+  --eone-settings-picker-border: #464644;
+  --eone-settings-checkmark: #70b8ff;
+  --eone-settings-control-border: #53534f;
+  --eone-settings-toggle-active: #2a78d6;
 
   --background-primary: var(--eone-bg-primary);
   --background-primary-alt: var(--eone-bg-elevated);
@@ -1309,12 +1331,165 @@ button.mod-cta:hover {
   background: var(--interactive-accent-hover);
 }
 
-/* Give the desktop settings view a slightly more comfortable reading size. */
+/* Keep the desktop settings view spacious, flat, and easy to scan. */
 .modal.mod-settings {
   --font-ui-smaller: 13px;
   --font-ui-small: 14px;
   --font-ui-medium: 16px;
   --font-ui-large: 21px;
+  width: min(94vw, 1480px);
+  height: min(92vh, 940px);
+  color: var(--text-normal);
+  background: var(--eone-settings-bg);
+  overflow: hidden;
+}
+
+.modal.mod-settings .modal-content,
+.modal.mod-settings .vertical-tabs-container,
+.modal.mod-settings .vertical-tab-content-container {
+  height: 100%;
+  background: var(--eone-settings-bg);
+}
+
+.modal.mod-settings .modal-content {
+  padding: 0;
+}
+
+.modal.mod-settings .vertical-tabs-container {
+  gap: 0;
+}
+
+.modal.mod-settings .vertical-tab-header {
+  flex: 0 0 var(--eone-settings-nav-width);
+  width: var(--eone-settings-nav-width);
+  padding: 16px 10px 22px;
+  background: var(--eone-settings-nav-bg);
+  border-right: 1px solid var(--eone-settings-divider);
+}
+
+.modal.mod-settings .vertical-tab-header .search-input-container {
+  box-sizing: border-box;
+  width: 100%;
+  height: 38px;
+  margin: 0 0 22px;
+  padding: 0;
+}
+
+.modal.mod-settings .vertical-tab-header .search-input-container input {
+  box-sizing: border-box;
+  width: 100%;
+  height: 38px;
+  padding-inline: 36px 10px;
+  background: var(--eone-settings-input-bg);
+  border: 1px solid var(--background-modifier-border);
+  border-radius: calc(var(--eone-radius) + 4px);
+  line-height: 38px;
+}
+
+.modal.mod-settings .vertical-tab-header .search-input-container input:focus,
+.modal.mod-settings .vertical-tab-header .search-input-container input:focus-visible {
+  border-color: var(--eone-settings-control-border);
+  box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.035);
+}
+
+.modal.mod-settings .vertical-tab-header .search-input-container::before {
+  top: 50%;
+  left: 10px;
+  transform: translateY(-50%);
+}
+
+.modal.mod-settings .vertical-tab-header-group {
+  padding: 0;
+}
+
+.modal.mod-settings .vertical-tab-header-group + .vertical-tab-header-group {
+  margin-top: 12px;
+}
+
+.modal.mod-settings .vertical-tab-header-group-title {
+  margin: 0 8px 4px;
+  padding: 0;
+  color: var(--text-faint);
+  font-size: var(--font-ui-small);
+  font-weight: 520;
+}
+
+.modal.mod-settings .vertical-tab-nav-item {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  box-sizing: border-box;
+  height: 35px;
+  min-height: 35px;
+  margin: 0;
+  padding: 0 8px;
+  color: var(--text-muted);
+  border-radius: calc(var(--eone-radius) + 3px);
+  cursor: pointer;
+  transition: color var(--eone-transition-fast), background-color var(--eone-transition-medium);
+}
+
+.modal.mod-settings .vertical-tab-nav-item-icon {
+  display: flex;
+  flex: 0 0 20px;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+  margin: 0;
+}
+
+.modal.mod-settings .vertical-tab-nav-item-icon svg {
+  display: block;
+  width: 19px;
+  height: 19px;
+}
+
+.modal.mod-settings .vertical-tab-nav-item-title {
+  display: flex;
+  align-items: center;
+  min-width: 0;
+  line-height: 1.25;
+}
+
+.modal.mod-settings .vertical-tab-nav-item:hover {
+  color: var(--text-normal);
+  background: var(--background-modifier-hover);
+}
+
+.modal.mod-settings .vertical-tab-nav-item.is-active {
+  color: var(--text-normal);
+  background: var(--eone-settings-nav-active);
+  font-weight: 650;
+}
+
+.modal.mod-settings .vertical-tab-content-container {
+  padding: 0;
+}
+
+.modal.mod-settings .vertical-tab-content {
+  max-width: none;
+  padding: 40px clamp(30px, 3.5vw, 52px) 60px;
+  background: var(--eone-settings-bg);
+}
+
+.modal.mod-settings .vertical-tab-content > h2 {
+  margin: 0 0 22px;
+  font-size: var(--font-ui-large);
+  line-height: 1.3;
+}
+
+.modal.mod-settings .vertical-tab-content > p {
+  max-width: 900px;
+  color: var(--text-muted);
+  line-height: 1.6;
+}
+
+.modal.mod-settings .setting-items {
+  background: transparent;
+  border: 0;
+  border-radius: 0;
+  box-shadow: none;
 }
 
 .modal.mod-settings .vertical-tab-nav-item,
@@ -1324,6 +1499,235 @@ button.mod-cta:hover {
 
 .modal.mod-settings .setting-item-description {
   line-height: 1.55;
+}
+
+.modal.mod-settings .setting-item {
+  align-items: center;
+  min-height: 64px;
+  padding: var(--eone-settings-row-padding) 0;
+  background: transparent;
+  border: 0;
+  border-bottom: 1px solid var(--eone-settings-divider);
+  border-radius: 0;
+  box-shadow: none;
+}
+
+.modal.mod-settings .setting-item.setting-item-heading {
+  align-items: flex-start;
+  min-height: auto;
+  margin-top: 26px;
+  padding: 14px 0 10px;
+  border-bottom: 0;
+}
+
+.modal.mod-settings .setting-item.setting-item-heading:first-child {
+  margin-top: 0;
+}
+
+.modal.mod-settings .setting-item-heading .setting-item-name {
+  font-size: calc(var(--font-ui-medium) + 1px);
+  font-weight: 700;
+}
+
+.modal.mod-settings .setting-item-info {
+  padding-right: clamp(20px, 4vw, 64px);
+}
+
+.modal.mod-settings .setting-item-control {
+  align-self: center;
+  align-items: center;
+  gap: 10px;
+}
+
+.modal.mod-settings :is(button, select, .dropdown, .clickable-icon, .checkbox-container) {
+  cursor: pointer;
+}
+
+.modal.mod-settings .checkbox-container.is-enabled {
+  background-color: var(--eone-settings-toggle-active);
+}
+
+/* Dropdowns read as plain values until the pointer reaches them. */
+.modal.mod-settings :is(select, .dropdown) {
+  box-sizing: border-box;
+  height: 36px;
+  min-height: 36px;
+  padding-block: 0;
+  padding-inline: 11px 30px;
+  color: var(--text-normal);
+  background-color: transparent;
+  border-color: transparent;
+  border-radius: calc(var(--eone-radius) + 3px);
+  box-shadow: none;
+  cursor: pointer;
+}
+
+.modal.mod-settings select.dropdown {
+  align-items: center;
+  width: max-content;
+  max-width: min(360px, 46vw);
+  line-height: 1;
+  white-space: nowrap;
+  background-image:
+    linear-gradient(45deg, transparent 50%, var(--text-faint) 50%),
+    linear-gradient(135deg, var(--text-faint) 50%, transparent 50%);
+  background-position:
+    calc(100% - 13px) 50%,
+    calc(100% - 8px) 50%;
+  background-size: 5px 5px;
+  background-repeat: no-repeat;
+}
+
+.modal.mod-settings :is(select, .dropdown):hover {
+  background-color: var(--background-modifier-hover);
+  border-color: transparent;
+}
+
+.modal.mod-settings :is(select, .dropdown):focus-visible {
+  background-color: var(--background-modifier-hover);
+  border-color: var(--background-modifier-border-focus);
+  box-shadow: 0 0 0 2px rgba(var(--eone-accent-rgb), 0.1);
+  outline: none;
+}
+
+.modal.mod-settings :is(select, .dropdown) option {
+  color: var(--text-normal);
+  background: var(--eone-settings-bg);
+}
+
+.modal.mod-settings :is(select, .dropdown) option:hover,
+.modal.mod-settings :is(select, .dropdown) option:focus {
+  color: var(--text-normal);
+  background: var(--background-modifier-hover);
+}
+
+.modal.mod-settings :is(select, .dropdown) option:checked {
+  color: var(--text-normal);
+  font-weight: 400;
+}
+
+/* Chromium 134+ exposes the picker so it can match the rest of the theme. */
+@supports (appearance: base-select) {
+  .modal.mod-settings select.dropdown,
+  .modal.mod-settings select.dropdown::picker(select) {
+    appearance: base-select;
+  }
+
+  .modal.mod-settings select.dropdown {
+    display: inline-flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 9px;
+    height: 36px;
+    padding-inline: 11px 10px;
+    padding-block: 0;
+    background-image: none;
+    line-height: 1;
+  }
+
+  .modal.mod-settings select.dropdown::picker(select) {
+    min-width: 220px;
+    max-width: min(440px, calc(100vw - 24px));
+    max-height: min(460px, calc(100vh - 32px));
+    margin-block: 6px;
+    padding: 6px;
+    color: var(--text-normal);
+    background: var(--eone-settings-bg);
+    border: 1px solid var(--eone-settings-picker-border);
+    border-radius: calc(var(--eone-radius) + 6px);
+    box-shadow: 0 10px 28px var(--eone-shadow);
+  }
+
+  .modal.mod-settings select.dropdown option {
+    display: flex;
+    align-items: center;
+    box-sizing: border-box;
+    min-height: 42px;
+    padding: 9px 12px;
+    color: var(--text-normal);
+    background: transparent;
+    border-radius: calc(var(--eone-radius) + 2px);
+    font-weight: 400;
+    cursor: pointer;
+  }
+
+  .modal.mod-settings select.dropdown option:hover,
+  .modal.mod-settings select.dropdown option:focus-visible {
+    color: var(--text-normal);
+    background: var(--eone-settings-option-hover);
+    outline: none;
+  }
+
+  .modal.mod-settings select.dropdown option:checked {
+    color: var(--text-normal);
+    background: transparent;
+    font-weight: 400;
+  }
+
+  .modal.mod-settings select.dropdown option:checked:hover,
+  .modal.mod-settings select.dropdown option:checked:focus-visible {
+    background: var(--eone-settings-option-hover);
+  }
+
+  .modal.mod-settings select.dropdown option::checkmark {
+    order: 2;
+    margin-left: auto;
+    color: var(--eone-settings-checkmark);
+  }
+
+  .modal.mod-settings select.dropdown::picker-icon {
+    content: "";
+    box-sizing: border-box;
+    width: 8px;
+    height: 8px;
+    margin: 0 3px 0 2px;
+    color: var(--text-faint);
+    border: solid currentColor;
+    border-width: 0 1.5px 1.5px 0;
+    rotate: 45deg;
+    translate: 0 -2px;
+    transition: color var(--eone-transition-fast);
+  }
+
+  .modal.mod-settings select.dropdown:open::picker-icon {
+    color: var(--text-muted);
+  }
+}
+
+.modal.mod-settings .setting-item-control > button:not(.clickable-icon, .mod-warning) {
+  min-height: 36px;
+  padding-inline: 11px;
+  color: var(--text-normal);
+  background: transparent;
+  border-color: transparent;
+  border-radius: calc(var(--eone-radius) + 3px);
+  box-shadow: none;
+  font-weight: 400;
+}
+
+.modal.mod-settings .setting-item-control > button:not(.clickable-icon, .mod-warning):hover {
+  background: var(--eone-settings-option-hover);
+  border-color: transparent;
+  box-shadow: none;
+}
+
+.modal.mod-settings .modal-close-button {
+  top: 20px;
+  right: 20px;
+}
+
+@media (max-width: 900px) {
+  .modal.mod-settings {
+    --eone-settings-nav-width: 210px;
+  }
+
+  .modal.mod-settings .vertical-tab-content {
+    padding-inline: 28px;
+  }
+
+  .modal.mod-settings .setting-item-info {
+    padding-right: 20px;
+  }
 }
 
 .setting-item {
