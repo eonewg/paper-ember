@@ -218,7 +218,9 @@ body.eone-sidebar-comfortable {
   --eone-settings-input-bg: #fefefd;
   --eone-settings-nav-active: #e3e3e2;
   --eone-settings-divider: #ececea;
-  --eone-settings-checkmark: #175fa7;
+  --eone-settings-option-hover: #f3f3f3;
+  --eone-settings-picker-border: #dbdbdb;
+  --eone-settings-checkmark: #3666a3;
 
   --background-primary: var(--eone-bg-primary);
   --background-primary-alt: var(--eone-bg-elevated);
@@ -307,6 +309,8 @@ body.eone-sidebar-comfortable {
   --eone-settings-input-bg: #262625;
   --eone-settings-nav-active: #313130;
   --eone-settings-divider: #3a3a38;
+  --eone-settings-option-hover: #373735;
+  --eone-settings-picker-border: #464644;
   --eone-settings-checkmark: #70b8ff;
 
   --background-primary: var(--eone-bg-primary);
@@ -1523,6 +1527,20 @@ button.mod-cta:hover {
   cursor: pointer;
 }
 
+.modal.mod-settings select.dropdown {
+  width: max-content;
+  max-width: min(360px, 46vw);
+  white-space: nowrap;
+  background-image:
+    linear-gradient(45deg, transparent 50%, var(--text-faint) 50%),
+    linear-gradient(135deg, var(--text-faint) 50%, transparent 50%);
+  background-position:
+    calc(100% - 13px) 50%,
+    calc(100% - 8px) 50%;
+  background-size: 5px 5px;
+  background-repeat: no-repeat;
+}
+
 .modal.mod-settings :is(select, .dropdown):hover {
   background-color: var(--background-modifier-hover);
   border-color: transparent;
@@ -1559,6 +1577,12 @@ button.mod-cta:hover {
     appearance: base-select;
   }
 
+  .modal.mod-settings select.dropdown {
+    gap: 9px;
+    padding-inline: 11px 10px;
+    background-image: none;
+  }
+
   .modal.mod-settings select.dropdown::picker(select) {
     min-width: 220px;
     max-width: min(440px, calc(100vw - 24px));
@@ -1567,7 +1591,7 @@ button.mod-cta:hover {
     padding: 6px;
     color: var(--text-normal);
     background: var(--eone-settings-bg);
-    border: 1px solid var(--background-modifier-border);
+    border: 1px solid var(--eone-settings-picker-border);
     border-radius: calc(var(--eone-radius) + 6px);
     box-shadow: 0 10px 28px var(--eone-shadow);
   }
@@ -1588,7 +1612,7 @@ button.mod-cta:hover {
   .modal.mod-settings select.dropdown option:hover,
   .modal.mod-settings select.dropdown option:focus-visible {
     color: var(--text-normal);
-    background: var(--background-modifier-hover);
+    background: var(--eone-settings-option-hover);
     outline: none;
   }
 
@@ -1600,7 +1624,7 @@ button.mod-cta:hover {
 
   .modal.mod-settings select.dropdown option:checked:hover,
   .modal.mod-settings select.dropdown option:checked:focus-visible {
-    background: var(--background-modifier-hover);
+    background: var(--eone-settings-option-hover);
   }
 
   .modal.mod-settings select.dropdown option::checkmark {
@@ -1610,13 +1634,20 @@ button.mod-cta:hover {
   }
 
   .modal.mod-settings select.dropdown::picker-icon {
+    content: "";
+    box-sizing: border-box;
+    width: 8px;
+    height: 8px;
+    margin: 0 3px 4px 2px;
     color: var(--text-faint);
-    transition: rotate var(--eone-transition-medium), color var(--eone-transition-fast);
+    border: solid currentColor;
+    border-width: 0 1.5px 1.5px 0;
+    rotate: 45deg;
+    transition: color var(--eone-transition-fast);
   }
 
   .modal.mod-settings select.dropdown:open::picker-icon {
     color: var(--text-muted);
-    rotate: 180deg;
   }
 }
 
