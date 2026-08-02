@@ -214,7 +214,7 @@ body.eone-sidebar-comfortable {
   --eone-nav-item-active: rgba(31, 30, 29, 0.045);
   --eone-icon-button-hover: var(--eone-bg-hover);
   --eone-settings-bg: #ffffff;
-  --eone-settings-nav-bg: #f5f5f3;
+  --eone-settings-nav-bg: #fcfcfb;
   --eone-settings-input-bg: #ffffff;
   --eone-settings-nav-active: #e3e3e2;
   --eone-settings-divider: #ececea;
@@ -222,9 +222,10 @@ body.eone-sidebar-comfortable {
   --eone-settings-picker-border: #dbdbdb;
   --eone-settings-checkmark: #3666a3;
   --eone-settings-button-bg: #ffffff;
-  --eone-settings-button-hover: #f7f7f6;
-  --eone-settings-button-border: #dededb;
-  --eone-settings-button-shadow: rgba(31, 30, 29, 0.1);
+  --eone-settings-button-hover: #fafafa;
+  --eone-settings-button-border: #e6e6e6;
+  --eone-settings-button-text: #0b0b0b;
+  --eone-settings-button-shadow: rgba(0, 0, 0, 0.08);
 
   --background-primary: var(--eone-bg-primary);
   --background-primary-alt: var(--eone-bg-elevated);
@@ -319,6 +320,7 @@ body.eone-sidebar-comfortable {
   --eone-settings-button-bg: #41413f;
   --eone-settings-button-hover: #4a4a47;
   --eone-settings-button-border: #53534f;
+  --eone-settings-button-text: #f5f5f3;
   --eone-settings-button-shadow: rgba(0, 0, 0, 0.24);
 
   --background-primary: var(--eone-bg-primary);
@@ -1690,18 +1692,18 @@ button.mod-cta:hover {
 .modal.mod-settings .setting-item-control > button:not(.clickable-icon, .mod-warning, .mod-cta) {
   min-height: 38px;
   padding-inline: 16px;
-  color: var(--text-normal);
+  color: var(--eone-settings-button-text);
   background: var(--eone-settings-button-bg);
   border: 1px solid var(--eone-settings-button-border);
-  border-radius: calc(var(--eone-radius) + 6px);
-  box-shadow: 0 2px 5px var(--eone-settings-button-shadow);
+  border-radius: calc(var(--eone-radius) + 4px);
+  box-shadow: 0 2px 4px var(--eone-settings-button-shadow);
   font-weight: 600;
 }
 
 .modal.mod-settings .setting-item-control > button:not(.clickable-icon, .mod-warning, .mod-cta):hover {
   background: var(--eone-settings-button-hover);
-  border-color: var(--background-modifier-border-hover);
-  box-shadow: 0 3px 7px var(--eone-settings-button-shadow);
+  border-color: var(--eone-settings-button-border);
+  box-shadow: 0 3px 6px var(--eone-settings-button-shadow);
 }
 
 .modal.mod-settings .modal-close-button {
