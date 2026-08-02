@@ -1,5 +1,5 @@
 /* 1. Theme metadata and Style Settings
-   Paper Ember 0.1.0 — a warm, restrained theme for Obsidian. */
+   Paper Ember 0.1.1 — a warm, restrained theme for Obsidian. */
 
 /* @settings
 name: Paper Ember
@@ -124,6 +124,7 @@ body {
   --eone-reading-width: 850px;
   --eone-radius: 6px;
   --eone-code-radius: 7px;
+  --eone-hover-radius: 8px;
   --eone-ease-standard: cubic-bezier(0.2, 0.72, 0.24, 1);
   --eone-ease-out: cubic-bezier(0.22, 1, 0.36, 1);
   --eone-transition-fast: 170ms var(--eone-ease-standard);
@@ -147,7 +148,7 @@ body {
   --input-radius: var(--eone-radius);
   --button-radius: var(--eone-radius);
   --tab-radius-active: var(--eone-radius) var(--eone-radius) 0 0;
-  --nav-item-radius: max(2px, calc(var(--eone-radius) - 2px));
+  --nav-item-radius: var(--eone-hover-radius);
   --checkbox-radius: 3px;
   --modal-radius: calc(var(--eone-radius) + 4px);
   --blockquote-border-color: var(--eone-quote-border);
@@ -184,7 +185,7 @@ body.eone-sidebar-comfortable {
   --eone-bg-primary: var(--eone-light-bg-warmth);
   --eone-bg-secondary: #f6f6f3;
   --eone-bg-elevated: #fffdf9;
-  --eone-bg-hover: #f0eee6;
+  --eone-bg-hover: #f0efec;
   --eone-border: #dedbd2;
   --eone-border-strong: #c8c3b8;
   --eone-text-normal: #25231f;
@@ -206,8 +207,9 @@ body.eone-sidebar-comfortable {
   --eone-table-surface: rgba(0, 0, 0, 0.018);
   --eone-table-selection: rgba(var(--eone-accent-rgb), 0.09);
   --eone-table-selection-border: rgba(var(--eone-accent-rgb), 0.78);
-  --eone-nav-item-hover: rgba(31, 30, 29, 0.03);
-  --eone-nav-item-active: rgba(var(--eone-accent-rgb), 0.075);
+  --eone-nav-item-hover: rgba(31, 30, 29, 0.045);
+  --eone-nav-item-active: rgba(31, 30, 29, 0.045);
+  --eone-icon-button-hover: var(--eone-bg-hover);
 
   --background-primary: var(--eone-bg-primary);
   --background-primary-alt: var(--eone-bg-elevated);
@@ -265,7 +267,7 @@ body.eone-sidebar-comfortable {
   --eone-bg-primary: var(--eone-dark-bg-brightness);
   --eone-bg-secondary: #20201e;
   --eone-bg-elevated: #30302e;
-  --eone-bg-hover: #353532;
+  --eone-bg-hover: #373735;
   --eone-border: #41413d;
   --eone-border-strong: #595851;
   --eone-text-normal: #f0ede6;
@@ -287,8 +289,9 @@ body.eone-sidebar-comfortable {
   --eone-table-surface: rgba(255, 255, 255, 0.025);
   --eone-table-selection: rgba(var(--eone-accent-rgb), 0.13);
   --eone-table-selection-border: rgba(var(--eone-accent-rgb), 0.86);
-  --eone-nav-item-hover: rgba(240, 237, 230, 0.055);
-  --eone-nav-item-active: rgba(var(--eone-accent-rgb), 0.1);
+  --eone-nav-item-hover: rgba(240, 237, 230, 0.085);
+  --eone-nav-item-active: rgba(240, 237, 230, 0.085);
+  --eone-icon-button-hover: var(--eone-bg-hover);
 
   --background-primary: var(--eone-bg-primary);
   --background-primary-alt: var(--eone-bg-elevated);
@@ -582,8 +585,8 @@ mark,
 }
 
 .nav-folder-title {
-  color: var(--text-normal);
-  font-weight: 580;
+  color: var(--text-muted);
+  font-weight: 400;
 }
 
 .nav-file-title:hover,
@@ -599,7 +602,7 @@ mark,
 
 .nav-file-title:hover .nav-file-title-content,
 .nav-folder-title:hover .nav-folder-title-content {
-  transform: translateX(2px);
+  transform: none;
 }
 
 .nav-file-title.is-active,
@@ -609,8 +612,24 @@ mark,
   font-weight: 620;
 }
 
-.nav-file-title.is-active .nav-file-title-content {
-  font-size: 1.04em;
+.tree-item-self.nav-file-title.is-active,
+.tree-item-self.nav-folder-title.is-active {
+  position: relative;
+}
+
+.tree-item-self.nav-file-title.is-active::before,
+.tree-item-self.nav-folder-title.is-active::before {
+  content: "";
+  position: absolute;
+  z-index: 1;
+  top: 50%;
+  inset-inline-start: 0;
+  width: 4px;
+  height: min(20px, calc(100% - 8px));
+  background: var(--interactive-accent);
+  border-radius: 999px;
+  pointer-events: none;
+  transform: translateY(-50%);
 }
 
 .nav-file-tag {
@@ -1169,7 +1188,8 @@ blockquote,
 .menu,
 .suggestion-container,
 .popover,
-.hover-popover {
+.hover-popover,
+.notice {
   color: var(--text-normal);
   background: var(--background-primary-alt);
   border: 1px solid var(--background-modifier-border);
@@ -1276,13 +1296,14 @@ button.clickable-icon:not(.mod-cta) {
   color: var(--icon-color);
   background: transparent;
   border-color: transparent;
+  border-radius: var(--eone-hover-radius);
   box-shadow: none;
 }
 
 .clickable-icon:hover,
 button.clickable-icon:not(.mod-cta):hover {
   color: var(--icon-color-hover);
-  background: var(--background-modifier-hover);
+  background: var(--eone-icon-button-hover);
   border-color: transparent;
 }
 
@@ -1459,6 +1480,12 @@ button.mod-cta:hover {
   --nn-theme-header-button-active-bg: transparent;
   --nn-theme-header-button-active-icon-color: var(--icon-color);
   --nn-theme-header-button-disabled-icon-color: var(--icon-color);
+  --nn-theme-navitem-border-radius: var(--eone-hover-radius);
+  --nn-theme-navitem-hover-bg: var(--eone-nav-item-hover);
+  --nn-theme-navitem-selected-bg: var(--eone-nav-item-active);
+  --nn-theme-navitem-selected-inactive-bg: var(--eone-nav-item-active);
+  --nn-theme-file-selected-bg: var(--eone-nav-item-active);
+  --nn-theme-file-selected-inactive-bg: var(--eone-nav-item-active);
   --nn-theme-file-tag-color: var(--text-accent);
   --nn-theme-file-tag-border-color: rgba(var(--eone-accent-rgb), 0.24);
   --nn-theme-file-tag-bg: rgba(var(--eone-accent-rgb), 0.075);
@@ -1469,41 +1496,34 @@ button.mod-cta:hover {
   --nn-theme-file-selected-inactive-tag-bg: rgba(var(--eone-accent-rgb), 0.085);
 }
 
-.theme-light .notebook-navigator {
-  --nn-theme-file-selected-bg: rgba(var(--eone-accent-rgb), 0.08);
-  --nn-theme-file-selected-inactive-bg: rgba(var(--eone-accent-rgb), 0.045);
-}
-
 .notebook-navigator .nn-file.nn-selected:not(.nn-compact) .nn-file-name {
-  font-size: calc(var(--nn-file-name-size-mobile, var(--nn-file-name-size)) + 0.5px);
   font-weight: 650;
 }
 
 .notebook-navigator .nn-file.nn-compact.nn-selected .nn-file-name {
-  font-size: calc(var(--nn-compact-font-size-mobile, var(--nn-compact-font-size, var(--nn-file-small-size-mobile, var(--nn-file-small-size)))) + 0.5px);
   font-weight: 650;
 }
 
 .notebook-navigator .nn-navitem.nn-selected .nn-navitem-name {
-  font-size: calc(var(--nn-setting-nav-font-size) + 1px);
   font-weight: 650;
 }
 
 .notebook-navigator .nn-navitem.nn-selected::after {
-  background-color: transparent;
+  background-color: var(--eone-nav-item-active);
   box-shadow: none;
 }
 
 .notebook-navigator button.nn-icon-button:not(:disabled) {
   color: var(--nn-theme-header-button-icon-color);
   background-color: transparent;
+  border-radius: var(--eone-hover-radius);
   opacity: 1;
 }
 
 .notebook-navigator button.nn-icon-button:not(:disabled):hover {
-  color: var(--icon-color-active);
-  background-color: rgba(var(--eone-accent-rgb), 0.14);
-  box-shadow: inset 0 0 0 1px rgba(var(--eone-accent-rgb), 0.22);
+  color: var(--icon-color-hover);
+  background-color: var(--eone-icon-button-hover);
+  box-shadow: none;
 }
 
 /* Obsidian adds a large bottom padding to generic view-content panels. Claudian
@@ -1521,6 +1541,90 @@ button.mod-cta:hover {
 
 .claudian-container .claudian-welcome-text {
   font-size: 1.75em;
+}
+
+/* Align the conversation badges and composer on one inset baseline. */
+.claudian-container .claudian-input-container {
+  box-sizing: border-box;
+  padding-inline: 8px;
+}
+
+.claudian-container .claudian-active-input-slot > .claudian-input-composer > .claudian-input-container {
+  margin-top: 2px;
+}
+
+.claudian-container .claudian-input-footer {
+  padding-bottom: 4px;
+}
+
+/* In current Claudian builds the view-level nav row and active composer are siblings.
+   Give both containers the same inset instead of compensating individual buttons. */
+.claudian-container .claudian-view-input-nav-row {
+  box-sizing: border-box;
+  padding-inline: 8px;
+}
+
+.claudian-container .claudian-tab-badges,
+.claudian-container .claudian-input-nav-actions {
+  margin-inline: 0;
+}
+
+.claudian-container .claudian-input-nav-btn {
+  color: var(--icon-color);
+  background: transparent;
+  border-radius: var(--eone-hover-radius);
+}
+
+.claudian-container .claudian-input-nav-btn:hover {
+  color: var(--icon-color-hover);
+  background: var(--eone-icon-button-hover);
+}
+
+.claudian-container .claudian-input-wrapper {
+  border-radius: 8px;
+}
+
+/* Claudian context chips provide their own single surface. Cover both current and legacy markup. */
+.claudian-container .claudian-context-chip,
+.claudian-container .claudian-file-chip {
+  background: transparent;
+  border-color: var(--background-modifier-border);
+}
+
+.claudian-container .claudian-context-chip:hover,
+.claudian-container .claudian-file-chip:hover {
+  background: var(--background-secondary-alt);
+  border-color: var(--background-modifier-border);
+}
+
+.claudian-container .claudian-context-row button.claudian-context-chip-main,
+.claudian-container .claudian-context-row button.claudian-context-chip-main:hover,
+.claudian-container .claudian-context-row button.claudian-context-chip-main:focus,
+.claudian-container .claudian-context-row button.claudian-context-chip-main:active,
+.claudian-container .claudian-context-row button.claudian-context-chip-remove,
+.claudian-container .claudian-context-row button.claudian-context-chip-remove:hover,
+.claudian-container .claudian-context-row button.claudian-context-chip-remove:focus,
+.claudian-container .claudian-context-row button.claudian-context-chip-remove:active,
+.claudian-container .claudian-context-row button.claudian-file-chip,
+.claudian-container .claudian-context-row button.claudian-file-chip:hover,
+.claudian-container .claudian-context-row button.claudian-file-chip:focus,
+.claudian-container .claudian-context-row button.claudian-file-chip:active,
+.claudian-container .claudian-context-row button.claudian-file-chip-remove,
+.claudian-container .claudian-context-row button.claudian-file-chip-remove:focus,
+.claudian-container .claudian-context-row button.claudian-file-chip-remove:active {
+  color: inherit;
+  background: transparent;
+  background-image: none;
+  border-color: transparent;
+  box-shadow: none;
+}
+
+.claudian-container .claudian-context-row button.claudian-context-chip-remove:hover,
+.claudian-container .claudian-context-row button.claudian-file-chip-remove:hover {
+  color: var(--text-normal);
+  background: transparent;
+  border-color: transparent;
+  box-shadow: none;
 }
 
 /* Obsidian Git, Editing Toolbar, and common plugin panels inherit theme surfaces. */
