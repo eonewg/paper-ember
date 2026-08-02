@@ -11,7 +11,8 @@ task_plan.md
 findings.md
 progress.md
 README-PACKAGE.md
-scripts/
+scripts/*
+!scripts/validate.ps1
 test/
 
 # Common editor and operating-system noise.
