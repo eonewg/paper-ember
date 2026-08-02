@@ -1392,6 +1392,12 @@ button.mod-cta:hover {
   line-height: 38px;
 }
 
+.modal.mod-settings .vertical-tab-header .search-input-container input:focus,
+.modal.mod-settings .vertical-tab-header .search-input-container input:focus-visible {
+  border-color: var(--eone-settings-button-border);
+  box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.035);
+}
+
 .modal.mod-settings .vertical-tab-header .search-input-container::before {
   top: 50%;
   left: 10px;
@@ -1470,6 +1476,7 @@ button.mod-cta:hover {
 .modal.mod-settings .vertical-tab-content {
   max-width: none;
   padding: 40px clamp(30px, 3.5vw, 52px) 60px;
+  background: var(--eone-settings-bg);
 }
 
 .modal.mod-settings .vertical-tab-content > h2 {
@@ -1689,7 +1696,7 @@ button.mod-cta:hover {
   }
 }
 
-.modal.mod-settings .setting-item-control > button:not(.clickable-icon, .mod-warning, .mod-cta) {
+.modal.mod-settings .setting-item-control > button:not(.clickable-icon, .mod-warning) {
   min-height: 38px;
   padding-inline: 16px;
   color: var(--eone-settings-button-text);
@@ -1700,7 +1707,7 @@ button.mod-cta:hover {
   font-weight: 600;
 }
 
-.modal.mod-settings .setting-item-control > button:not(.clickable-icon, .mod-warning, .mod-cta):hover {
+.modal.mod-settings .setting-item-control > button:not(.clickable-icon, .mod-warning):hover {
   background: var(--eone-settings-button-hover);
   border-color: var(--eone-settings-button-border);
   box-shadow: 0 3px 6px var(--eone-settings-button-shadow);
