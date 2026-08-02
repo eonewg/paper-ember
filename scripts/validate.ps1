@@ -53,7 +53,7 @@ if (Test-Path -LiteralPath $manifestPath -PathType Leaf) {
 
         $versionProperty = $manifest.PSObject.Properties["version"]
         if ($null -ne $versionProperty -and
-            [string]$versionProperty.Value -notmatch '^\d+\.\d+\.\d+(?:\.\d+)?(?:-[0-9A-Za-z.-]+)?$') {
+            [string]$versionProperty.Value -notmatch '^\d+\.\d+\.\d+(?:-[0-9A-Za-z.-]+)?$') {
             Add-ValidationError "manifest.json version is not a reasonable semantic version: $($versionProperty.Value)"
         }
 
