@@ -112,6 +112,29 @@ if (Test-Path -LiteralPath $themePath -PathType Leaf) {
         if ($css -notmatch '(?s)/\*\s*@settings\b.*?\*/') {
             Add-ValidationError "theme.css does not contain a Style Settings metadata block."
         }
+
+        $textSelectionRule = @'
+.markdown-source-view.mod-cm6 .cm-content,
+.markdown-preview-view .markdown-preview-sizer {
+  -webkit-user-select: text;
+  user-select: text;
+}
+'@
+        if (-not $css.Contains($textSelectionRule, [System.StringComparison]::Ordinal)) {
+            Add-ValidationError "theme.css does not explicitly preserve mouse text selection in editor and reading views."
+        }
+
+        if ($css -match '(?i)--eone-selection\s*:\s*rgba\(\s*var\(\s*--paper-ember-accent-rgb\s*\)') {
+            Add-ValidationError "theme.css selection color depends on --interactive-accent-rgb, which may be undefined and make text selection invisible."
+        }
+
+        $selectionColors = ([regex]::Matches(
+            $css,
+            '(?i)--eone-selection\s*:\s*color-mix\(\s*in\s+srgb\s*,\s*var\(\s*--interactive-accent\s*\)\s+(?:19|22)%\s*,\s*transparent\s*\)\s*;'
+        )).Count
+        if ($selectionColors -ne 2) {
+            Add-ValidationError "theme.css must define visible light and dark selection colors from --interactive-accent."
+        }
     }
 }
 

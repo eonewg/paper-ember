@@ -216,7 +216,11 @@ body.eone-sidebar-comfortable {
   --eone-inline-code: #8a3f27;
   --eone-quote-border: #e3e3e1;
   --eone-active-line-marker: #dadada;
-  --eone-selection: rgba(var(--paper-ember-accent-rgb), 0.19);
+  --eone-selection: color-mix(
+    in srgb,
+    var(--interactive-accent) 19%,
+    transparent
+  );
   --eone-highlight: rgba(255, 208, 0, 0.4);
   --eone-shadow: rgba(68, 57, 47, 0.1);
   --eone-table-stripe: rgba(79, 68, 57, 0.032);
@@ -304,7 +308,11 @@ body.eone-sidebar-comfortable {
   --eone-inline-code: #f0a486;
   --eone-quote-border: #4a4b48;
   --eone-active-line-marker: #555652;
-  --eone-selection: rgba(var(--paper-ember-accent-rgb), 0.22);
+  --eone-selection: color-mix(
+    in srgb,
+    var(--interactive-accent) 22%,
+    transparent
+  );
   --eone-highlight: rgba(255, 208, 0, 0.4);
   --eone-shadow: rgba(0, 0, 0, 0.24);
   --eone-table-stripe: rgba(255, 244, 232, 0.026);
@@ -690,6 +698,12 @@ mark,
 .markdown-source-view.mod-cm6 .cm-scroller,
 .markdown-reading-view {
   background: var(--background-primary);
+}
+
+.markdown-source-view.mod-cm6 .cm-content,
+.markdown-preview-view .markdown-preview-sizer {
+  -webkit-user-select: text;
+  user-select: text;
 }
 
 .markdown-source-view.mod-cm6 .cm-contentContainer,
