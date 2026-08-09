@@ -2,7 +2,7 @@
 
 [简体中文](README.md#简体中文)
 
-Paper Ember is a restrained, Claude-inspired Obsidian study theme built around warm paper surfaces, adaptable accent colors, and a quiet visual hierarchy. The accent follows Obsidian's native accent-color setting instead of locking the theme to a fixed palette. It is designed for long-form Chinese reading, mathematics, computer-science notes, English close reading, and code-heavy study, with full light and dark mode support.
+Paper Ember is a restrained, Claude-inspired general-purpose Obsidian theme built around warm paper surfaces, adaptable accent colors, and a quiet visual hierarchy. The accent follows Obsidian's native accent-color setting instead of locking the theme to a fixed palette. It supports both light and dark modes.
 
 ![Paper Ember workspace, Properties view, reading layout, and Claudian integration](screenshot.png)
 
@@ -64,7 +64,6 @@ Otherwise, Paper Ember uses Inter when it is installed and falls back to Noto Sa
 ## Acknowledgements
 
 - Some component designs were inspired by [Cupertino](https://github.com/aaaaalexis/obsidian-cupertino). Thanks to aaaaalexis for the thoughtful design work and for sharing it openly.
-- Thanks to Obsidian community reviewer [saberzero1](https://github.com/saberzero1) for documenting the Obsidian 1.13 Callout color change and providing the compatibility fix in [PR #3](https://github.com/eonewg/paper-ember/pull/3).
 
 ## License
 

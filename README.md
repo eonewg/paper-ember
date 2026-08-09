@@ -2,7 +2,7 @@
 
 [简体中文](#简体中文)
 
-Paper Ember is a restrained, Claude-inspired Obsidian study theme built around warm paper surfaces, adaptable accent colors, and a quiet visual hierarchy. The accent follows Obsidian's native accent-color setting instead of locking the theme to a fixed palette. It is designed for long-form Chinese reading, mathematics, computer-science notes, English close reading, and code-heavy study, with full light and dark mode support.
+Paper Ember is a restrained, Claude-inspired general-purpose Obsidian theme built around warm paper surfaces, adaptable accent colors, and a quiet visual hierarchy. The accent follows Obsidian's native accent-color setting instead of locking the theme to a fixed palette. It supports both light and dark modes.
 
 ![Paper Ember workspace, Properties view, reading layout, and Claudian integration](screenshot.png)
 
@@ -64,7 +64,6 @@ Otherwise, Paper Ember uses Inter when it is installed and falls back to Noto Sa
 ## Acknowledgements
 
 - Some component designs were inspired by [Cupertino](https://github.com/aaaaalexis/obsidian-cupertino). Thanks to aaaaalexis for the thoughtful design work and for sharing it openly.
-- Thanks to Obsidian community reviewer [saberzero1](https://github.com/saberzero1) for documenting the Obsidian 1.13 Callout color change and providing the compatibility fix in [PR #3](https://github.com/eonewg/paper-ember/pull/3).
 
 ## License
 
@@ -74,7 +73,7 @@ Paper Ember is released under the [MIT License](LICENSE).
 
 # 简体中文
 
-Paper Ember 是一套克制、带有 Claude 气质的 Obsidian 学习主题，以温和纸面、可适配的强调色和安静清晰的视觉层级为核心。强调色跟随 Obsidian 原生的强调色设置，不再绑定固定色系。主题面向中文长文阅读、数学、计算机专业笔记、英语精读和代码学习，并完整支持浅色与深色模式。
+Paper Ember 是一套克制、带有 Claude 气质的通用 Obsidian 主题，以温和纸面、可适配的强调色和安静清晰的视觉层级为核心。强调色跟随 Obsidian 原生的强调色设置，不再绑定固定色系，并完整支持浅色与深色模式。
 
 ![Paper Ember 工作区、笔记属性、阅读排版与 Claudian 适配预览](screenshot.png)
 
@@ -136,7 +135,6 @@ Obsidian 原生设置中的界面字体、正文字体和等宽字体优先于�
 ## 致谢
 
 - 部分组件设计灵感来自 [Cupertino](https://github.com/aaaaalexis/obsidian-cupertino)。感谢 aaaaalexis 的优秀设计与开源分享。
-- 感谢 Obsidian 社区审查员 [saberzero1](https://github.com/saberzero1) 在 [PR #3](https://github.com/eonewg/paper-ember/pull/3) 中说明 Obsidian 1.13 的 Callout 颜色变更并提供兼容修复。
 
 ## 许可证
 
