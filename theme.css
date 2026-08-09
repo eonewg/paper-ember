@@ -1,5 +1,5 @@
 /* 1. Theme metadata and Style Settings
-   Paper Ember 0.1.2 — a warm, restrained theme for Obsidian. */
+   Paper Ember 0.1.10 — a warm, restrained theme for Obsidian. */
 
 /* @settings
 name: Paper Ember
@@ -811,23 +811,17 @@ input[type="checkbox"]:checked,
   color: var(--text-muted);
 }
 
-.tag,
-a.tag {
-  color: var(--text-accent);
-  background: rgba(var(--paper-ember-accent-rgb), 0.1);
-  border: 1px solid rgba(var(--paper-ember-accent-rgb), 0.18);
-  border-radius: 999px;
-  padding: 0.08em 0.5em;
-  font-size: 0.86em;
-  font-weight: 520;
-  text-decoration: none;
-  transition: color var(--eone-transition-fast), background-color var(--eone-transition-medium), border-color var(--eone-transition-medium);
+/* Keep Reading view tags aligned with Obsidian's shared editor tag tokens. */
+.markdown-rendered a.tag {
+  display: inline-block;
+  white-space: nowrap;
 }
 
-.tag:hover,
-a.tag:hover {
-  color: var(--text-accent-hover);
-  background: rgba(var(--paper-ember-accent-rgb), 0.16);
+.markdown-rendered a.tag:hover {
+  color: var(--tag-color);
+  background-color: var(--tag-background);
+  border-color: var(--tag-border-color);
+  text-decoration: var(--tag-decoration);
 }
 
 .footnote-ref,

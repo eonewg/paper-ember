@@ -2,23 +2,24 @@
 
 [简体中文](README.md#简体中文)
 
-Paper Ember is an Obsidian theme with soft paper-like backgrounds, restrained terracotta accents, and a calm visual hierarchy. It supports both light and dark modes.
+Paper Ember is a restrained, Claude-inspired Obsidian study theme built around warm paper surfaces, adaptable accent colors, and a quiet visual hierarchy. The accent follows Obsidian's native accent-color setting instead of locking the theme to a fixed palette. It is designed for long-form Chinese reading, mathematics, computer-science notes, English close reading, and code-heavy study, with full light and dark mode support.
 
-![Paper Ember theme preview](screenshot.png)
+![Paper Ember workspace, Properties view, reading layout, and Claudian integration](screenshot.png)
 
 ## Features
 
-- Soft paper tones in light mode and a layered charcoal palette in dark mode
-- Consistent typography across Live Preview and Reading View
-- Restrained headings, blockquotes, callouts, tables, and code blocks
-- Clear syntax colors designed for both light and dark modes
-- Support for Obsidian's native interface, text, and monospace font settings
-- Interface refinements for commonly used plugins including Notebook Navigator and Claudian
-- Optional Style Settings controls for colors, font size, line height, reading width, fonts, radii, and sidebar density
+- Warm off-white paper surfaces in light mode and layered charcoal surfaces in dark mode
+- Accent colors derived from Obsidian's native accent setting; the screenshots use violet
+- Consistent typography, spacing, tags, tables, and interaction states across Live Preview and Reading View
+- Reading-focused CJK and Latin typography with balanced line height and a configurable content width
+- Quiet treatments for Properties, headings, links, blockquotes, callouts, tasks, tables, math, and code blocks
+- Syntax colors tuned independently for light and dark backgrounds
+- Native support for Obsidian's interface, text, and monospace font settings
+- Focused compatibility styles for Claudian, Notebook Navigator, Dataview, Tasks, Calendar, Kanban, Excalidraw, Image Converter, Obsidian Git, Editing Toolbar, Outliner, and Advanced Tables
 
 ## Preview
 
-![Paper Ember tasks, code blocks, tables, callouts, links, and footnotes preview](screenshots/showcase-details.png)
+![Paper Ember mathematics, tasks, code, tables, callouts, links, and footnotes](screenshots/showcase-details.png)
 
 ## Installation
 
@@ -43,7 +44,7 @@ your-vault/.obsidian/themes/Paper Ember/
 
 ## Customization
 
-[Style Settings](https://github.com/mgmeyers/obsidian-style-settings) is optional. When installed, it provides controls for the accent color, text size, line height, reading width, fonts, radii, and sidebar density. The theme works normally without it.
+[Style Settings](https://github.com/mgmeyers/obsidian-style-settings) is optional. When installed, it provides controls for light-background warmth, dark-background brightness, text size, line height, reading width, interface/text/monospace fonts, global and code-block radii, sidebar density, table stripes, H2 decoration, and Claudian font sizing. Accent color remains controlled by Obsidian under Settings → Appearance. The theme works normally without Style Settings.
 
 ## Fonts
 
@@ -55,8 +56,10 @@ Otherwise, Paper Ember uses Inter when it is installed and falls back to Noto Sa
 
 - Minimum Obsidian version: 1.13.0
 - Light and dark modes are supported
-- Style Settings is optional
-- The theme is pure CSS and contains no runtime remote resources
+- Live Preview and Reading View share the same semantic design tokens
+- Style Settings is optional; no plugin is required for the core theme
+- Targeted plugin styles use public or stable selectors and preserve each plugin's layout and behavior
+- The theme is pure CSS, uses no JavaScript or build step, and contains no runtime remote resources
 
 ## Acknowledgements
 
