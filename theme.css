@@ -1,5 +1,5 @@
 /* 1. Theme metadata and Style Settings
-   Paper Ember 0.1.10 — a warm, restrained theme for Obsidian. */
+   Paper Ember 0.1.11 — a warm, restrained theme for Obsidian. */
 
 /* @settings
 name: Paper Ember
@@ -144,7 +144,7 @@ body {
   --eone-transition-fast: 170ms var(--eone-ease-standard);
   --eone-transition-medium: 230ms var(--eone-ease-out);
   --eone-sidebar-item-height: 30px;
-  --eone-paragraph-spacing: 1.15em;
+  --eone-paragraph-spacing: 1em;
   --eone-stacked-heading-gap: 0.45em;
   --eone-quote-line-cap: 0.28em;
   --eone-callout-bg-alpha: 0.045;
@@ -409,21 +409,23 @@ textarea {
   font-family: var(--font-text);
   font-weight: 650;
   letter-spacing: -0.012em;
-  line-height: 1.35;
+  line-height: 1.22;
 }
 
 .markdown-rendered h1,
 .markdown-source-view .HyperMD-header-1 {
+  --eone-heading-margin-start: 0.75em;
   font-size: 1.72em;
-  margin-block: 1.45em 1em;
+  margin-block: var(--eone-heading-margin-start) 0.55em;
 }
 
 /* HyperMD-header-* are stable Live Preview line classes supplied by Obsidian. */
 .markdown-rendered h2,
 .markdown-source-view .HyperMD-header-2 {
+  --eone-heading-margin-start: 0.65em;
   font-size: 1.4em;
   font-weight: 700;
-  margin-block: 1.35em 0.9em;
+  margin-block: var(--eone-heading-margin-start) 0.5em;
 }
 
 body.eone-enable-h2-decoration .markdown-rendered h2,
@@ -434,63 +436,51 @@ body.eone-enable-h2-decoration .markdown-source-view .HyperMD-header-2 {
 
 .markdown-rendered h3,
 .markdown-source-view .HyperMD-header-3 {
+  --eone-heading-margin-start: 0.55em;
   font-size: 1.2em;
-  margin-block: 1.15em 0.8em;
+  margin-block: var(--eone-heading-margin-start) 0.45em;
 }
 
 .markdown-rendered h4,
 .markdown-source-view .HyperMD-header-4 {
+  --eone-heading-margin-start: 0.5em;
   font-size: 1.12em;
-  margin-block: 1.1em 0.75em;
+  margin-block: var(--eone-heading-margin-start) 0.4em;
 }
 
 .markdown-rendered h5,
 .markdown-source-view .HyperMD-header-5 {
+  --eone-heading-margin-start: 0.45em;
   color: var(--text-muted);
   font-size: 1em;
-  margin-block: 1em 0.7em;
+  margin-block: var(--eone-heading-margin-start) 0.35em;
 }
 
 .markdown-rendered h6,
 .markdown-source-view .HyperMD-header-6 {
+  --eone-heading-margin-start: 0.4em;
   color: var(--text-muted);
   font-size: 0.9em;
   letter-spacing: 0.035em;
-  margin-block: 0.9em 0.65em;
+  margin-block: var(--eone-heading-margin-start) 0.3em;
   text-transform: none;
 }
 
-/* CodeMirror counts heading margins as part of the editable line box. */
+/* Obsidian normally expands headings that follow body blocks to
+   --heading-spacing. Keep that transition at the same compact spacing used
+   by the corresponding Live Preview heading. */
+.markdown-rendered :is(p, pre, table, ul, ol) + :is(h1, h2, h3, h4, h5, h6),
+.markdown-rendered div:is(.el-blockquote, .el-p, .el-pre, .el-table, .el-ul, .el-ol) + div > :is(h1, h2, h3, h4, h5, h6) {
+  margin-top: var(--eone-heading-margin-start);
+}
+
 .markdown-source-view .HyperMD-header {
   line-height: 1.22;
 }
 
-.markdown-source-view .HyperMD-header-1 {
-  margin-block: 0.75em 0.55em;
-}
-
-.markdown-source-view .HyperMD-header-2 {
-  margin-block: 0.65em 0.5em;
-}
-
-.markdown-source-view .HyperMD-header-3 {
-  margin-block: 0.55em 0.45em;
-}
-
-.markdown-source-view .HyperMD-header-4 {
-  margin-block: 0.5em 0.4em;
-}
-
-.markdown-source-view .HyperMD-header-5 {
-  margin-block: 0.45em 0.35em;
-}
-
-.markdown-source-view .HyperMD-header-6 {
-  margin-block: 0.4em 0.3em;
-}
-
 /* Keep the following hierarchy heading compact; adjacent block margins collapse in Reading view. */
 .markdown-rendered :is(h1, h2, h3, h4, h5, h6) + :is(h1, h2, h3, h4, h5, h6),
+.markdown-rendered div:is(.el-h1, .el-h2, .el-h3, .el-h4, .el-h5, .el-h6) + div > :is(h1, h2, h3, h4, h5, h6),
 .markdown-source-view .HyperMD-header + .HyperMD-header {
   margin-block-start: var(--eone-stacked-heading-gap);
 }
@@ -876,9 +866,14 @@ pre,
   background: var(--eone-code-block-bg);
   border: 1px solid var(--eone-code-block-border);
   border-radius: var(--eone-code-radius);
-  padding: 1em 1.1em;
+  padding: var(--size-4-3) var(--size-4-4);
   line-height: 1.58;
   box-shadow: none;
+}
+
+.markdown-rendered :is(h1, h2, h3, h4, h5, h6) + pre,
+.markdown-rendered div:is(.el-h1, .el-h2, .el-h3, .el-h4, .el-h5, .el-h6) + div.el-pre > pre {
+  margin-top: var(--size-4-3);
 }
 
 .markdown-rendered pre code {
@@ -887,6 +882,7 @@ pre,
   border: 0;
   border-radius: 0;
   padding: 0;
+  font-size: var(--code-size);
 }
 
 /* cm-line.HyperMD-codeblock covers fenced code in Live Preview without changing tokens. */
@@ -901,6 +897,12 @@ pre,
   border-start-start-radius: var(--eone-code-radius);
   border-start-end-radius: var(--eone-code-radius);
   padding-top: 0.55em;
+}
+
+/* CodeMirror removes block margins from editor lines. Restore the same gap
+   Reading view keeps when a fenced block directly follows a heading. */
+.markdown-source-view.mod-cm6 .cm-line.HyperMD-header + .cm-line.HyperMD-codeblock-begin {
+  margin-top: var(--size-4-3) !important;
 }
 
 .markdown-source-view.mod-cm6 .cm-line.HyperMD-codeblock-end {
@@ -1578,6 +1580,33 @@ button.mod-cta:hover {
   color: var(--text-normal);
   background: var(--eone-settings-nav-active);
   font-weight: 650;
+}
+
+/* Settings search has a three-level hierarchy: tab, optional plugin source,
+   and matched setting rows. Restore the native nesting after the shared nav
+   item rule above so child labels align with the tab label instead of its
+   icon, while keeping matches legible in both color schemes. */
+.modal.mod-settings .setting-search-results {
+  gap: var(--size-4-3);
+}
+
+.modal.mod-settings .setting-search-results :is(.setting-search-result-tab, .setting-search-result-item) {
+  color: var(--text-normal);
+}
+
+.modal.mod-settings .setting-search-results .setting-search-result-item {
+  box-sizing: border-box;
+  height: 25px;
+  min-height: 25px;
+  margin-block: 0;
+  padding-block: 2px;
+  padding-inline-start: calc(9px + 18px + 8px);
+  font-size: var(--font-ui-small);
+}
+
+.modal.mod-settings .setting-search-results .suggestion-highlight {
+  color: var(--text-normal);
+  font-weight: 700;
 }
 
 .modal.mod-settings .vertical-tab-content-container {
