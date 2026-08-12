@@ -2466,7 +2466,33 @@ body.eone-claudian-follow-editor-font-size .workspace-leaf-content .view-content
 }
 
 .claudian-container .claudian-input-toolbar {
+  flex-wrap: nowrap;
+  min-width: 0;
   padding: 0 4px 1px;
+}
+
+/* Keep the composer controls on one row when provider model labels are long.
+   Only the model label yields space; the effort, context, file, and mode
+   controls remain fully visible. */
+.claudian-container .claudian-input-toolbar > .claudian-model-selector {
+  flex: 1 1 auto;
+  min-width: 0;
+}
+
+.claudian-container .claudian-model-btn {
+  min-width: 0;
+  max-width: 100%;
+}
+
+.claudian-container .claudian-model-label {
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.claudian-container .claudian-input-toolbar > :not(.claudian-model-selector) {
+  flex: 0 0 auto;
 }
 
 /* Claudian context chips provide their own single surface. Cover both current and legacy markup. */
