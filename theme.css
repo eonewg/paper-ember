@@ -1,5 +1,5 @@
 /* 1. Theme metadata and Style Settings
-   Paper Ember 0.1.11 — a warm, restrained theme for Obsidian. */
+   Paper Ember 0.1.12 — a warm, restrained theme for Obsidian. */
 
 /* @settings
 name: Paper Ember
@@ -145,7 +145,7 @@ body {
   --eone-transition-medium: 230ms var(--eone-ease-out);
   --eone-sidebar-item-height: 30px;
   --eone-paragraph-spacing: 1em;
-  --eone-stacked-heading-gap: 0.45em;
+  --eone-stacked-heading-gap: 0.3em;
   --eone-quote-line-cap: 0.28em;
   --eone-callout-bg-alpha: 0.045;
   --eone-callout-border-alpha: 0.42;
@@ -414,18 +414,20 @@ textarea {
 
 .markdown-rendered h1,
 .markdown-source-view .HyperMD-header-1 {
-  --eone-heading-margin-start: 0.75em;
+  --eone-heading-margin-start: 0.65em;
+  --eone-heading-margin-end: 0.75em;
   font-size: 1.72em;
-  margin-block: var(--eone-heading-margin-start) 0.55em;
+  margin-block: var(--eone-heading-margin-start) var(--eone-heading-margin-end);
 }
 
 /* HyperMD-header-* are stable Live Preview line classes supplied by Obsidian. */
 .markdown-rendered h2,
 .markdown-source-view .HyperMD-header-2 {
-  --eone-heading-margin-start: 0.65em;
+  --eone-heading-margin-start: 0.55em;
+  --eone-heading-margin-end: 0.7em;
   font-size: 1.4em;
   font-weight: 700;
-  margin-block: var(--eone-heading-margin-start) 0.5em;
+  margin-block: var(--eone-heading-margin-start) var(--eone-heading-margin-end);
 }
 
 body.eone-enable-h2-decoration .markdown-rendered h2,
@@ -436,33 +438,37 @@ body.eone-enable-h2-decoration .markdown-source-view .HyperMD-header-2 {
 
 .markdown-rendered h3,
 .markdown-source-view .HyperMD-header-3 {
-  --eone-heading-margin-start: 0.55em;
+  --eone-heading-margin-start: 0.45em;
+  --eone-heading-margin-end: 0.65em;
   font-size: 1.2em;
-  margin-block: var(--eone-heading-margin-start) 0.45em;
+  margin-block: var(--eone-heading-margin-start) var(--eone-heading-margin-end);
 }
 
 .markdown-rendered h4,
 .markdown-source-view .HyperMD-header-4 {
-  --eone-heading-margin-start: 0.5em;
+  --eone-heading-margin-start: 0.4em;
+  --eone-heading-margin-end: 0.6em;
   font-size: 1.12em;
-  margin-block: var(--eone-heading-margin-start) 0.4em;
+  margin-block: var(--eone-heading-margin-start) var(--eone-heading-margin-end);
 }
 
 .markdown-rendered h5,
 .markdown-source-view .HyperMD-header-5 {
-  --eone-heading-margin-start: 0.45em;
+  --eone-heading-margin-start: 0.35em;
+  --eone-heading-margin-end: 0.55em;
   color: var(--text-muted);
   font-size: 1em;
-  margin-block: var(--eone-heading-margin-start) 0.35em;
+  margin-block: var(--eone-heading-margin-start) var(--eone-heading-margin-end);
 }
 
 .markdown-rendered h6,
 .markdown-source-view .HyperMD-header-6 {
-  --eone-heading-margin-start: 0.4em;
+  --eone-heading-margin-start: 0.3em;
+  --eone-heading-margin-end: 0.5em;
   color: var(--text-muted);
   font-size: 0.9em;
   letter-spacing: 0.035em;
-  margin-block: var(--eone-heading-margin-start) 0.3em;
+  margin-block: var(--eone-heading-margin-start) var(--eone-heading-margin-end);
   text-transform: none;
 }
 
@@ -476,6 +482,20 @@ body.eone-enable-h2-decoration .markdown-source-view .HyperMD-header-2 {
 
 .markdown-source-view .HyperMD-header {
   line-height: 1.22;
+}
+
+/* CodeMirror clears line margins with !important. Use line padding so Live
+   Preview follows the same before/after heading rhythm as Reading view. */
+.markdown-source-view.mod-cm6.is-live-preview .cm-s-obsidian .cm-line.HyperMD-header {
+  padding-block: var(--eone-heading-margin-start) var(--eone-heading-margin-end);
+}
+
+.markdown-source-view.mod-cm6.is-live-preview .cm-s-obsidian .cm-line.HyperMD-header + .cm-line.HyperMD-header {
+  padding-top: 0;
+}
+
+.markdown-source-view.mod-cm6.is-live-preview .cm-s-obsidian .cm-line.HyperMD-header:has(+ .cm-line.HyperMD-codeblock-begin) {
+  padding-bottom: 0;
 }
 
 /* Keep the following hierarchy heading compact; adjacent block margins collapse in Reading view. */
@@ -2320,6 +2340,13 @@ body.eone-claudian-follow-editor-font-size .workspace-leaf-content .view-content
 .claudian-container .claudian-message-content,
 .claudian-container .claudian-input-wrapper textarea.claudian-input {
   font-size: 1em;
+}
+
+/* Claudian occasionally leaves the thinking content's visibility class out of
+   sync after rendering provider history. Respect the header's collapsed state
+   so the hidden reasoning content cannot reserve a blank block before text. */
+.claudian-container .claudian-thinking-header[aria-expanded="false"] + .claudian-thinking-content {
+  display: none;
 }
 
 .claudian-container .claudian-welcome-text {
