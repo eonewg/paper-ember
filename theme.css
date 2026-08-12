@@ -1,5 +1,5 @@
 /* 1. Theme metadata and Style Settings
-   Paper Ember 0.1.12 — a warm, restrained theme for Obsidian. */
+   Paper Ember 0.1.13 — a warm, restrained theme for Obsidian. */
 
 /* @settings
 name: Paper Ember
@@ -2346,6 +2346,13 @@ body.eone-claudian-follow-editor-font-size .workspace-leaf-content .view-content
    sync after rendering provider history. Respect the header's collapsed state
    so the hidden reasoning content cannot reserve a blank block before text. */
 .claudian-container .claudian-thinking-header[aria-expanded="false"] + .claudian-thinking-content {
+  display: none;
+}
+
+/* Streaming providers can emit consecutive assistant-message boundaries.
+   Claudian creates a placeholder for each boundary, and an undiscarded empty
+   placeholder otherwise contributes message padding plus the list gap. */
+.claudian-container .claudian-message-assistant:has(> .claudian-message-content:empty) {
   display: none;
 }
 
