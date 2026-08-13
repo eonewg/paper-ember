@@ -1,5 +1,5 @@
 /* 1. Theme metadata and Style Settings
-   Paper Ember 0.1.13 — a warm, restrained theme for Obsidian. */
+   Paper Ember 0.1.14 — a warm, restrained theme for Obsidian. */
 
 /* @settings
 name: Paper Ember
@@ -2354,6 +2354,18 @@ body.eone-claudian-follow-editor-font-size .workspace-leaf-content .view-content
    placeholder otherwise contributes message padding plus the list gap. */
 .claudian-container .claudian-message-assistant:has(> .claudian-message-content:empty) {
   display: none;
+}
+
+/* Some providers split one response across consecutive assistant messages while
+   streaming. Remove the duplicated message shell spacing at those boundaries;
+   the content blocks keep their native 8px separation. */
+.claudian-container .claudian-message-assistant:has(+ .claudian-message-assistant) {
+  padding-bottom: 0;
+}
+
+.claudian-container .claudian-message-assistant + .claudian-message-assistant {
+  margin-top: -12px;
+  padding-top: 0;
 }
 
 .claudian-container .claudian-welcome-text {
