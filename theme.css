@@ -2165,6 +2165,13 @@ button.mod-cta:hover {
 /* 11. Plugin compatibility */
 
 /* Dataview uses standard tables plus these public result-view classes. */
+.markdown-source-view.mod-cm6
+  .cm-embed-block:is(.cm-lang-dataview, .cm-lang-dataviewjs):hover {
+  box-shadow: none;
+  border-radius: 0;
+  overflow: visible;
+}
+
 .dataview.table-view-table,
 .dataview.table-view-table :is(th, td) {
   border-color: var(--background-modifier-border);
