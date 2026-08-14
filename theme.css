@@ -2320,8 +2320,9 @@ button.mod-cta:hover {
 }
 
 /* Obsidian adds a large bottom padding to generic view-content panels. Claudian
-   uses that same element as its flex root, so remove only the host padding. */
-.workspace-leaf-content .view-content.claudian-container {
+   and its Qoderian fork use that same element as their flex root, so remove only
+   the host padding. */
+.workspace-leaf-content :is(.view-content.claudian-container, .view-content.qoderian-container) {
   --eone-claudian-edge-gap: 18px;
   --eone-claudian-message-end-gap: 10px;
   --eone-claudian-composer-start-gap: 14px;
@@ -2333,7 +2334,7 @@ button.mod-cta:hover {
   font-size: var(--eone-claudian-font-size);
 }
 
-body.eone-claudian-follow-editor-font-size .workspace-leaf-content .view-content.claudian-container {
+body.eone-claudian-follow-editor-font-size .workspace-leaf-content :is(.view-content.claudian-container, .view-content.qoderian-container) {
   font-size: var(--font-text-size);
 }
 
@@ -2544,6 +2545,206 @@ body.eone-claudian-follow-editor-font-size .workspace-leaf-content .view-content
 
 .claudian-container .claudian-context-row button.claudian-context-chip-remove:hover,
 .claudian-container .claudian-context-row button.claudian-file-chip-remove:hover {
+  color: var(--text-normal);
+  background: transparent;
+  border-color: transparent;
+  box-shadow: none;
+}
+
+/* Qoderian is a Claudian fork with a different class prefix. Mirror the full
+   Claudian theme layout while preserving Qoderian's own brand colors and
+   provider-specific controls. */
+.qoderian-container .qoderian-message-content,
+.qoderian-container .qoderian-input-wrapper textarea.qoderian-input {
+  font-size: 1em;
+}
+
+.qoderian-container .qoderian-thinking-header[aria-expanded="false"] + .qoderian-thinking-content {
+  display: none;
+}
+
+.qoderian-container .qoderian-message-assistant:has(> .qoderian-message-content:empty) {
+  display: none;
+}
+
+.qoderian-container .qoderian-message-assistant:has(+ .qoderian-message-assistant) {
+  padding-bottom: 0;
+}
+
+.qoderian-container .qoderian-message-assistant + .qoderian-message-assistant {
+  margin-top: -12px;
+  padding-top: 0;
+}
+
+.qoderian-container .qoderian-messages {
+  padding-bottom: 0;
+}
+
+.qoderian-container .qoderian-welcome-greeting {
+  font-size: 1.75em;
+}
+
+.qoderian-container .qoderian-message-user {
+  margin-inline-end: var(--eone-claudian-message-end-gap);
+  max-width: calc(95% - var(--eone-claudian-message-end-gap));
+}
+
+.qoderian-container .qoderian-input-container {
+  box-sizing: border-box;
+  padding-inline-start: var(--eone-claudian-composer-start-gap);
+  padding-inline-end: var(--eone-claudian-composer-end-gap);
+}
+
+.qoderian-container .qoderian-history-menu {
+  inset-inline-start: var(--eone-claudian-composer-start-gap);
+  inset-inline-end: var(--eone-claudian-composer-end-gap);
+}
+
+.qoderian-container .qoderian-history-item-actions button.qoderian-action-btn {
+  background: transparent;
+  border-color: transparent;
+  box-shadow: none;
+}
+
+.qoderian-container .qoderian-history-item-actions button.qoderian-action-btn:hover {
+  background: var(--eone-icon-button-hover);
+}
+
+.qoderian-container .qoderian-active-input-slot > .qoderian-input-composer > .qoderian-input-container {
+  margin-top: 2px;
+}
+
+.qoderian-container .qoderian-input-footer {
+  padding-top: 6px;
+  padding-bottom: var(--eone-claudian-bottom-gap);
+}
+
+.qoderian-container .qoderian-input-nav-row {
+  padding-bottom: 6px;
+}
+
+.qoderian-container .qoderian-view-input-nav-row {
+  box-sizing: border-box;
+  padding-inline: var(--eone-claudian-edge-gap);
+}
+
+.qoderian-container .qoderian-tab-badges {
+  margin-inline: 0;
+}
+
+.qoderian-container .qoderian-input-nav-btn {
+  width: 24px;
+  height: 24px;
+  padding: 0;
+  color: var(--icon-color);
+  background: transparent;
+  border: 0;
+  border-radius: var(--eone-hover-radius);
+}
+
+.qoderian-container .qoderian-input-nav-btn:hover {
+  color: var(--icon-color-hover);
+  background: var(--eone-icon-button-hover);
+}
+
+.qoderian-container .qoderian-nav-sidebar.visible {
+  right: 20px;
+  opacity: 0.28;
+}
+
+.qoderian-container .qoderian-nav-sidebar.visible:hover {
+  opacity: 0.85;
+}
+
+.qoderian-container .qoderian-nav-btn {
+  color: var(--icon-color);
+  background: var(--background-primary);
+  border-color: var(--background-modifier-border);
+  box-shadow: var(--shadow-s);
+}
+
+.qoderian-container .qoderian-nav-btn:hover {
+  color: var(--icon-color-hover);
+  background: var(--eone-icon-button-hover);
+}
+
+.qoderian-container .qoderian-input-wrapper {
+  min-height: 74px;
+  background: var(--eone-claudian-input-bg);
+  border-radius: 8px;
+}
+
+.qoderian-container .qoderian-input-wrapper textarea.qoderian-input {
+  min-height: min(var(--qoderian-textarea-min-height, 40px), calc(9em + 7px));
+  max-height: calc(9em + 7px);
+  overflow-y: auto;
+  field-sizing: fixed;
+  padding: 3px 8px 4px;
+}
+
+.qoderian-container .qoderian-context-row {
+  align-items: center;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+  gap: 6px;
+  min-width: 0;
+  max-width: 100%;
+  padding: 3px 6px 0;
+}
+
+.qoderian-container .qoderian-input-toolbar {
+  flex-wrap: nowrap;
+  min-width: 0;
+  padding: 0 4px 1px;
+}
+
+.qoderian-container .qoderian-input-toolbar > .qoderian-model-selector {
+  flex: 1 1 auto;
+  min-width: 0;
+}
+
+.qoderian-container .qoderian-model-btn {
+  min-width: 0;
+  max-width: 100%;
+}
+
+.qoderian-container .qoderian-model-label {
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.qoderian-container .qoderian-input-toolbar > :not(.qoderian-model-selector) {
+  flex: 0 0 auto;
+}
+
+.qoderian-container .qoderian-file-chip {
+  background: transparent;
+  border-color: var(--background-modifier-border);
+}
+
+.qoderian-container .qoderian-file-chip:hover {
+  background: var(--background-primary);
+  border-color: var(--background-modifier-border);
+}
+
+.qoderian-container .qoderian-context-row button.qoderian-file-chip,
+.qoderian-container .qoderian-context-row button.qoderian-file-chip:hover,
+.qoderian-container .qoderian-context-row button.qoderian-file-chip:focus,
+.qoderian-container .qoderian-context-row button.qoderian-file-chip:active,
+.qoderian-container .qoderian-context-row button.qoderian-file-chip-remove,
+.qoderian-container .qoderian-context-row button.qoderian-file-chip-remove:hover,
+.qoderian-container .qoderian-context-row button.qoderian-file-chip-remove:focus,
+.qoderian-container .qoderian-context-row button.qoderian-file-chip-remove:active {
+  color: inherit;
+  background: transparent;
+  background-image: none;
+  border-color: transparent;
+  box-shadow: none;
+}
+
+.qoderian-container .qoderian-context-row button.qoderian-file-chip-remove:hover {
   color: var(--text-normal);
   background: transparent;
   border-color: transparent;
