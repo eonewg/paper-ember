@@ -2676,7 +2676,11 @@ body.eone-claudian-follow-editor-font-size .workspace-leaf-content :is(.view-con
 }
 
 .qoderian-container .qoderian-input-wrapper {
-  min-height: 74px;
+  /* Deliberately no min-height clamp here. Qoderian 1.0.6 renders the input
+     through a CodeMirror host that is a flex: 1 1 0 / min-height: 0 item and
+     contributes no intrinsic height, so the wrapper's own native min-height
+     (140px) is what gives the 60px editing surface its room. Clamping the
+     wrapper starves that surface and it overflows the toolbar. */
   background: var(--eone-claudian-input-bg);
   border-radius: 8px;
 }
@@ -2687,6 +2691,12 @@ body.eone-claudian-follow-editor-font-size .workspace-leaf-content :is(.view-con
   overflow-y: auto;
   field-sizing: fixed;
   padding: 3px 8px 4px;
+}
+
+/* Qoderian 1.0.6 renders the input through a CodeMirror surface instead of
+   the visible textarea; carry the theme's 1em input typography onto it. */
+.qoderian-container .qoderian-input-wrapper .qoderian-live-composer.cm-editor {
+  font-size: 1em;
 }
 
 .qoderian-container .qoderian-context-row {
