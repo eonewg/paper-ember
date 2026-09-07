@@ -2294,6 +2294,10 @@ button.mod-cta:hover {
   --nn-theme-file-selected-tag-bg: rgba(var(--paper-ember-accent-rgb), 0.12);
   --nn-theme-file-selected-inactive-tag-color: var(--text-accent);
   --nn-theme-file-selected-inactive-tag-bg: rgba(var(--paper-ember-accent-rgb), 0.085);
+
+  /* NN tints weekend cells with 10% foreground by default; every calendar cell
+     stays on the plain pane background in this theme. */
+  --nn-theme-calendar-weekend-bg: transparent;
 }
 
 .notebook-navigator .nn-file.nn-selected:not(.nn-compact) .nn-file-name {
@@ -2324,6 +2328,33 @@ button.mod-cta:hover {
   color: var(--icon-color-hover);
   background-color: var(--eone-icon-button-hover);
   box-shadow: none;
+}
+
+/* The generic button chip style above outranks the plugin's transparent
+   calendar buttons, leaving white chips on the pane background. Restore the
+   plugin backgrounds; hover is restated here because this rule would also
+   outrank the generic hover tint. The plugin brightens hovered buttons with a
+   brightness filter, which lifts the opaque hover color above the pane
+   background, so the filter is dropped to keep hover a darkening step.
+   Longhand background-color only, so feature images on the same buttons stay
+   intact. */
+.notebook-navigator .nn-navigation-calendar button.nn-navigation-calendar-period-button,
+.notebook-navigator .nn-navigation-calendar button.nn-navigation-calendar-nav-button,
+.notebook-navigator .nn-navigation-calendar button.nn-navigation-calendar-today,
+.notebook-navigator .nn-navigation-calendar button.nn-navigation-calendar-year-month,
+.notebook-navigator .nn-navigation-calendar button.nn-navigation-calendar-weeknumber-button,
+.notebook-navigator .nn-navigation-calendar button.nn-navigation-calendar-day {
+  background-color: transparent;
+}
+
+.notebook-navigator .nn-navigation-calendar button.nn-navigation-calendar-period-button:hover,
+.notebook-navigator .nn-navigation-calendar button.nn-navigation-calendar-nav-button:hover,
+.notebook-navigator .nn-navigation-calendar button.nn-navigation-calendar-today:hover,
+.notebook-navigator .nn-navigation-calendar button.nn-navigation-calendar-year-month:hover,
+.notebook-navigator .nn-navigation-calendar button.nn-navigation-calendar-weeknumber-button:hover,
+.notebook-navigator .nn-navigation-calendar button.nn-navigation-calendar-day:hover {
+  background-color: var(--nn-theme-calendar-hover-bg);
+  filter: none;
 }
 
 /* Obsidian adds a large bottom padding to generic view-content panels. Claudian
