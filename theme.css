@@ -141,8 +141,8 @@ body {
   --eone-hover-radius: 8px;
   --eone-ease-standard: cubic-bezier(0.2, 0.72, 0.24, 1);
   --eone-ease-out: cubic-bezier(0.22, 1, 0.36, 1);
-  --eone-transition-fast: 170ms var(--eone-ease-standard);
-  --eone-transition-medium: 230ms var(--eone-ease-out);
+  --eone-transition-fast: 100ms var(--eone-ease-standard);
+  --eone-transition-medium: 140ms var(--eone-ease-out);
   --eone-sidebar-item-height: 30px;
   --eone-paragraph-spacing: 1em;
   --eone-stacked-heading-gap: 0.3em;
@@ -564,7 +564,7 @@ mark,
 
 .workspace-tab-header {
   color: var(--text-muted);
-  transition: color var(--eone-transition-fast), background-color var(--eone-transition-medium), box-shadow var(--eone-transition-medium);
+  transition: color var(--eone-transition-fast), background-color var(--eone-transition-medium);
 }
 
 .workspace-tab-header:hover {
@@ -627,7 +627,7 @@ mark,
   min-height: var(--eone-sidebar-item-height);
   color: var(--text-muted);
   align-items: center;
-  transition: color var(--eone-transition-fast), background-color var(--eone-transition-medium), box-shadow var(--eone-transition-medium);
+  transition: color var(--eone-transition-fast), background-color var(--eone-transition-medium);
 }
 
 .nav-folder-title {
@@ -639,11 +639,6 @@ mark,
 .nav-folder-title:hover {
   color: var(--text-normal);
   background: var(--eone-nav-item-hover);
-}
-
-.nav-file-title-content,
-.nav-folder-title-content {
-  transition: transform var(--eone-transition-medium);
 }
 
 .nav-file-title:hover .nav-file-title-content,
@@ -1059,7 +1054,7 @@ pre,
 .markdown-source-view.mod-cm6 .cm-table-widget tbody td {
   background: var(--eone-table-surface);
   border-block-end: 1px solid var(--eone-table-border);
-  transition: background-color var(--eone-transition-medium), border-color var(--eone-transition-medium);
+  transition: background-color var(--eone-transition-fast);
 }
 
 /* Obsidian gives even columns a separate background in Reading view. */
@@ -1272,7 +1267,7 @@ select,
   background-color: var(--background-modifier-form-field);
   border-color: var(--background-modifier-border);
   box-shadow: none;
-  transition: background-color var(--eone-transition-medium), border-color var(--eone-transition-fast), box-shadow var(--eone-transition-medium);
+  transition: background-color var(--eone-transition-medium), border-color var(--eone-transition-fast);
 }
 
 input:focus,
@@ -1296,7 +1291,7 @@ input.metadata-property-key-input:focus-visible {
 
 button,
 .clickable-icon {
-  transition: color var(--eone-transition-fast), background-color var(--eone-transition-medium), border-color var(--eone-transition-fast), box-shadow var(--eone-transition-medium), opacity var(--eone-transition-fast);
+  transition: color var(--eone-transition-fast), background-color var(--eone-transition-medium), border-color var(--eone-transition-fast), opacity var(--eone-transition-fast);
 }
 
 .checkbox-container,
