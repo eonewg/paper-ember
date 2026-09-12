@@ -2424,6 +2424,14 @@ body.eone-claudian-follow-editor-font-size .workspace-leaf-content :is(.view-con
   padding-inline-end: var(--eone-claudian-composer-end-gap);
 }
 
+/* Match @ candidates to the composer inset; preserve inline-editor positioning. */
+.claudian-container .claudian-input-container > .claudian-composer-dropdown:not(.claudian-composer-dropdown--fixed),
+.claudian-container .claudian-input-container > .claudian-mention-dropdown:not(.claudian-mention-dropdown-fixed),
+.qoderian-container .qoderian-input-container > .qoderian-mention-dropdown:not(.qoderian-mention-dropdown-fixed) {
+  inset-inline-start: var(--eone-claudian-composer-start-gap);
+  inset-inline-end: var(--eone-claudian-composer-end-gap);
+}
+
 /* Keep the absolutely positioned conversation history aligned with the
    composer instead of allowing it to span the full Claudian view. */
 .claudian-container .claudian-history-menu {
