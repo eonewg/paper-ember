@@ -39,7 +39,7 @@ For additional controls, install the optional [Style Settings](https://github.co
 
 | Area | Available controls |
 | --- | --- |
-| Colors | Light-mode background color and dark-mode background color, labeled warmth and brightness in the settings |
+| Colors | Light-mode and dark-mode background colors |
 | Typography | Text size, line height, reading width, and default interface, text, and code font stacks |
 | Appearance | Global and code-block corner radii, comfortable or compact sidebars, table stripes, and H2 decoration |
 | Chat panels | A shared font size for Claudian and Qoderian, or an option to follow the editor’s current font size |
@@ -54,7 +54,7 @@ No font installation is required. The theme uses local fonts and does not downlo
 
 Paper Ember includes targeted color, typography, and layout adjustments for these plugins:
 
-- **Claudian and Qoderian:** conversation spacing, message typography, input areas, history menus, and shared chat font controls. Qoderian uses the controls labeled “Claudian” in Style Settings.
+- **Claudian and Qoderian:** conversation spacing, message typography, input areas, history menus, and shared chat font controls. Both plugins share the “Claudian 与 Qoderian” section in Style Settings.
 - **Notebook Navigator:** navigation and file lists, selection states, buttons, and calendar colors.
 - **Dataview, Tasks, Calendar, and Kanban:** tables, task details, calendars, and board surfaces.
 - **Excalidraw, Image Converter, Obsidian Git, Editing Toolbar, Outliner, and Advanced Tables:** selected interface colors, controls, and borders.
@@ -112,7 +112,7 @@ Paper Ember 是一套受 Claude 启发的 Obsidian 主题，适合长篇阅读�
 
 | 分类 | 可调整内容 |
 | --- | --- |
-| 颜色 | 浅色与深色模式的背景颜色，设置项分别名为“浅色背景暖度”和“深色背景亮度” |
+| 颜色 | 浅色与深色模式的背景颜色 |
 | 排版 | 正文字号、行高、阅读宽度，以及默认界面、正文和代码字体列表 |
 | 外观 | 全局与代码块圆角、舒适或紧凑的侧边栏、表格隔行背景、H2 装饰 |
 | 聊天面板 | Claudian 与 Qoderian 共用的独立字号，或跟随编辑器当前字号 |
@@ -127,7 +127,7 @@ Paper Ember 是一套受 Claude 启发的 Obsidian 主题，适合长篇阅读�
 
 Paper Ember 为以下插件提供了针对性的配色、排版或布局调整：
 
-- **Claudian 与 Qoderian**：对话间距、消息排版、输入区域、历史菜单和共用的聊天字号设置。Qoderian 使用 Style Settings 中标为“Claudian”的设置项。
+- **Claudian 与 Qoderian**：对话间距、消息排版、输入区域、历史菜单和共用的聊天字号设置。两个插件共用 Style Settings 中“Claudian 与 Qoderian”分组的设置。
 - **Notebook Navigator**：导航与文件列表、选中状态、按钮和日历配色。
 - **Dataview、Tasks、Calendar 与 Kanban**：表格、任务细节、日历和看板背景。
 - **Excalidraw、Image Converter、Obsidian Git、Editing Toolbar、Outliner 与 Advanced Tables**：部分界面配色、控件和边框。

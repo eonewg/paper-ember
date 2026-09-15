@@ -123,8 +123,8 @@ if (Test-Path -LiteralPath $themePath -PathType Leaf) {
             Add-ValidationError "theme.css does not explicitly preserve mouse text selection in editor and reading views."
         }
 
-        if ($css -match '(?i)--eone-selection\s*:\s*rgba\(\s*var\(\s*--paper-ember-accent-rgb\s*\)') {
-            Add-ValidationError "theme.css selection color depends on --interactive-accent-rgb, which may be undefined and make text selection invisible."
+        if ($css -match '(?i)var\(\s*--(?:interactive|paper-ember)-accent-rgb\b') {
+            Add-ValidationError "theme.css depends on an unreliable accent RGB variable; derive colors from --interactive-accent instead."
         }
 
         $selectionColors = ([regex]::Matches(

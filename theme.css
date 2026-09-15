@@ -11,14 +11,14 @@ settings:
     level: 2
     collapsed: false
   - id: eone-light-bg-warmth
-    title: 浅色背景暖度
-    description: 调整浅色模式主背景的暖色程度。
+    title: 浅色背景色
+    description: 调整浅色模式的主背景颜色。
     type: variable-color
     format: hex
     default: '#f9f9f7'
   - id: eone-dark-bg-brightness
-    title: 深色背景亮度
-    description: 调整深色模式主背景的亮度。
+    title: 深色背景色
+    description: 调整深色模式的主背景颜色。
     type: variable-color
     format: hex
     default: '#20201f'
@@ -63,18 +63,18 @@ settings:
     type: variable-text
     default: '"Cascadia Code", "Cascadia Mono", "JetBrains Mono", Consolas, monospace'
   - id: eone-claudian-heading
-    title: Claudian
+    title: Claudian 与 Qoderian
     type: heading
     level: 3
     collapsed: false
   - id: eone-claudian-follow-editor-font-size
     title: 跟随编辑器字号
-    description: 开启后，Claudian 使用 Obsidian 当前编辑器字号；关闭后使用下方的独立字号。
+    description: 开启后，Claudian 与 Qoderian 使用 Obsidian 当前编辑器字号；关闭后共用下方的独立字号。
     type: class-toggle
     default: false
   - id: eone-claudian-font-size
-    title: Claudian 字号
-    description: 仅在关闭“跟随编辑器字号”时生效。
+    title: 聊天字号
+    description: 同时调整 Claudian 与 Qoderian；仅在关闭“跟随编辑器字号”时生效。
     type: variable-number-slider
     default: 18
     min: 12
@@ -104,7 +104,7 @@ settings:
     format: px
   - id: eone-enable-h2-decoration
     title: 显示 H2 装饰
-    description: 可选显示章节标题左侧的陶土橙细线。
+    description: 可选显示章节标题左侧的细线，颜色跟随 Obsidian 强调色。
     type: class-toggle
     default: false
   - id: eone-sidebar-density
@@ -209,7 +209,6 @@ body.eone-sidebar-comfortable {
   --eone-text-faint: #918b82;
   --paper-ember-accent: var(--interactive-accent);
   --paper-ember-accent-strong: var(--interactive-accent-hover);
-  --paper-ember-accent-rgb: var(--interactive-accent-rgb);
   --eone-code-bg: rgba(61, 61, 58, 0.055);
   --eone-code-block-bg: #fcfbfb;
   --eone-code-block-border: #dad9da;
@@ -227,8 +226,8 @@ body.eone-sidebar-comfortable {
   --eone-table-border: rgba(37, 35, 31, 0.16);
   --eone-table-header-border: rgba(37, 35, 31, 0.42);
   --eone-table-surface: transparent;
-  --eone-table-selection: rgba(var(--paper-ember-accent-rgb), 0.09);
-  --eone-table-selection-border: rgba(var(--paper-ember-accent-rgb), 0.78);
+  --eone-table-selection: color-mix(in srgb, var(--interactive-accent) 9%, transparent);
+  --eone-table-selection-border: color-mix(in srgb, var(--interactive-accent) 78%, transparent);
   --eone-nav-item-hover: rgba(31, 30, 29, 0.045);
   --eone-nav-item-active: rgba(31, 30, 29, 0.045);
   --eone-icon-button-hover: var(--eone-bg-hover);
@@ -252,7 +251,7 @@ body.eone-sidebar-comfortable {
   --background-modifier-active-hover: #e8e5dd;
   --background-modifier-border: var(--eone-border);
   --background-modifier-border-hover: var(--eone-border-strong);
-  --background-modifier-border-focus: rgba(var(--paper-ember-accent-rgb), 0.62);
+  --background-modifier-border-focus: color-mix(in srgb, var(--interactive-accent) 62%, transparent);
   --background-modifier-form-field: var(--eone-bg-elevated);
   --background-modifier-form-field-highlighted: var(--eone-bg-primary);
   --background-modifier-box-shadow: var(--eone-shadow);
@@ -301,7 +300,6 @@ body.eone-sidebar-comfortable {
   --eone-text-faint: #89877f;
   --paper-ember-accent: var(--interactive-accent);
   --paper-ember-accent-strong: var(--interactive-accent-hover);
-  --paper-ember-accent-rgb: var(--interactive-accent-rgb);
   --eone-code-bg: rgba(194, 192, 182, 0.07);
   --eone-code-block-bg: #262624;
   --eone-code-block-border: #434340;
@@ -319,8 +317,8 @@ body.eone-sidebar-comfortable {
   --eone-table-border: rgba(240, 237, 230, 0.17);
   --eone-table-header-border: rgba(240, 237, 230, 0.44);
   --eone-table-surface: transparent;
-  --eone-table-selection: rgba(var(--paper-ember-accent-rgb), 0.13);
-  --eone-table-selection-border: rgba(var(--paper-ember-accent-rgb), 0.86);
+  --eone-table-selection: color-mix(in srgb, var(--interactive-accent) 13%, transparent);
+  --eone-table-selection-border: color-mix(in srgb, var(--interactive-accent) 86%, transparent);
   --eone-nav-item-hover: rgba(240, 237, 230, 0.085);
   --eone-nav-item-active: rgba(240, 237, 230, 0.085);
   --eone-icon-button-hover: var(--eone-bg-hover);
@@ -344,7 +342,7 @@ body.eone-sidebar-comfortable {
   --background-modifier-active-hover: #3b3b37;
   --background-modifier-border: var(--eone-border);
   --background-modifier-border-hover: var(--eone-border-strong);
-  --background-modifier-border-focus: rgba(var(--paper-ember-accent-rgb), 0.66);
+  --background-modifier-border-focus: color-mix(in srgb, var(--interactive-accent) 66%, transparent);
   --background-modifier-form-field: var(--eone-bg-elevated);
   --background-modifier-form-field-highlighted: var(--eone-bg-primary);
   --background-modifier-box-shadow: var(--eone-shadow);
@@ -679,7 +677,7 @@ mark,
 
 .tree-item-self.is-selected,
 .tree-item-self.is-active {
-  background: rgba(var(--paper-ember-accent-rgb), 0.12);
+  background: color-mix(in srgb, var(--interactive-accent) 12%, transparent);
   color: var(--text-normal);
 }
 
@@ -1275,7 +1273,7 @@ textarea:focus,
 select:focus,
 .dropdown:focus {
   border-color: var(--background-modifier-border-focus);
-  box-shadow: 0 0 0 2px rgba(var(--paper-ember-accent-rgb), 0.12);
+  box-shadow: 0 0 0 2px color-mix(in srgb, var(--interactive-accent) 12%, transparent);
 }
 
 /* Property names are inline labels, not standalone form fields. */
@@ -1302,16 +1300,16 @@ button,
   transition-timing-function: var(--eone-ease-out);
 }
 
-/* Claudian owns its button surfaces and interaction states; generic button
+/* Claudian and Qoderian own their button surfaces and interaction states; generic button
    chrome would override its transparent icon and disclosure controls. */
-button:not(.mod-cta):not(.mod-warning):not(:where(.claudian-container *)) {
+button:not(.mod-cta):not(.mod-warning):not(:where(.claudian-container *, .qoderian-container *)) {
   color: var(--text-normal);
   background: var(--interactive-normal);
   border-color: var(--background-modifier-border);
   box-shadow: none;
 }
 
-button:not(.mod-cta):not(.mod-warning):not(:where(.claudian-container *)):hover {
+button:not(.mod-cta):not(.mod-warning):not(:where(.claudian-container *, .qoderian-container *)):hover {
   background: var(--interactive-hover);
 }
 
@@ -1345,7 +1343,7 @@ button.clickable-icon:not(.mod-cta):hover {
 .clickable-icon:is(.is-active, .mod-active, [aria-pressed="true"]),
 button.clickable-icon:not(.mod-cta):is(.is-active, .mod-active, [aria-pressed="true"]) {
   color: var(--icon-color-active);
-  background: rgba(var(--paper-ember-accent-rgb), 0.12);
+  background: color-mix(in srgb, var(--interactive-accent) 12%, transparent);
 }
 
 .clickable-icon svg,
@@ -1954,7 +1952,7 @@ button.mod-cta:hover {
 .modal.mod-settings :is(select, .dropdown):focus-visible {
   background-color: var(--background-modifier-hover);
   border-color: var(--background-modifier-border-focus);
-  box-shadow: 0 0 0 2px rgba(var(--paper-ember-accent-rgb), 0.1);
+  box-shadow: 0 0 0 2px color-mix(in srgb, var(--interactive-accent) 10%, transparent);
   outline: none;
 }
 
@@ -2284,13 +2282,13 @@ button.mod-cta:hover {
   --nn-theme-file-selected-bg: var(--eone-nav-item-active);
   --nn-theme-file-selected-inactive-bg: var(--eone-nav-item-active);
   --nn-theme-file-tag-color: var(--text-accent);
-  --nn-theme-file-tag-border-color: rgba(var(--paper-ember-accent-rgb), 0.24);
-  --nn-theme-file-tag-bg: rgba(var(--paper-ember-accent-rgb), 0.075);
+  --nn-theme-file-tag-border-color: color-mix(in srgb, var(--interactive-accent) 24%, transparent);
+  --nn-theme-file-tag-bg: color-mix(in srgb, var(--interactive-accent) 7.5%, transparent);
   --nn-theme-file-selected-tag-color: var(--text-accent);
-  --nn-theme-file-selected-tag-border-color: rgba(var(--paper-ember-accent-rgb), 0.32);
-  --nn-theme-file-selected-tag-bg: rgba(var(--paper-ember-accent-rgb), 0.12);
+  --nn-theme-file-selected-tag-border-color: color-mix(in srgb, var(--interactive-accent) 32%, transparent);
+  --nn-theme-file-selected-tag-bg: color-mix(in srgb, var(--interactive-accent) 12%, transparent);
   --nn-theme-file-selected-inactive-tag-color: var(--text-accent);
-  --nn-theme-file-selected-inactive-tag-bg: rgba(var(--paper-ember-accent-rgb), 0.085);
+  --nn-theme-file-selected-inactive-tag-bg: color-mix(in srgb, var(--interactive-accent) 8.5%, transparent);
 
   /* NN tints weekend cells with 10% foreground by default; every calendar cell
      stays on the plain pane background in this theme. */
@@ -2828,7 +2826,7 @@ body.eone-claudian-follow-editor-font-size .workspace-leaf-content :is(.view-con
 /* 12. Accessibility and motion */
 
 :focus-visible {
-  outline: 2px solid rgba(var(--paper-ember-accent-rgb), 0.72);
+  outline: 2px solid color-mix(in srgb, var(--interactive-accent) 72%, transparent);
   outline-offset: 2px;
 }
 
@@ -2836,7 +2834,7 @@ body.eone-claudian-follow-editor-font-size .workspace-leaf-content :is(.view-con
 button:focus-visible,
 .nav-file-title:focus-visible,
 .nav-folder-title:focus-visible {
-  box-shadow: 0 0 0 2px rgba(var(--paper-ember-accent-rgb), 0.18);
+  box-shadow: 0 0 0 2px color-mix(in srgb, var(--interactive-accent) 18%, transparent);
 }
 
 @media (prefers-reduced-motion: reduce) {
