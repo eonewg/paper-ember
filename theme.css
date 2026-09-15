@@ -2325,6 +2325,17 @@ button.mod-cta:hover {
   box-shadow: none;
 }
 
+/* Date-group disclosure controls should blend into the list surface. */
+.notebook-navigator button.nn-list-group-header-collapse-button {
+  color: var(--nn-theme-list-group-header-color);
+  background-color: transparent;
+}
+
+.notebook-navigator button.nn-list-group-header-collapse-button:is(:hover, :focus-visible) {
+  color: var(--text-normal);
+  background-color: var(--eone-icon-button-hover);
+}
+
 /* The generic button chip style above outranks the plugin's transparent
    calendar buttons, leaving white chips on the pane background. Restore the
    plugin backgrounds; hover is restated here because this rule would also
