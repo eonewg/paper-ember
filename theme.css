@@ -1302,14 +1302,16 @@ button,
   transition-timing-function: var(--eone-ease-out);
 }
 
-button:not(.mod-cta):not(.mod-warning) {
+/* Claudian owns its button surfaces and interaction states; generic button
+   chrome would override its transparent icon and disclosure controls. */
+button:not(.mod-cta):not(.mod-warning):not(:where(.claudian-container *)) {
   color: var(--text-normal);
   background: var(--interactive-normal);
   border-color: var(--background-modifier-border);
   box-shadow: none;
 }
 
-button:not(.mod-cta):not(.mod-warning):hover {
+button:not(.mod-cta):not(.mod-warning):not(:where(.claudian-container *)):hover {
   background: var(--interactive-hover);
 }
 
