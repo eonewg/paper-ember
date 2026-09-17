@@ -1133,14 +1133,14 @@ blockquote,
   box-shadow: none;
 }
 
-/* Live Preview has no paragraph margins between tags and callout widgets.
-   Keep the gap outside the callout, in either order, including wrapped tags. */
-.markdown-source-view.mod-cm6.is-live-preview .cm-line:has(.cm-hashtag) + .cm-callout {
-  padding-block-start: var(--eone-tag-callout-gap);
+/* Put the gap on the tag line so the callout's hover outline and edit action
+   stay aligned with its visible surface, including when tags wrap. */
+.markdown-source-view.mod-cm6.is-live-preview .cm-line:has(.cm-hashtag):has(+ .cm-callout) {
+  padding-block-end: var(--eone-tag-callout-gap);
 }
 
-.markdown-source-view.mod-cm6.is-live-preview .cm-callout:has(+ .cm-line .cm-hashtag) {
-  padding-block-end: var(--eone-tag-callout-gap);
+.markdown-source-view.mod-cm6.is-live-preview .cm-callout + .cm-line:has(.cm-hashtag) {
+  padding-block-start: var(--eone-tag-callout-gap);
 }
 
 .callout-title {
