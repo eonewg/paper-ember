@@ -1194,6 +1194,16 @@ blockquote,
   --metadata-divider-color: var(--background-modifier-border);
   --metadata-label-text-color: var(--text-muted);
   --metadata-input-text-color: var(--text-normal);
+  /* One shared row surface; keep the native focus ring for editing. */
+  --background-modifier-form-field-hover: transparent;
+  --metadata-property-background-hover: var(--background-modifier-hover);
+  --metadata-property-box-shadow-hover: none;
+  --metadata-label-background: transparent;
+  --metadata-label-background-hover: transparent;
+  --metadata-label-background-active: transparent;
+  --metadata-input-background: transparent;
+  --metadata-input-background-hover: transparent;
+  --metadata-input-background-active: transparent;
   background: transparent;
   border-bottom: 1px solid var(--background-modifier-border);
   margin-bottom: 1.2em;
@@ -1207,11 +1217,6 @@ blockquote,
 
 .metadata-property {
   border-radius: var(--radius-s);
-}
-
-.metadata-property:hover,
-.metadata-property:focus-within {
-  background: var(--background-modifier-hover);
 }
 
 .modal,
