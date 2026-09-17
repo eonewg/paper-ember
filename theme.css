@@ -145,6 +145,7 @@ body {
   --eone-transition-medium: 140ms var(--eone-ease-out);
   --eone-sidebar-item-height: 30px;
   --eone-paragraph-spacing: 1em;
+  --eone-tag-callout-gap: 0.65em;
   --eone-stacked-heading-gap: 0.3em;
   --eone-quote-line-cap: 0.28em;
   --eone-callout-bg-alpha: 0.045;
@@ -1130,6 +1131,16 @@ blockquote,
   border-radius: var(--radius-m);
   padding: 0;
   box-shadow: none;
+}
+
+/* Live Preview has no paragraph margins between tags and callout widgets.
+   Keep the gap outside the callout, in either order, including wrapped tags. */
+.markdown-source-view.mod-cm6.is-live-preview .cm-line:has(.cm-hashtag) + .cm-callout {
+  padding-block-start: var(--eone-tag-callout-gap);
+}
+
+.markdown-source-view.mod-cm6.is-live-preview .cm-callout:has(+ .cm-line .cm-hashtag) {
+  padding-block-end: var(--eone-tag-callout-gap);
 }
 
 .callout-title {
