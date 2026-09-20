@@ -15,7 +15,7 @@ settings:
     description: 调整浅色模式的主背景颜色。
     type: variable-color
     format: hex
-    default: '#f9f9f7'
+    default: '#fcfcfb'
   - id: eone-dark-bg-brightness
     title: 深色背景色
     description: 调整深色模式的主背景颜色。
@@ -127,7 +127,7 @@ settings:
 /* 2. Shared design tokens */
 
 body {
-  --eone-light-bg-warmth: #f9f9f7;
+  --eone-light-bg-warmth: #fcfcfb;
   --eone-dark-bg-brightness: #20201f;
   --eone-font-interface: "Inter Variable", "Inter", "Noto Sans SC", "Microsoft YaHei UI", "Microsoft YaHei", sans-serif;
   --eone-font-text: "Inter Variable", "Inter", "Noto Sans SC", "Microsoft YaHei", "PingFang SC", "Noto Sans CJK SC", sans-serif;
@@ -166,6 +166,10 @@ body {
   --button-radius: var(--eone-radius);
   --tab-radius-active: var(--eone-radius) var(--eone-radius) 0 0;
   --nav-item-radius: var(--eone-hover-radius);
+  --nav-item-background-hover: var(--eone-bg-hover);
+  --nav-item-background-active: var(--eone-bg-active);
+  --nav-item-background-selected: var(--eone-bg-active);
+  --tab-background-active: var(--background-primary);
   --checkbox-radius: 3px;
   --modal-radius: calc(var(--eone-radius) + 4px);
   --blockquote-border-color: var(--eone-quote-border);
@@ -203,6 +207,7 @@ body.eone-sidebar-comfortable {
   --eone-bg-secondary: #f6f6f3;
   --eone-bg-elevated: #fffdf9;
   --eone-bg-hover: #f0efec;
+  --eone-bg-active: #edece8;
   --eone-border: #dedbd2;
   --eone-border-strong: #c8c3b8;
   --eone-text-normal: #25231f;
@@ -224,32 +229,39 @@ body.eone-sidebar-comfortable {
   --eone-highlight: rgba(255, 208, 0, 0.4);
   --eone-shadow: rgba(68, 57, 47, 0.1);
   --eone-table-stripe: rgba(79, 68, 57, 0.032);
-  --eone-table-border: rgba(37, 35, 31, 0.16);
-  --eone-table-header-border: rgba(37, 35, 31, 0.42);
+  --eone-table-border: rgba(37, 35, 31, 0.12);
+  --eone-table-header-border: rgba(37, 35, 31, 0.16);
+  --eone-table-header-bg: rgba(37, 35, 31, 0.045);
   --eone-table-surface: transparent;
   --eone-table-selection: color-mix(in srgb, var(--interactive-accent) 9%, transparent);
   --eone-table-selection-border: color-mix(in srgb, var(--interactive-accent) 78%, transparent);
-  --eone-nav-item-hover: rgba(31, 30, 29, 0.045);
-  --eone-nav-item-active: rgba(31, 30, 29, 0.045);
+  --eone-nav-item-hover: var(--eone-bg-hover);
+  --eone-nav-item-active: var(--eone-bg-active);
   --eone-icon-button-hover: var(--eone-bg-hover);
   --eone-settings-bg: #ffffff;
   --eone-settings-nav-bg: #fcfcfb;
   --eone-settings-input-bg: #ffffff;
-  --eone-settings-nav-active: #e3e3e2;
+  --eone-settings-nav-active: var(--eone-bg-active);
   --eone-settings-divider: #ececea;
-  --eone-settings-option-hover: #f3f3f3;
+  --eone-settings-option-hover: var(--eone-bg-hover);
   --eone-settings-picker-border: #dbdbdb;
+  --eone-settings-picker-hover: #f3f3f3;
+  --eone-settings-button-border: #dbdbdb;
+  --eone-settings-button-shadow: 0 1px 2px rgba(0, 0, 0, 0.06);
   --eone-settings-checkmark: var(--paper-ember-accent);
   --eone-settings-control-border: #e6e6e6;
   --eone-settings-toggle-active: var(--paper-ember-accent);
   --eone-claudian-input-bg: #ffffff;
+  --eone-plugin-menu-bg: #ffffff;
+  --eone-plugin-menu-border: #e3e3e1;
+  --eone-plugin-menu-shadow: 0 4px 14px rgba(0, 0, 0, 0.08);
 
   --background-primary: var(--eone-bg-primary);
   --background-primary-alt: var(--eone-bg-elevated);
   --background-secondary: var(--eone-bg-secondary);
   --background-secondary-alt: #eeece5;
   --background-modifier-hover: var(--eone-bg-hover);
-  --background-modifier-active-hover: #e8e5dd;
+  --background-modifier-active-hover: var(--eone-bg-active);
   --background-modifier-border: var(--eone-border);
   --background-modifier-border-hover: var(--eone-border-strong);
   --background-modifier-border-focus: color-mix(in srgb, var(--interactive-accent) 62%, transparent);
@@ -293,7 +305,8 @@ body.eone-sidebar-comfortable {
   --eone-bg-primary: var(--eone-dark-bg-brightness);
   --eone-bg-secondary: #20201e;
   --eone-bg-elevated: #30302e;
-  --eone-bg-hover: #373735;
+  --eone-bg-hover: #232323;
+  --eone-bg-active: #343434;
   --eone-border: #41413d;
   --eone-border-strong: #595851;
   --eone-text-normal: #f0ede6;
@@ -316,20 +329,24 @@ body.eone-sidebar-comfortable {
   --eone-shadow: rgba(0, 0, 0, 0.24);
   --eone-table-stripe: rgba(255, 244, 232, 0.026);
   --eone-table-border: rgba(240, 237, 230, 0.17);
-  --eone-table-header-border: rgba(240, 237, 230, 0.44);
+  --eone-table-header-border: rgba(240, 237, 230, 0.22);
+  --eone-table-header-bg: rgba(240, 237, 230, 0.06);
   --eone-table-surface: transparent;
   --eone-table-selection: color-mix(in srgb, var(--interactive-accent) 13%, transparent);
   --eone-table-selection-border: color-mix(in srgb, var(--interactive-accent) 86%, transparent);
-  --eone-nav-item-hover: rgba(240, 237, 230, 0.085);
-  --eone-nav-item-active: rgba(240, 237, 230, 0.085);
+  --eone-nav-item-hover: var(--eone-bg-hover);
+  --eone-nav-item-active: var(--eone-bg-active);
   --eone-icon-button-hover: var(--eone-bg-hover);
   --eone-settings-bg: #2c2c2a;
   --eone-settings-nav-bg: #1a1a19;
   --eone-settings-input-bg: #262625;
-  --eone-settings-nav-active: #313130;
+  --eone-settings-nav-active: var(--eone-bg-active);
   --eone-settings-divider: #3a3a38;
-  --eone-settings-option-hover: #373735;
+  --eone-settings-option-hover: var(--eone-bg-hover);
   --eone-settings-picker-border: #464644;
+  --eone-settings-picker-hover: var(--eone-bg-hover);
+  --eone-settings-button-border: #464644;
+  --eone-settings-button-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
   --eone-settings-checkmark: var(--paper-ember-accent);
   --eone-settings-control-border: #53534f;
   --eone-settings-toggle-active: var(--paper-ember-accent);
@@ -340,7 +357,7 @@ body.eone-sidebar-comfortable {
   --background-secondary: var(--eone-bg-secondary);
   --background-secondary-alt: #2c2c2a;
   --background-modifier-hover: var(--eone-bg-hover);
-  --background-modifier-active-hover: #3b3b37;
+  --background-modifier-active-hover: var(--eone-bg-active);
   --background-modifier-border: var(--eone-border);
   --background-modifier-border-hover: var(--eone-border-strong);
   --background-modifier-border-focus: color-mix(in srgb, var(--interactive-accent) 66%, transparent);
@@ -573,8 +590,7 @@ mark,
 
 .workspace-tab-header.is-active {
   color: var(--text-normal);
-  background: var(--background-primary);
-  box-shadow: inset 0 -2px 0 var(--paper-ember-accent);
+  background: var(--tab-background-active);
 }
 
 .workspace-tab-header.is-active::before,
@@ -601,7 +617,7 @@ mark,
 
 .view-header {
   background: var(--background-primary);
-  border-color: var(--background-modifier-border);
+  border-bottom: 0;
 }
 
 .view-header-title {
@@ -619,6 +635,23 @@ mark,
   --nav-item-background-active: var(--eone-nav-item-active);
   --nav-item-background-selected: var(--eone-nav-item-active);
   --nav-item-weight-active: 620;
+}
+
+/* Paint native indentation guides above full-width row fills, without intercepting clicks. */
+.nav-files-container .nav-folder:not(.mod-root) > .nav-folder-children {
+  position: relative;
+  border-inline-start-color: transparent;
+}
+
+.nav-files-container .nav-folder:not(.mod-root) > .nav-folder-children::after {
+  content: "";
+  position: absolute;
+  inset-block: 0;
+  inset-inline-start: calc(-1 * var(--nav-indentation-guide-width));
+  width: var(--nav-indentation-guide-width);
+  background: var(--nav-indentation-guide-color);
+  z-index: 2;
+  pointer-events: none;
 }
 
 .nav-file-title,
@@ -676,9 +709,13 @@ mark,
   color: var(--text-faint);
 }
 
+.tree-item-self:hover {
+  background: var(--eone-bg-hover);
+}
+
 .tree-item-self.is-selected,
 .tree-item-self.is-active {
-  background: color-mix(in srgb, var(--interactive-accent) 12%, transparent);
+  background: var(--eone-bg-active);
   color: var(--text-normal);
 }
 
@@ -988,11 +1025,12 @@ pre,
 .markdown-source-view.mod-cm6 .cm-table-widget table {
   width: 100%;
   max-width: 100%;
-  border: 0;
+  border: 1px solid var(--eone-table-border);
+  border-radius: var(--radius-m);
   border-collapse: separate;
   border-spacing: 0;
   font-size: 0.94em;
-  table-layout: fixed;
+  table-layout: auto;
 }
 
 .markdown-rendered th,
@@ -1001,15 +1039,6 @@ pre,
 .markdown-source-view.mod-cm6 .cm-table-widget td {
   border: 0;
   min-width: 0;
-  text-align: center;
-  vertical-align: top;
-}
-
-/* Override Obsidian's first/last-column alignment only in Reading view. */
-.markdown-preview-view.markdown-rendered table > :is(thead, tbody) > tr > :is(th, td),
-.markdown-preview-view.markdown-rendered table > :is(thead, tbody) > tr > :is(th, td):first-child,
-.markdown-preview-view.markdown-rendered table > :is(thead, tbody) > tr > :is(th, td):last-child {
-  text-align: center;
 }
 
 .markdown-rendered :is(th, td) {
@@ -1024,29 +1053,28 @@ pre,
   padding: 0.52em 0.72em;
 }
 
+/* Paint individual header cells so rounded corners do not clip editor controls. */
+.markdown-rendered thead,
+.markdown-rendered thead tr {
+  background: transparent;
+  border: 0;
+}
+
+.markdown-rendered thead th,
 .markdown-source-view.mod-cm6 .cm-table-widget th {
   color: var(--text-normal);
-  background: transparent;
-  border: 0;
-  font-weight: 650;
+  background: var(--eone-table-header-bg);
+  font-weight: 400;
 }
 
-/* Keep the table open and lightweight; structure comes from separators, not fills. */
-.markdown-rendered thead,
-.markdown-rendered thead tr,
-.markdown-rendered thead th {
-  background: transparent;
-  border: 0;
+.markdown-rendered thead tr:first-child > th:first-child,
+.markdown-source-view.mod-cm6 .cm-table-widget thead tr:first-child > th:first-child {
+  border-start-start-radius: calc(var(--radius-m) - 1px);
 }
 
-.markdown-rendered thead th {
-  color: var(--text-normal);
-  font-weight: 650;
-}
-
-.markdown-rendered th,
-.markdown-source-view.mod-cm6 .cm-table-widget th .table-cell-wrapper {
-  padding-block-end: 0.68em;
+.markdown-rendered thead tr:first-child > th:last-child,
+.markdown-source-view.mod-cm6 .cm-table-widget thead tr:first-child > th:last-child {
+  border-start-end-radius: calc(var(--radius-m) - 1px);
 }
 
 .markdown-rendered tbody td,
@@ -1061,9 +1089,19 @@ pre,
   background: var(--eone-table-surface);
 }
 
-.markdown-rendered tr > :is(th, td):not(:last-child),
-.markdown-source-view.mod-cm6 .cm-table-widget tr > :is(th, td):not(:last-child) {
-  border-inline-end: 1px solid var(--eone-table-border);
+.markdown-rendered tbody tr:last-child > td,
+.markdown-source-view.mod-cm6 .cm-table-widget tbody tr:last-child > td {
+  border-block-end: 0;
+}
+
+.markdown-rendered tbody tr:last-child > td:first-child,
+.markdown-source-view.mod-cm6 .cm-table-widget tbody tr:last-child > td:first-child {
+  border-end-start-radius: calc(var(--radius-m) - 1px);
+}
+
+.markdown-rendered tbody tr:last-child > td:last-child,
+.markdown-source-view.mod-cm6 .cm-table-widget tbody tr:last-child > td:last-child {
+  border-end-end-radius: calc(var(--radius-m) - 1px);
 }
 
 .markdown-rendered thead th,
@@ -1260,12 +1298,16 @@ blockquote,
   transition: color var(--eone-transition-fast), background-color var(--eone-transition-medium);
 }
 
-.suggestion-item.is-selected,
 .suggestion-item:hover,
-.menu-item.selected,
 .menu-item:hover {
   color: var(--text-normal);
   background: var(--background-modifier-hover);
+}
+
+.suggestion-item.is-selected,
+.menu-item.selected {
+  color: var(--text-normal);
+  background: var(--eone-bg-active);
 }
 
 input[type="text"],
@@ -1359,7 +1401,7 @@ button.clickable-icon:not(.mod-cta):hover {
 .clickable-icon:is(.is-active, .mod-active, [aria-pressed="true"]),
 button.clickable-icon:not(.mod-cta):is(.is-active, .mod-active, [aria-pressed="true"]) {
   color: var(--icon-color-active);
-  background: color-mix(in srgb, var(--interactive-accent) 12%, transparent);
+  background: var(--eone-bg-active);
 }
 
 .clickable-icon svg,
@@ -1931,6 +1973,8 @@ button.mod-cta:hover {
 
 /* Dropdowns read as plain values until the pointer reaches them. */
 .modal.mod-settings :is(select, .dropdown) {
+  --input-shadow: none;
+  --input-shadow-hover: none;
   box-sizing: border-box;
   height: 36px;
   min-height: 36px;
@@ -1961,12 +2005,18 @@ button.mod-cta:hover {
 }
 
 .modal.mod-settings :is(select, .dropdown):hover {
-  background-color: var(--background-modifier-hover);
+  background-color: var(--eone-settings-picker-hover);
   border-color: transparent;
+  box-shadow: none;
+}
+
+.modal.mod-settings :is(select, .dropdown):focus:not(:focus-visible) {
+  border-color: transparent;
+  box-shadow: none;
 }
 
 .modal.mod-settings :is(select, .dropdown):focus-visible {
-  background-color: var(--background-modifier-hover);
+  background-color: var(--eone-settings-picker-hover);
   border-color: var(--background-modifier-border-focus);
   box-shadow: 0 0 0 2px color-mix(in srgb, var(--interactive-accent) 10%, transparent);
   outline: none;
@@ -1978,9 +2028,9 @@ button.mod-cta:hover {
 }
 
 .modal.mod-settings :is(select, .dropdown) option:hover,
-.modal.mod-settings :is(select, .dropdown) option:focus {
+.modal.mod-settings :is(select, .dropdown):not(:has(option:hover)) option:focus {
   color: var(--text-normal);
-  background: var(--background-modifier-hover);
+  background: var(--eone-settings-picker-hover);
 }
 
 .modal.mod-settings :is(select, .dropdown) option:checked {
@@ -2035,9 +2085,9 @@ button.mod-cta:hover {
   }
 
   .modal.mod-settings select.dropdown option:hover,
-  .modal.mod-settings select.dropdown option:focus-visible {
+  .modal.mod-settings select.dropdown:not(:has(option:hover)) option:focus-visible {
     color: var(--text-normal);
-    background: var(--eone-settings-option-hover);
+    background: var(--eone-settings-picker-hover);
     outline: none;
   }
 
@@ -2048,8 +2098,8 @@ button.mod-cta:hover {
   }
 
   .modal.mod-settings select.dropdown option:checked:hover,
-  .modal.mod-settings select.dropdown option:checked:focus-visible {
-    background: var(--eone-settings-option-hover);
+  .modal.mod-settings select.dropdown:not(:has(option:hover)) option:checked:focus-visible {
+    background: var(--eone-settings-picker-hover);
   }
 
   .modal.mod-settings select.dropdown option::checkmark {
@@ -2077,7 +2127,7 @@ button.mod-cta:hover {
   }
 }
 
-.modal.mod-settings .setting-item-control > button:not(.clickable-icon, .mod-warning) {
+.modal.mod-settings .setting-item-control > button:not(.clickable-icon, .mod-warning, .dropdown, [aria-haspopup]) {
   min-height: 36px;
   padding-inline: 11px;
   color: var(--text-normal);
@@ -2088,10 +2138,10 @@ button.mod-cta:hover {
   font-weight: 400;
 }
 
-.modal.mod-settings .setting-item-control > button:not(.clickable-icon, .mod-warning):hover {
-  background: var(--eone-settings-option-hover);
-  border-color: transparent;
-  box-shadow: none;
+.modal.mod-settings .setting-item-control > button:not(.clickable-icon, .mod-warning, .dropdown, [aria-haspopup]):hover {
+  background: var(--eone-settings-picker-hover);
+  border-color: var(--eone-settings-button-border);
+  box-shadow: var(--eone-settings-button-shadow);
 }
 
 .modal.mod-settings .modal-close-button {
@@ -2287,8 +2337,13 @@ button.mod-cta:hover {
 
 /* Notebook Navigator varies icon opacity and active colors by button state. */
 .notebook-navigator {
+  --nn-theme-nav-indent-guide-color: color-mix(in srgb, var(--text-normal) 12%, transparent);
+  --nn-theme-divider-border-color: color-mix(in srgb, var(--background-modifier-border) 55%, transparent);
+  --nn-theme-list-separator-color: var(--nn-theme-divider-border-color);
+  --nn-theme-nav-separator-opacity: 0.12;
+  --nn-theme-file-border-radius: var(--radius-m);
   --nn-theme-header-button-icon-color: var(--icon-color);
-  --nn-theme-header-button-active-bg: transparent;
+  --nn-theme-header-button-active-bg: var(--eone-bg-active);
   --nn-theme-header-button-active-icon-color: var(--icon-color);
   --nn-theme-header-button-disabled-icon-color: var(--icon-color);
   --nn-theme-navitem-border-radius: var(--eone-hover-radius);
@@ -2309,6 +2364,12 @@ button.mod-cta:hover {
   /* NN tints weekend cells with 10% foreground by default; every calendar cell
      stays on the plain pane background in this theme. */
   --nn-theme-calendar-weekend-bg: transparent;
+}
+
+/* Trim only isolated selection fills; keep virtual row heights and joined selections intact. */
+.notebook-navigator .nn-file.nn-selected:not(.nn-compact, .nn-has-selected-above, .nn-has-selected-below, .nn-has-custom-background) .nn-file-content::before {
+  top: 4px;
+  bottom: 4px;
 }
 
 .notebook-navigator .nn-file.nn-selected:not(.nn-compact) .nn-file-name {
@@ -2454,6 +2515,27 @@ body.eone-claudian-follow-editor-font-size .workspace-leaf-content :is(.view-con
   inset-inline-end: var(--eone-claudian-composer-end-gap);
 }
 
+/* Explicit popup surfaces also cover menus mounted outside the plugin pane. */
+body.theme-light :is(
+  .claudian-nav-dropup-menu,
+  .claudian-composer-dropdown,
+  .claudian-model-dropdown,
+  .claudian-resume-dropdown,
+  .qoderian-history-menu,
+  .qoderian-model-list-pane,
+  .qoderian-model-editor-pane,
+  .qoderian-permission-dropdown,
+  .qoderian-external-context-dropdown,
+  .qoderian-mcp-selector-dropdown,
+  .qoderian-mention-dropdown,
+  .qoderian-slash-dropdown,
+  .qoderian-resume-dropdown
+) {
+  background-color: var(--eone-plugin-menu-bg);
+  border-color: var(--eone-plugin-menu-border);
+  box-shadow: var(--eone-plugin-menu-shadow);
+}
+
 /* Keep the absolutely positioned conversation history aligned with the
    composer instead of allowing it to span the full Claudian view. */
 .claudian-container .claudian-history-menu {
@@ -2467,6 +2549,21 @@ body.eone-claudian-follow-editor-font-size .workspace-leaf-content :is(.view-con
   background: transparent;
   border-color: transparent;
   box-shadow: none;
+}
+
+/* Keep current conversations distinct from hovered, unselected conversations. */
+.claudian-container .claudian-history-item:hover,
+.qoderian-container .qoderian-history-item:hover {
+  background: var(--eone-bg-hover);
+}
+
+.claudian-container .claudian-history-item:is(.active, .open),
+.claudian-container .claudian-history-item:is(.active, .open):hover,
+.claudian-container .claudian-session-sidebar .claudian-history-item:is(.active, .open),
+.claudian-container .claudian-session-sidebar .claudian-history-item:is(.active, .open):hover,
+.qoderian-container .qoderian-history-item:is(.active, .open),
+.qoderian-container .qoderian-history-item:is(.active, .open):hover {
+  background: var(--eone-bg-active);
 }
 
 .claudian-container .claudian-history-item-actions button.claudian-action-btn:hover {
