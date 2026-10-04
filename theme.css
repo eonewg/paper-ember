@@ -216,8 +216,8 @@ body.eone-sidebar-comfortable {
   --paper-ember-accent: var(--interactive-accent);
   --paper-ember-accent-strong: var(--interactive-accent-hover);
   --eone-code-bg: rgba(61, 61, 58, 0.055);
-  --eone-code-block-bg: #fcfbfb;
-  --eone-code-block-border: #dad9da;
+  --eone-code-block-bg: #ffffff;
+  --eone-code-block-border: #d0d7de;
   --eone-inline-code: #8a3f27;
   --eone-quote-border: #e3e3e1;
   --eone-active-line-marker: #dadada;
@@ -277,17 +277,18 @@ body.eone-sidebar-comfortable {
   --text-selection: var(--eone-selection);
   --text-highlight-bg: var(--eone-highlight);
   --code-background: var(--eone-code-bg);
-  --code-normal: #0b0b0b;
-  --code-comment: #6e7687;
-  --code-function: #b34a00;
-  --code-important: #0051c2;
-  --code-keyword: #8100c2;
-  --code-operator: #0b0b0b;
-  --code-property: #b80a18;
-  --code-punctuation: #0b0b0b;
-  --code-string: #008000;
-  --code-tag: #b34a00;
-  --code-value: #008080;
+  /* GitHub Light syntax palette. */
+  --code-normal: #24292e;
+  --code-comment: #6a737d;
+  --code-function: #6f42c1;
+  --code-important: #d73a49;
+  --code-keyword: #d73a49;
+  --code-operator: var(--code-keyword);
+  --code-property: #005cc5;
+  --code-punctuation: #24292e;
+  --code-string: #032f62;
+  --code-tag: #22863a;
+  --code-value: #005cc5;
   --icon-color: var(--eone-text-muted);
   --icon-color-hover: var(--eone-text-normal);
   --icon-color-active: var(--paper-ember-accent-strong);
@@ -315,8 +316,8 @@ body.eone-sidebar-comfortable {
   --paper-ember-accent: var(--interactive-accent);
   --paper-ember-accent-strong: var(--interactive-accent-hover);
   --eone-code-bg: rgba(194, 192, 182, 0.07);
-  --eone-code-block-bg: #262624;
-  --eone-code-block-border: #434340;
+  --eone-code-block-bg: #0d1117;
+  --eone-code-block-border: #30363d;
   --eone-inline-code: #f0a486;
   --eone-quote-border: #4a4b48;
   --eone-active-line-marker: #555652;
@@ -373,17 +374,18 @@ body.eone-sidebar-comfortable {
   --text-selection: var(--eone-selection);
   --text-highlight-bg: var(--eone-highlight);
   --code-background: var(--eone-code-bg);
-  --code-normal: #eaecf0;
-  --code-comment: #818898;
-  --code-function: #fbad60;
-  --code-important: #70b8ff;
-  --code-keyword: #cc7bf4;
-  --code-operator: #eaecf0;
-  --code-property: #fbad60;
-  --code-punctuation: #eaecf0;
-  --code-string: #9be963;
-  --code-tag: #fbad60;
-  --code-value: #5eeded;
+  /* GitHub Dark syntax palette. */
+  --code-normal: #c9d1d9;
+  --code-comment: #8b949e;
+  --code-function: #d2a8ff;
+  --code-important: #ff7b72;
+  --code-keyword: #ff7b72;
+  --code-operator: var(--code-keyword);
+  --code-property: #79c0ff;
+  --code-punctuation: #c9d1d9;
+  --code-string: #a5d6ff;
+  --code-tag: #7ee787;
+  --code-value: #79c0ff;
   --icon-color: var(--eone-text-muted);
   --icon-color-hover: var(--eone-text-normal);
   --icon-color-active: var(--paper-ember-accent-strong);
@@ -936,7 +938,40 @@ pre,
   font-size: var(--code-size);
 }
 
-/* cm-line.HyperMD-codeblock covers fenced code in Live Preview without changing tokens. */
+/* GitHub keeps ordinary identifiers in the foreground color. Obsidian
+   otherwise groups CodeMirror variables with blue property keys. Limit
+   overrides to code blocks so Markdown links and inline code keep their styles. */
+.markdown-source-view.mod-cm6 .HyperMD-codeblock :is(.cm-variable, .cm-variable-2, .cm-variable-3),
+.markdown-source-view.mod-cm6 .HyperMD-codeblock.cbc-prism :is(.token.variable, .token.parameter, .token.property-access:not(.function)),
+.markdown-rendered pre :is(.token.variable, .token.parameter, .token.property-access:not(.function)) {
+  color: var(--code-normal);
+}
+
+/* The editor's atom tokens cover booleans and null constants; Prism uses
+   boolean/number plus constant/symbol. Do not color ordinary variables as values. */
+.markdown-source-view.mod-cm6 .HyperMD-codeblock .cm-atom,
+.markdown-source-view.mod-cm6 .HyperMD-codeblock.cbc-prism :is(.token.constant, .token.symbol),
+.markdown-rendered pre :is(.token.constant, .token.symbol) {
+  color: var(--code-value);
+}
+
+/* CodeMirror groups primitive types with functions by default, while Prism
+   classifies C/C++ primitive types as keywords. Keep those type tokens red. */
+.markdown-source-view.mod-cm6 .HyperMD-codeblock .cm-type {
+  color: var(--code-keyword);
+}
+
+/* Code fences show only Obsidian's active indentation guide while the editor
+   has focus. These markers follow indentation, not semantic bracket scopes. */
+.markdown-source-view.mod-cm6 .HyperMD-codeblock .cm-indent::before {
+  opacity: 0;
+}
+
+.markdown-source-view.mod-cm6 .cm-editor.cm-focused .cm-content:has(.HyperMD-codeblock.cm-active) .HyperMD-codeblock .cm-active-indent::before {
+  opacity: 1;
+}
+
+/* cm-line.HyperMD-codeblock covers fenced code in Live Preview. */
 .markdown-source-view.mod-cm6 .cm-line.HyperMD-codeblock {
   background: var(--eone-code-block-bg);
   border-inline: 1px solid var(--eone-code-block-border);
@@ -1907,8 +1942,13 @@ button.mod-cta:hover {
   line-height: 1.55;
 }
 
-.modal.mod-settings .setting-item {
+/* Claudian mixes horizontal rows with stacked fields; let its own styles
+   choose the cross-axis alignment instead of centering stacked labels. */
+.modal.mod-settings .setting-item:not(:where(.claudian-settings *)) {
   align-items: center;
+}
+
+.modal.mod-settings .setting-item {
   min-height: 64px;
   padding: var(--eone-settings-row-padding) 0;
   background: transparent;
@@ -1951,6 +1991,54 @@ button.mod-cta:hover {
 
 .modal.mod-settings :is(button, select, .dropdown, .clickable-icon, .checkbox-container) {
   cursor: pointer;
+}
+
+/* Claudian groups its settings inside a Setting wrapper. Keep the shared
+   flat-row rules from stripping the plugin's card heading and spacing. */
+.modal.mod-settings .setting-item.claudian-settings {
+  min-height: 0;
+  padding: 0;
+  border: 0;
+}
+
+.modal.mod-settings .claudian-settings .claudian-settings-group,
+.modal.mod-settings .claudian-settings .claudian-settings-general > .setting-item:not(.setting-item-heading) {
+  margin: 0 0 var(--size-4-5);
+  border: 1px solid var(--eone-settings-control-border);
+  border-radius: var(--radius-l);
+}
+
+.modal.mod-settings .claudian-settings .claudian-settings-general > .setting-item:not(.setting-item-heading),
+.modal.mod-settings .claudian-settings .claudian-settings-group > .setting-item.setting-item-heading {
+  padding: var(--size-4-4);
+}
+
+.modal.mod-settings .claudian-settings .claudian-settings-group > .setting-item.setting-item-heading {
+  margin: 0;
+  border-bottom: 1px solid var(--eone-settings-divider);
+}
+
+.modal.mod-settings .claudian-settings .claudian-settings-group-body {
+  padding: var(--size-4-4);
+}
+
+.modal.mod-settings .claudian-settings .claudian-settings-group .setting-item:not(.setting-item-heading) {
+  min-height: 0;
+  padding-block: var(--size-4-3);
+  border: 0;
+}
+
+.modal.mod-settings .claudian-settings .claudian-settings-group-body > .setting-item:first-child {
+  padding-top: 0;
+}
+
+.modal.mod-settings .claudian-settings .claudian-settings-group-body > .setting-item:last-child {
+  padding-bottom: 0;
+}
+
+.modal.mod-settings .claudian-settings .setting-item-info {
+  min-width: 0;
+  padding-right: var(--size-4-4);
 }
 
 /* Sliders are horizontal drag controls, so expose that interaction before
