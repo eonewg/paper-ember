@@ -1262,6 +1262,11 @@ blockquote,
   letter-spacing: 0.01em;
 }
 
+/* Title math follows the title color instead of the global body math color. */
+.callout-title :is(.math, .math-block, .math-inline, .MathJax) {
+  color: inherit;
+}
+
 .callout-content {
   color: var(--text-normal);
   padding: 0 0.9em 0.42em;
