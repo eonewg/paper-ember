@@ -138,6 +138,10 @@ body {
   --eone-reading-width: 850px;
   --eone-radius: 6px;
   --eone-code-radius: 7px;
+  --eone-inline-code-padding-block: 0.04em;
+  --eone-inline-code-padding-inline: 0.2em;
+  --eone-inline-code-gap: 0.12em;
+  --eone-inline-code-border: var(--eone-code-block-border);
   --eone-hover-radius: 8px;
   --eone-ease-standard: cubic-bezier(0.2, 0.72, 0.24, 1);
   --eone-ease-out: cubic-bezier(0.22, 1, 0.36, 1);
@@ -149,7 +153,7 @@ body {
   --eone-stacked-heading-gap: 0.3em;
   --eone-quote-line-cap: 0.28em;
   --eone-callout-bg-alpha: 0.045;
-  --eone-callout-border-alpha: 0.42;
+  --eone-callout-border-alpha: 0.16;
   --eone-settings-nav-width: 252px;
   --eone-settings-row-padding: 17px;
 
@@ -217,7 +221,7 @@ body.eone-sidebar-comfortable {
   --paper-ember-accent-strong: var(--interactive-accent-hover);
   --eone-code-bg: rgba(61, 61, 58, 0.055);
   --eone-code-block-bg: #ffffff;
-  --eone-code-block-border: #d0d7de;
+  --eone-code-block-border: #e5e4e4;
   --eone-inline-code: #8a3f27;
   --eone-quote-border: #e3e3e1;
   --eone-active-line-marker: #dadada;
@@ -302,7 +306,7 @@ body.eone-sidebar-comfortable {
 .theme-dark {
   color-scheme: dark;
   --eone-callout-bg-alpha: 0.08;
-  --eone-callout-border-alpha: 0.52;
+  --eone-callout-border-alpha: 0.24;
   --eone-bg-primary: var(--eone-dark-bg-brightness);
   --eone-bg-secondary: #20201e;
   --eone-bg-elevated: #30302e;
@@ -317,7 +321,7 @@ body.eone-sidebar-comfortable {
   --paper-ember-accent-strong: var(--interactive-accent-hover);
   --eone-code-bg: rgba(194, 192, 182, 0.07);
   --eone-code-block-bg: #0d1117;
-  --eone-code-block-border: #30363d;
+  --eone-code-block-border: color-mix(in srgb, #30363d 45%, transparent);
   --eone-inline-code: #f0a486;
   --eone-quote-border: #4a4b48;
   --eone-active-line-marker: #555652;
@@ -905,14 +909,42 @@ pre,
   font-variant-ligatures: none;
 }
 
-.markdown-rendered code,
-.markdown-source-view.mod-cm6 .cm-inline-code:not(.cm-formatting) {
+.markdown-rendered :not(pre) > code,
+.markdown-source-view.mod-cm6 .cm-inline-code:not(.cm-formatting):where(:not(.HyperMD-codeblock *)) {
   color: var(--eone-inline-code);
   background: var(--code-background);
-  border: 1px solid var(--background-modifier-border);
+  border: 1px solid var(--eone-inline-code-border);
   border-radius: 4px;
-  padding: 0.08em 0.32em;
+  padding: var(--eone-inline-code-padding-block) var(--eone-inline-code-padding-inline);
   font-size: 0.9em;
+  line-height: 1.2;
+}
+
+/* Codeblock Customizer forces padding and clears margins. Set its variables
+   on inline code, and preserve spacing without changing plugin settings. */
+.markdown-rendered :not(pre) > code,
+.markdown-source-view.mod-cm6 .cm-line:not(.HyperMD-codeblock) .cm-inline-code {
+  --inline-code-padding-vertical: var(--eone-inline-code-padding-block);
+  --inline-code-padding-horizontal: var(--eone-inline-code-padding-inline);
+  --border-radius: 4px;
+  --code-border-color: var(--eone-inline-code-border);
+  padding-block: var(--eone-inline-code-padding-block);
+  line-height: 1.2;
+}
+
+.markdown-rendered :not(pre) > code,
+body.codeblock-customizer.codeblock-customizer-style-inline-code .markdown-rendered :not(pre) > code.codeblock-customizer-inline-code,
+.markdown-source-view.mod-cm6 .cm-line:not(.HyperMD-codeblock) .cm-inline-code {
+  margin-inline: var(--eone-inline-code-gap) !important;
+}
+
+/* Adjacent editor tokens form one code pill, with spacing only at its edges. */
+.markdown-source-view.mod-cm6 .cm-line:not(.HyperMD-codeblock) .cm-inline-code + .cm-inline-code {
+  margin-inline-start: 0 !important;
+}
+
+.markdown-source-view.mod-cm6 .cm-line:not(.HyperMD-codeblock) .cm-inline-code:has(+ .cm-inline-code) {
+  margin-inline-end: 0 !important;
 }
 
 .markdown-rendered pre {
@@ -1206,6 +1238,11 @@ blockquote,
   box-shadow: none;
 }
 
+/* Disable Obsidian's widget hover shadow for callouts. */
+.markdown-source-view.mod-cm6 .cm-callout {
+  --embed-block-shadow-hover: none;
+}
+
 /* Put the gap on the tag line so the callout's hover outline and edit action
    stay aligned with its visible surface, including when tags wrap. */
 .markdown-source-view.mod-cm6.is-live-preview .cm-line:has(.cm-hashtag):has(+ .cm-callout) {
@@ -1219,7 +1256,7 @@ blockquote,
 .callout-title {
   color: var(--callout-color);
   background: transparent;
-  padding: 0.62em 0.85em 0.33em;
+  padding: 0.62em 0.85em 0.12em;
   font-weight: 700;
   font-size: 1.06em;
   letter-spacing: 0.01em;
@@ -1231,7 +1268,7 @@ blockquote,
 }
 
 .callout-content > :first-child {
-  margin-block-start: 0.35em;
+  margin-block-start: 0.12em;
 }
 
 .callout-content > :last-child {
